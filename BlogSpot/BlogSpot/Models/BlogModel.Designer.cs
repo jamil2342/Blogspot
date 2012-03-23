@@ -16,6 +16,12 @@ using System.Xml.Serialization;
 using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
+#region EDM Relationship Metadata
+
+[assembly: EdmRelationshipAttribute("BlogModel", "BlogPost", "Blog", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BlogSpot.Models.Blog), "Post", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BlogSpot.Models.Post), true)]
+[assembly: EdmRelationshipAttribute("BlogModel", "PostComment", "Post", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BlogSpot.Models.Post), "Comment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BlogSpot.Models.Comment), true)]
+
+#endregion
 
 namespace BlogSpot.Models
 {
@@ -68,76 +74,76 @@ namespace BlogSpot.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Entity1> Entity1
+        public ObjectSet<Blog> Blogs
         {
             get
             {
-                if ((_Entity1 == null))
+                if ((_Blogs == null))
                 {
-                    _Entity1 = base.CreateObjectSet<Entity1>("Entity1");
+                    _Blogs = base.CreateObjectSet<Blog>("Blogs");
                 }
-                return _Entity1;
+                return _Blogs;
             }
         }
-        private ObjectSet<Entity1> _Entity1;
+        private ObjectSet<Blog> _Blogs;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Entity2> Entity2
+        public ObjectSet<Comment> Comments
         {
             get
             {
-                if ((_Entity2 == null))
+                if ((_Comments == null))
                 {
-                    _Entity2 = base.CreateObjectSet<Entity2>("Entity2");
+                    _Comments = base.CreateObjectSet<Comment>("Comments");
                 }
-                return _Entity2;
+                return _Comments;
             }
         }
-        private ObjectSet<Entity2> _Entity2;
+        private ObjectSet<Comment> _Comments;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Entity3> Entity3
+        public ObjectSet<Post> Posts
         {
             get
             {
-                if ((_Entity3 == null))
+                if ((_Posts == null))
                 {
-                    _Entity3 = base.CreateObjectSet<Entity3>("Entity3");
+                    _Posts = base.CreateObjectSet<Post>("Posts");
                 }
-                return _Entity3;
+                return _Posts;
             }
         }
-        private ObjectSet<Entity3> _Entity3;
+        private ObjectSet<Post> _Posts;
 
         #endregion
         #region AddTo Methods
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Entity1 EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Blogs EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToEntity1(Entity1 entity1)
+        public void AddToBlogs(Blog blog)
         {
-            base.AddObject("Entity1", entity1);
+            base.AddObject("Blogs", blog);
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Entity2 EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Comments EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToEntity2(Entity2 entity2)
+        public void AddToComments(Comment comment)
         {
-            base.AddObject("Entity2", entity2);
+            base.AddObject("Comments", comment);
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Entity3 EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Posts EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToEntity3(Entity3 entity3)
+        public void AddToPosts(Post post)
         {
-            base.AddObject("Entity3", entity3);
+            base.AddObject("Posts", post);
         }
 
         #endregion
@@ -151,22 +157,26 @@ namespace BlogSpot.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="BlogModel", Name="Entity1")]
+    [EdmEntityTypeAttribute(NamespaceName="BlogModel", Name="Blog")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class Entity1 : EntityObject
+    public partial class Blog : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new Entity1 object.
+        /// Create a new Blog object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        public static Entity1 CreateEntity1(global::System.Int32 id)
+        /// <param name="title">Initial value of the Title property.</param>
+        /// <param name="bloggerName">Initial value of the BloggerName property.</param>
+        public static Blog CreateBlog(global::System.Int32 id, global::System.String title, global::System.String bloggerName)
         {
-            Entity1 entity1 = new Entity1();
-            entity1.Id = id;
-            return entity1;
+            Blog blog = new Blog();
+            blog.Id = id;
+            blog.Title = title;
+            blog.BloggerName = bloggerName;
+            return blog;
         }
 
         #endregion
@@ -198,30 +208,109 @@ namespace BlogSpot.Models
         private global::System.Int32 _Id;
         partial void OnIdChanging(global::System.Int32 value);
         partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String BloggerName
+        {
+            get
+            {
+                return _BloggerName;
+            }
+            set
+            {
+                OnBloggerNameChanging(value);
+                ReportPropertyChanging("BloggerName");
+                _BloggerName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("BloggerName");
+                OnBloggerNameChanged();
+            }
+        }
+        private global::System.String _BloggerName;
+        partial void OnBloggerNameChanging(global::System.String value);
+        partial void OnBloggerNameChanged();
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BlogModel", "BlogPost", "Post")]
+        public EntityCollection<Post> Posts
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Post>("BlogModel.BlogPost", "Post");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Post>("BlogModel.BlogPost", "Post", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="BlogModel", Name="Entity2")]
+    [EdmEntityTypeAttribute(NamespaceName="BlogModel", Name="Comment")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class Entity2 : EntityObject
+    public partial class Comment : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new Entity2 object.
+        /// Create a new Comment object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        public static Entity2 CreateEntity2(global::System.Int32 id)
+        /// <param name="dateCreated">Initial value of the DateCreated property.</param>
+        /// <param name="content">Initial value of the Content property.</param>
+        /// <param name="postId">Initial value of the PostId property.</param>
+        public static Comment CreateComment(global::System.Int32 id, global::System.DateTime dateCreated, global::System.String content, global::System.Int32 postId)
         {
-            Entity2 entity2 = new Entity2();
-            entity2.Id = id;
-            return entity2;
+            Comment comment = new Comment();
+            comment.Id = id;
+            comment.DateCreated = dateCreated;
+            comment.Content = content;
+            comment.PostId = postId;
+            return comment;
         }
 
         #endregion
@@ -253,30 +342,149 @@ namespace BlogSpot.Models
         private global::System.Int32 _Id;
         partial void OnIdChanging(global::System.Int32 value);
         partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime DateCreated
+        {
+            get
+            {
+                return _DateCreated;
+            }
+            set
+            {
+                OnDateCreatedChanging(value);
+                ReportPropertyChanging("DateCreated");
+                _DateCreated = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DateCreated");
+                OnDateCreatedChanged();
+            }
+        }
+        private global::System.DateTime _DateCreated;
+        partial void OnDateCreatedChanging(global::System.DateTime value);
+        partial void OnDateCreatedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Content
+        {
+            get
+            {
+                return _Content;
+            }
+            set
+            {
+                OnContentChanging(value);
+                ReportPropertyChanging("Content");
+                _Content = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Content");
+                OnContentChanged();
+            }
+        }
+        private global::System.String _Content;
+        partial void OnContentChanging(global::System.String value);
+        partial void OnContentChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PostId
+        {
+            get
+            {
+                return _PostId;
+            }
+            set
+            {
+                OnPostIdChanging(value);
+                ReportPropertyChanging("PostId");
+                _PostId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PostId");
+                OnPostIdChanged();
+            }
+        }
+        private global::System.Int32 _PostId;
+        partial void OnPostIdChanging(global::System.Int32 value);
+        partial void OnPostIdChanged();
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BlogModel", "PostComment", "Post")]
+        public Post Post
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Post>("BlogModel.PostComment", "Post").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Post>("BlogModel.PostComment", "Post").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Post> PostReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Post>("BlogModel.PostComment", "Post");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Post>("BlogModel.PostComment", "Post", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="BlogModel", Name="Entity3")]
+    [EdmEntityTypeAttribute(NamespaceName="BlogModel", Name="Post")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class Entity3 : EntityObject
+    public partial class Post : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new Entity3 object.
+        /// Create a new Post object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        public static Entity3 CreateEntity3(global::System.Int32 id)
+        /// <param name="title">Initial value of the Title property.</param>
+        /// <param name="dateCreated">Initial value of the DateCreated property.</param>
+        /// <param name="blogId">Initial value of the BlogId property.</param>
+        public static Post CreatePost(global::System.Int32 id, global::System.String title, global::System.DateTime dateCreated, global::System.Int32 blogId)
         {
-            Entity3 entity3 = new Entity3();
-            entity3.Id = id;
-            return entity3;
+            Post post = new Post();
+            post.Id = id;
+            post.Title = title;
+            post.DateCreated = dateCreated;
+            post.BlogId = blogId;
+            return post;
         }
 
         #endregion
@@ -308,9 +516,168 @@ namespace BlogSpot.Models
         private global::System.Int32 _Id;
         partial void OnIdChanging(global::System.Int32 value);
         partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime DateCreated
+        {
+            get
+            {
+                return _DateCreated;
+            }
+            set
+            {
+                OnDateCreatedChanging(value);
+                ReportPropertyChanging("DateCreated");
+                _DateCreated = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DateCreated");
+                OnDateCreatedChanged();
+            }
+        }
+        private global::System.DateTime _DateCreated;
+        partial void OnDateCreatedChanging(global::System.DateTime value);
+        partial void OnDateCreatedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Content
+        {
+            get
+            {
+                return _Content;
+            }
+            set
+            {
+                OnContentChanging(value);
+                ReportPropertyChanging("Content");
+                _Content = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Content");
+                OnContentChanged();
+            }
+        }
+        private global::System.String _Content;
+        partial void OnContentChanging(global::System.String value);
+        partial void OnContentChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 BlogId
+        {
+            get
+            {
+                return _BlogId;
+            }
+            set
+            {
+                OnBlogIdChanging(value);
+                ReportPropertyChanging("BlogId");
+                _BlogId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BlogId");
+                OnBlogIdChanged();
+            }
+        }
+        private global::System.Int32 _BlogId;
+        partial void OnBlogIdChanging(global::System.Int32 value);
+        partial void OnBlogIdChanged();
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BlogModel", "BlogPost", "Blog")]
+        public Blog Blog
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Blog>("BlogModel.BlogPost", "Blog").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Blog>("BlogModel.BlogPost", "Blog").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Blog> BlogReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Blog>("BlogModel.BlogPost", "Blog");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Blog>("BlogModel.BlogPost", "Blog", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BlogModel", "PostComment", "Comment")]
+        public EntityCollection<Comment> Comments
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Comment>("BlogModel.PostComment", "Comment");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Comment>("BlogModel.PostComment", "Comment", value);
+                }
+            }
+        }
+
+        #endregion
     }
 
     #endregion
