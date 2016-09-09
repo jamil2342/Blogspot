@@ -1,0 +1,112 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SharePointAdapter", "SharePointAdapter\SharePointAdapter.vcxproj", "{73DCC078-3903-4C8F-8C10-FACFEF8A4F10}"
+	ProjectSection(ProjectDependencies) = postProject
+		{27E1D7CE-CEE6-4590-9E50-9A536BE89DC3} = {27E1D7CE-CEE6-4590-9E50-9A536BE89DC3}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharePointClient", "SharePointClient\SharePointClient.csproj", "{27E1D7CE-CEE6-4590-9E50-9A536BE89DC3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestSharePointAdapter", "TestSharePointAdapter\TestSharePointAdapter.vcxproj", "{F3292C8D-7093-4BC9-99CD-4590EF770C9F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{73DCC078-3903-4C8F-8C10-FACFEF8A4F10} = {73DCC078-3903-4C8F-8C10-FACFEF8A4F10}
+		{27E1D7CE-CEE6-4590-9E50-9A536BE89DC3} = {27E1D7CE-CEE6-4590-9E50-9A536BE89DC3}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SharePointCollector", "SharePointCollector\SharePointCollector.vcxproj", "{B3F717C3-171C-41A1-821F-BD38C1C2BD1F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SharePointUI", "SharePointUI\SharePointUI.vcxproj", "{E1B3CE2C-04A2-4DD8-9479-77275DD677EC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B3F717C3-171C-41A1-821F-BD38C1C2BD1F} = {B3F717C3-171C-41A1-821F-BD38C1C2BD1F}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://teamserver3.rmg.local:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SharePointAdapter\\SharePointAdapter.vcxproj
+		SccProjectName1 = SharePointAdapter
+		SccLocalPath1 = SharePointAdapter
+		SccProjectUniqueName2 = SharePointClient\\SharePointClient.csproj
+		SccProjectName2 = SharePointClient
+		SccLocalPath2 = SharePointClient
+		SccProjectUniqueName3 = SharePointUI\\SharePointUI.vcxproj
+		SccProjectName3 = SharePointUI
+		SccLocalPath3 = SharePointUI
+		SccProjectUniqueName4 = TestSharePointAdapter\\TestSharePointAdapter.vcxproj
+		SccProjectName4 = TestSharePointAdapter
+		SccLocalPath4 = TestSharePointAdapter
+		SccProjectUniqueName5 = SharePointCollector\\SharePointCollector.vcxproj
+		SccProjectName5 = SharePointCollector
+		SccLocalPath5 = SharePointCollector
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Win32 = Debug|Win32
+		Release|Any CPU = Release|Any CPU
+		Release|Win32 = Release|Win32
+		Template|Any CPU = Template|Any CPU
+		Template|Win32 = Template|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73DCC078-3903-4C8F-8C10-FACFEF8A4F10}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{73DCC078-3903-4C8F-8C10-FACFEF8A4F10}.Debug|Any CPU.Build.0 = Debug|Win32
+		{73DCC078-3903-4C8F-8C10-FACFEF8A4F10}.Debug|Win32.ActiveCfg = Debug|Win32
+		{73DCC078-3903-4C8F-8C10-FACFEF8A4F10}.Debug|Win32.Build.0 = Debug|Win32
+		{73DCC078-3903-4C8F-8C10-FACFEF8A4F10}.Release|Any CPU.ActiveCfg = Release|Win32
+		{73DCC078-3903-4C8F-8C10-FACFEF8A4F10}.Release|Any CPU.Build.0 = Release|Win32
+		{73DCC078-3903-4C8F-8C10-FACFEF8A4F10}.Release|Win32.ActiveCfg = Release|Win32
+		{73DCC078-3903-4C8F-8C10-FACFEF8A4F10}.Release|Win32.Build.0 = Release|Win32
+		{73DCC078-3903-4C8F-8C10-FACFEF8A4F10}.Template|Any CPU.ActiveCfg = Release|Win32
+		{73DCC078-3903-4C8F-8C10-FACFEF8A4F10}.Template|Win32.ActiveCfg = Release|Win32
+		{73DCC078-3903-4C8F-8C10-FACFEF8A4F10}.Template|Win32.Build.0 = Release|Win32
+		{27E1D7CE-CEE6-4590-9E50-9A536BE89DC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27E1D7CE-CEE6-4590-9E50-9A536BE89DC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27E1D7CE-CEE6-4590-9E50-9A536BE89DC3}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{27E1D7CE-CEE6-4590-9E50-9A536BE89DC3}.Debug|Win32.Build.0 = Debug|Any CPU
+		{27E1D7CE-CEE6-4590-9E50-9A536BE89DC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27E1D7CE-CEE6-4590-9E50-9A536BE89DC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27E1D7CE-CEE6-4590-9E50-9A536BE89DC3}.Release|Win32.ActiveCfg = Release|Any CPU
+		{27E1D7CE-CEE6-4590-9E50-9A536BE89DC3}.Release|Win32.Build.0 = Release|Any CPU
+		{27E1D7CE-CEE6-4590-9E50-9A536BE89DC3}.Template|Any CPU.ActiveCfg = Release|Any CPU
+		{27E1D7CE-CEE6-4590-9E50-9A536BE89DC3}.Template|Any CPU.Build.0 = Release|Any CPU
+		{27E1D7CE-CEE6-4590-9E50-9A536BE89DC3}.Template|Win32.ActiveCfg = Release|Any CPU
+		{F3292C8D-7093-4BC9-99CD-4590EF770C9F}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{F3292C8D-7093-4BC9-99CD-4590EF770C9F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F3292C8D-7093-4BC9-99CD-4590EF770C9F}.Release|Any CPU.ActiveCfg = Release|Win32
+		{F3292C8D-7093-4BC9-99CD-4590EF770C9F}.Release|Win32.ActiveCfg = Release|Win32
+		{F3292C8D-7093-4BC9-99CD-4590EF770C9F}.Template|Any CPU.ActiveCfg = Release|Win32
+		{F3292C8D-7093-4BC9-99CD-4590EF770C9F}.Template|Win32.ActiveCfg = Release|Win32
+		{F3292C8D-7093-4BC9-99CD-4590EF770C9F}.Template|Win32.Build.0 = Release|Win32
+		{B3F717C3-171C-41A1-821F-BD38C1C2BD1F}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{B3F717C3-171C-41A1-821F-BD38C1C2BD1F}.Debug|Any CPU.Build.0 = Debug|Win32
+		{B3F717C3-171C-41A1-821F-BD38C1C2BD1F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B3F717C3-171C-41A1-821F-BD38C1C2BD1F}.Debug|Win32.Build.0 = Debug|Win32
+		{B3F717C3-171C-41A1-821F-BD38C1C2BD1F}.Release|Any CPU.ActiveCfg = Release|Win32
+		{B3F717C3-171C-41A1-821F-BD38C1C2BD1F}.Release|Any CPU.Build.0 = Release|Win32
+		{B3F717C3-171C-41A1-821F-BD38C1C2BD1F}.Release|Win32.ActiveCfg = Release|Win32
+		{B3F717C3-171C-41A1-821F-BD38C1C2BD1F}.Release|Win32.Build.0 = Release|Win32
+		{B3F717C3-171C-41A1-821F-BD38C1C2BD1F}.Template|Any CPU.ActiveCfg = Release|Win32
+		{B3F717C3-171C-41A1-821F-BD38C1C2BD1F}.Template|Win32.ActiveCfg = Release|Win32
+		{B3F717C3-171C-41A1-821F-BD38C1C2BD1F}.Template|Win32.Build.0 = Release|Win32
+		{E1B3CE2C-04A2-4DD8-9479-77275DD677EC}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{E1B3CE2C-04A2-4DD8-9479-77275DD677EC}.Debug|Any CPU.Build.0 = Debug|Win32
+		{E1B3CE2C-04A2-4DD8-9479-77275DD677EC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E1B3CE2C-04A2-4DD8-9479-77275DD677EC}.Debug|Win32.Build.0 = Debug|Win32
+		{E1B3CE2C-04A2-4DD8-9479-77275DD677EC}.Release|Any CPU.ActiveCfg = Release|Win32
+		{E1B3CE2C-04A2-4DD8-9479-77275DD677EC}.Release|Any CPU.Build.0 = Release|Win32
+		{E1B3CE2C-04A2-4DD8-9479-77275DD677EC}.Release|Win32.ActiveCfg = Release|Win32
+		{E1B3CE2C-04A2-4DD8-9479-77275DD677EC}.Release|Win32.Build.0 = Release|Win32
+		{E1B3CE2C-04A2-4DD8-9479-77275DD677EC}.Template|Any CPU.ActiveCfg = Release|Win32
+		{E1B3CE2C-04A2-4DD8-9479-77275DD677EC}.Template|Win32.ActiveCfg = Release|Win32
+		{E1B3CE2C-04A2-4DD8-9479-77275DD677EC}.Template|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
