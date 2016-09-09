@@ -53,6 +53,7 @@
 #define IDC_PROXYAUTHTYPE               236
 #define IDC_UTIMEOUT                    237
 #define IDC_EDIT3                       238
+#define IDC_BUTTON1                     239
 
 // Next default values for new objects
 // 
@@ -60,7 +61,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        206
 #define _APS_NEXT_COMMAND_VALUE         32768
-#define _APS_NEXT_CONTROL_VALUE         239
+#define _APS_NEXT_CONTROL_VALUE         240
 #define _APS_NEXT_SYMED_VALUE           103
 #endif
 #endif

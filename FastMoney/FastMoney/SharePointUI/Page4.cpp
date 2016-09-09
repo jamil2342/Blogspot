@@ -37,6 +37,7 @@ void CPage4::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CPage4, CPropertyPage)
 	ON_CBN_SELCHANGE(IDC_VIEWTITLE, &CPage4::OnCbnSelchangeViewtitle)
+	ON_BN_CLICKED(IDC_BUTTON1, &CPage4::OnBnClickedButton1)
 END_MESSAGE_MAP()
 
 
@@ -267,4 +268,12 @@ void CPage4::LoadTitles(CString listtitle, CString viewname)
 		VariantClear(&vtFieldList);
 	}
 	UpdateData(FALSE);
+}
+
+
+void CPage4::OnBnClickedButton1()
+{
+
+	AfxMessageBox("jamil");
+	// TODO: Add your control notification handler code here
 }

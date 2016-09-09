@@ -37,4 +37,5 @@ public:
 	virtual BOOL OnApply();
 	virtual BOOL OnSetActive();
 	CString m_listtitle;
+	afx_msg void OnBnClickedButton1();
 };
