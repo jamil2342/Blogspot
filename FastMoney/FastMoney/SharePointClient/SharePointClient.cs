@@ -744,7 +744,7 @@ namespace SharePointClient
             }
             return true;
         }
-        public DataTable GetFastMoneyDataTable(String Url)
+        public DataTable GetFastMoneyDataTable(string Url)
         {
             string result = "";
             HttpClient client = new HttpClient();
@@ -756,8 +756,41 @@ namespace SharePointClient
 
             var xmlTag = xmlResult1.GetElementsByTagName("item");
 
-            DataTable dtFM = ConvertXmlNodeListToDataTable(xmlTag);
-            return dtFM;
+            DataTable dt = ConvertXmlNodeListToDataTable(xmlTag);
+
+
+            int desiredSize = 2;
+
+            while (dt.Columns.Count > desiredSize)
+            {
+                dt.Columns.RemoveAt(desiredSize);
+            }
+            return dt;
+
+        }
+
+        public DataTable GetFastMoneyDataTable()
+        {
+            string result = "";
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = client.GetAsync("http://podcast.cnbc.com/mmpodcast/fastmoney.xml").Result;
+            string str = response.Content.ReadAsStringAsync().Result;
+
+            XmlDocument xmlResult1 = new XmlDocument();
+            xmlResult1.LoadXml(str);
+
+            var xmlTag = xmlResult1.GetElementsByTagName("item");
+
+            DataTable dt = ConvertXmlNodeListToDataTable(xmlTag);
+
+
+            int desiredSize = 2;
+
+            while (dt.Columns.Count > desiredSize)
+            {
+                dt.Columns.RemoveAt(desiredSize);
+            }
+            return dt;
 
         }
         public DataTable ConvertXmlNodeListToDataTable(XmlNodeList xmlTag)
@@ -989,47 +1022,67 @@ namespace SharePointClient
         volatile DataTable m_dt = null;
         volatile ClientContext m_context = null;
         DateTime m_lastupdate;
-        public DataTable RetrieveListItems(string listName)
+        public DataTable RetrieveListItems(string Url)
         {
-            TimeSpan ts;
-            if (m_dt != null && !m_InProgress )
-            {
-                Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - Data available.");
-                DataTable dt = m_dt;
-                m_dt = null;
-                return dt;
-            }
-            if (m_context == null && !m_InProgress && m_dt == null)
-            {
-                m_exitnow = false;
-                ts = DateTime.Now - m_lastupdate;
-                if ((m_itemPosition == null && ts.TotalSeconds > m_updateinterval) || m_itemPosition != null)
-                {
-                    if (m_itemPosition != null)
-                        Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - start asynch bindGrid(). bMoreData");
-                    else
-                        Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - start asynch bindGrid().");
+            string result = "";
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = client.GetAsync("http://podcast.cnbc.com/mmpodcast/fastmoney.xml").Result;
+            string str = response.Content.ReadAsStringAsync().Result;
 
-                    m_InProgress = true;
-                    AsynchronousDelegate eAsynch = new AsynchronousDelegate(bindGrid);
-                    eAsynch.BeginInvoke(listName, null, null);
-                    m_lastupdate = DateTime.Now;
-                }
-                return null;
-            }
-            ts = DateTime.Now - m_lastupdate;
-            Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - Data not retreived yet. Seconds since last update = " + ts.TotalSeconds.ToString());
-            if (ts.TotalSeconds > m_updatetimeout)
+            XmlDocument xmlResult1 = new XmlDocument();
+            xmlResult1.LoadXml(str);
+
+            var xmlTag = xmlResult1.GetElementsByTagName("item");
+
+            DataTable dt = ConvertXmlNodeListToDataTable(xmlTag);
+
+
+            int desiredSize = 2;
+
+            while (dt.Columns.Count > desiredSize)
             {
-                Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - timeout. Timeout = " + m_updatetimeout.ToString());
-                m_LastError = "Timeout retrieving data";
-                m_InProgress = false;
-                if ( m_context != null)
-                  m_context.Dispose();
-                m_context = null;
-                m_dt = null;
+                dt.Columns.RemoveAt(desiredSize);
             }
-            return null;
+            return dt;
+            //TimeSpan ts;
+            //if (m_dt != null && !m_InProgress )
+            //{
+            //    Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - Data available.");
+            //    DataTable dt = m_dt;
+            //    m_dt = null;
+            //    return dt;
+            //}
+            //if (m_context == null && !m_InProgress && m_dt == null)
+            //{
+            //    m_exitnow = false;
+            //    ts = DateTime.Now - m_lastupdate;
+            //    if ((m_itemPosition == null && ts.TotalSeconds > m_updateinterval) || m_itemPosition != null)
+            //    {
+            //        if (m_itemPosition != null)
+            //            Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - start asynch bindGrid(). bMoreData");
+            //        else
+            //            Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - start asynch bindGrid().");
+
+            //        m_InProgress = true;
+            //        AsynchronousDelegate eAsynch = new AsynchronousDelegate(bindGrid);
+            //        eAsynch.BeginInvoke(Url, null, null);
+            //        m_lastupdate = DateTime.Now;
+            //    }
+            //    return null;
+            //}
+            //ts = DateTime.Now - m_lastupdate;
+            //Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - Data not retreived yet. Seconds since last update = " + ts.TotalSeconds.ToString());
+            //if (ts.TotalSeconds > m_updatetimeout)
+            //{
+            //    Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - timeout. Timeout = " + m_updatetimeout.ToString());
+            //    m_LastError = "Timeout retrieving data";
+            //    m_InProgress = false;
+            //    if ( m_context != null)
+            //      m_context.Dispose();
+            //    m_context = null;
+            //    m_dt = null;
+            //}
+            //return null;
         }
 
         public bool IsImage(string url)
