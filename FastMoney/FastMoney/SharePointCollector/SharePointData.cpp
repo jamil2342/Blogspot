@@ -248,6 +248,7 @@ void CSharePointData::DoQuery()
 						idx++;
 					}
 				}
+#ifdef Unnecessary
 				if (!bMoreData)
 				{
 					pTblKeys = m_pThreadMgr->pmgr->m_pOwner->m_keys.GetTable(tableid);
@@ -273,6 +274,8 @@ void CSharePointData::DoQuery()
 						}
 					}
 				}
+#endif // Unnecessary
+
 
 				try
 				{
