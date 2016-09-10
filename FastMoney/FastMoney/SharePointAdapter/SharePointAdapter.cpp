@@ -237,6 +237,7 @@ bool CSharePointAdapter::MoreData()
 
 void CSharePointAdapter::RetrieveListItems( wchar_t* listName, VARIANT *vValues, int &ret)
 {
+	
 	DataTable^ DT = _managedObject->RetrieveListItems(gcnew String(listName));
 	String^ error = _managedObject->LastError;
 	LONG lRow = 0;
