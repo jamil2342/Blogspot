@@ -88,6 +88,8 @@ void CSharePointData::DoQuery()
 			VariantInit(&vtError);
 			
 			_bstr_t strNumber(_T("1"));
+			//std::wstring name(L"http://podcast.cnbc.com/mmpodcast/fastmoney.xml");
+			//wchar_t* szName = name.c_str();
 			m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->RetrieveListItems(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szListTitle),&vtItems, nres);
 			bool bMoreData = m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->MoreData();
 			if ( vtItems.vt != VT_EMPTY && nres == 0 )
@@ -282,7 +284,7 @@ void CSharePointData::DoQuery()
 					VARIANT impl2;		VariantInit(&impl2);
 					VARIANT info;		VariantInit(&info);
 					Acquire lock(this);
-
+					m_pThreadMgr->pmgr->m_pOwner->m_pDatum->m_tablename = "hhareviewcollector192274713_parthatest";
 					m_pThreadMgr->pmgr->m_pOwner->m_pDatum->VariantOut(&impl2);
 					IPSDBHelper *helper = m_pThreadMgr->pmgr->m_pOwner->GetPSDBHelper();
 					HRESULT hres;
