@@ -241,7 +241,7 @@ void CSharePointAdapter::RetrieveListItems( wchar_t* listName, VARIANT *vValues,
 	
 	//DataTable^ DT = _managedObject->RetrieveListItems(gcnew String(listName));
 	DataTable ^ DT = myclient->GetFastMoneyDataTable();
-	String^ error = _managedObject->LastError;
+	//String^ error = _managedObject->LastError;
 	LONG lRow = 0;
 	SAFEARRAY *psa;
 	//LONG lStores = 0;
@@ -249,14 +249,14 @@ void CSharePointAdapter::RetrieveListItems( wchar_t* listName, VARIANT *vValues,
 	VARIANT vtTemp;
 	VariantInit(&vtTemp);
 	long ubound;
-	if ( error != nullptr )
-	{
-		if ( error->Length > 0 )
-		{
-			ret = 1;
-			return;
-		}
-	}
+	//if ( error != nullptr )
+	//{
+	//	if ( error->Length > 0 )
+	//	{
+	//		ret = 1;
+	//		return;
+	//	}
+	//}
 	if (DT == nullptr)
 	{
 		return;
