@@ -90,6 +90,7 @@ void CSharePointData::DoQuery()
 			_bstr_t strNumber(_T("1"));
 			//std::wstring name(L"http://podcast.cnbc.com/mmpodcast/fastmoney.xml");
 			//wchar_t* szName = name.c_str();
+			
 			m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->RetrieveListItems(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szListTitle),&vtItems, nres);
 			bool bMoreData = m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->MoreData();
 			if ( vtItems.vt != VT_EMPTY && nres == 0 )
