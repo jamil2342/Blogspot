@@ -18,6 +18,8 @@ using System.Web;
 using System.Security;
 using System.Diagnostics;
 using Microsoft.Win32;
+using System.Xml;
+using System.Net.Http;
 
 namespace SharePointClient
 {
@@ -742,7 +744,55 @@ namespace SharePointClient
             }
             return true;
         }
- 
+        public DataTable GetFastMoneyDataTable(String Url)
+        {
+            string result = "";
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = client.GetAsync(Url).Result;
+            string str = response.Content.ReadAsStringAsync().Result;
+
+            XmlDocument xmlResult1 = new XmlDocument();
+            xmlResult1.LoadXml(str);
+
+            var xmlTag = xmlResult1.GetElementsByTagName("item");
+
+            DataTable dtFM = ConvertXmlNodeListToDataTable(xmlTag);
+            return dtFM;
+
+        }
+        public DataTable ConvertXmlNodeListToDataTable(XmlNodeList xmlTag)
+        {
+            DataTable dt = new DataTable("FastMoney");
+            int TempColumn = 0;
+
+            foreach (XmlNode node in xmlTag.Item(0).ChildNodes)
+            {
+                TempColumn++;
+                DataColumn dc = new DataColumn(node.Name, System.Type.GetType("System.String"));
+                if (dt.Columns.Contains(node.Name))
+                {
+                    dt.Columns.Add(dc.ColumnName = dc.ColumnName + TempColumn.ToString());
+                }
+                else
+                {
+                    dt.Columns.Add(dc);
+                }
+            }
+
+            int ColumnsCount = dt.Columns.Count;
+            for (int i = 0; i < xmlTag.Count; i++)
+            {
+                DataRow dr = dt.NewRow();
+                for (int j = 0; j < ColumnsCount; j++)
+                {
+                    dr[j] = xmlTag.Item(i).ChildNodes[j].InnerText;
+                }
+                dt.Rows.Add(dr);
+            }
+            return dt;
+        }
+       
+       
         public List<string> RetrieveLists()
         {
             Trace.WriteLine("RetrieveLists()" + m_serviceUrl);
