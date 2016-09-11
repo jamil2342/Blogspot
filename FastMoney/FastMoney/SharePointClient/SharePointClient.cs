@@ -19,7 +19,7 @@ using System.Security;
 using System.Diagnostics;
 using Microsoft.Win32;
 using System.Xml;
-using System.Net.Http;
+//using System.Net.Http;
 
 namespace SharePointClient
 {
@@ -744,86 +744,86 @@ namespace SharePointClient
             }
             return true;
         }
-        public DataTable GetFastMoneyDataTable(string Url)
-        {
-            string result = "";
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = client.GetAsync(Url).Result;
-            string str = response.Content.ReadAsStringAsync().Result;
+        ////public DataTable GetFastMoneyDataTable(string Url)
+        ////{
+        ////    string result = "";
+        ////    HttpClient client = new HttpClient();
+        ////    HttpResponseMessage response = client.GetAsync(Url).Result;
+        ////    string str = response.Content.ReadAsStringAsync().Result;
 
-            XmlDocument xmlResult1 = new XmlDocument();
-            xmlResult1.LoadXml(str);
+        ////    XmlDocument xmlResult1 = new XmlDocument();
+        ////    xmlResult1.LoadXml(str);
 
-            var xmlTag = xmlResult1.GetElementsByTagName("item");
+        ////    var xmlTag = xmlResult1.GetElementsByTagName("item");
 
-            DataTable dt = ConvertXmlNodeListToDataTable(xmlTag);
-
-
-            int desiredSize = 2;
-
-            while (dt.Columns.Count > desiredSize)
-            {
-                dt.Columns.RemoveAt(desiredSize);
-            }
-            return dt;
-
-        }
-
-        public DataTable GetFastMoneyDataTable()
-        {
-            string result = "";
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = client.GetAsync("http://podcast.cnbc.com/mmpodcast/fastmoney.xml").Result;
-            string str = response.Content.ReadAsStringAsync().Result;
-
-            XmlDocument xmlResult1 = new XmlDocument();
-            xmlResult1.LoadXml(str);
-
-            var xmlTag = xmlResult1.GetElementsByTagName("item");
-
-            DataTable dt = ConvertXmlNodeListToDataTable(xmlTag);
+        ////    DataTable dt = ConvertXmlNodeListToDataTable(xmlTag);
 
 
-            int desiredSize = 2;
+        ////    int desiredSize = 2;
 
-            while (dt.Columns.Count > desiredSize)
-            {
-                dt.Columns.RemoveAt(desiredSize);
-            }
-            return dt;
+        ////    while (dt.Columns.Count > desiredSize)
+        ////    {
+        ////        dt.Columns.RemoveAt(desiredSize);
+        ////    }
+        ////    return dt;
 
-        }
-        public DataTable ConvertXmlNodeListToDataTable(XmlNodeList xmlTag)
-        {
-            DataTable dt = new DataTable("FastMoney");
-            int TempColumn = 0;
+        ////}
 
-            foreach (XmlNode node in xmlTag.Item(0).ChildNodes)
-            {
-                TempColumn++;
-                DataColumn dc = new DataColumn(node.Name, System.Type.GetType("System.String"));
-                if (dt.Columns.Contains(node.Name))
-                {
-                    dt.Columns.Add(dc.ColumnName = dc.ColumnName + TempColumn.ToString());
-                }
-                else
-                {
-                    dt.Columns.Add(dc);
-                }
-            }
+        ////public DataTable GetFastMoneyDataTable()
+        ////{
+        ////    string result = "";
+        ////    HttpClient client = new HttpClient();
+        ////    HttpResponseMessage response = client.GetAsync("http://podcast.cnbc.com/mmpodcast/fastmoney.xml").Result;
+        ////    string str = response.Content.ReadAsStringAsync().Result;
 
-            int ColumnsCount = dt.Columns.Count;
-            for (int i = 0; i < xmlTag.Count; i++)
-            {
-                DataRow dr = dt.NewRow();
-                for (int j = 0; j < ColumnsCount; j++)
-                {
-                    dr[j] = xmlTag.Item(i).ChildNodes[j].InnerText;
-                }
-                dt.Rows.Add(dr);
-            }
-            return dt;
-        }
+        ////    XmlDocument xmlResult1 = new XmlDocument();
+        ////    xmlResult1.LoadXml(str);
+
+        ////    var xmlTag = xmlResult1.GetElementsByTagName("item");
+
+        ////    DataTable dt = ConvertXmlNodeListToDataTable(xmlTag);
+
+
+        ////    int desiredSize = 2;
+
+        ////    while (dt.Columns.Count > desiredSize)
+        ////    {
+        ////        dt.Columns.RemoveAt(desiredSize);
+        ////    }
+        ////    return dt;
+
+        ////}
+        //public DataTable ConvertXmlNodeListToDataTable(XmlNodeList xmlTag)
+        //{
+        //    DataTable dt = new DataTable("FastMoney");
+        //    int TempColumn = 0;
+
+        //    foreach (XmlNode node in xmlTag.Item(0).ChildNodes)
+        //    {
+        //        TempColumn++;
+        //        DataColumn dc = new DataColumn(node.Name, System.Type.GetType("System.String"));
+        //        if (dt.Columns.Contains(node.Name))
+        //        {
+        //            dt.Columns.Add(dc.ColumnName = dc.ColumnName + TempColumn.ToString());
+        //        }
+        //        else
+        //        {
+        //            dt.Columns.Add(dc);
+        //        }
+        //    }
+
+        //    int ColumnsCount = dt.Columns.Count;
+        //    for (int i = 0; i < xmlTag.Count; i++)
+        //    {
+        //        DataRow dr = dt.NewRow();
+        //        for (int j = 0; j < ColumnsCount; j++)
+        //        {
+        //            dr[j] = xmlTag.Item(i).ChildNodes[j].InnerText;
+        //        }
+        //        dt.Rows.Add(dr);
+        //    }
+        //    return dt;
+        //}
        
        
         public List<string> RetrieveLists()
@@ -1024,65 +1024,65 @@ namespace SharePointClient
         DateTime m_lastupdate;
         public DataTable RetrieveListItems(string Url)
         {
-            string result = "";
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = client.GetAsync("http://podcast.cnbc.com/mmpodcast/fastmoney.xml").Result;
-            string str = response.Content.ReadAsStringAsync().Result;
+            //string result = "";
+            //HttpClient client = new HttpClient();
+            //HttpResponseMessage response = client.GetAsync("http://podcast.cnbc.com/mmpodcast/fastmoney.xml").Result;
+            //string str = response.Content.ReadAsStringAsync().Result;
 
-            XmlDocument xmlResult1 = new XmlDocument();
-            xmlResult1.LoadXml(str);
+            //XmlDocument xmlResult1 = new XmlDocument();
+            //xmlResult1.LoadXml(str);
 
-            var xmlTag = xmlResult1.GetElementsByTagName("item");
+            //var xmlTag = xmlResult1.GetElementsByTagName("item");
 
-            DataTable dt = ConvertXmlNodeListToDataTable(xmlTag);
+            //DataTable dt = ConvertXmlNodeListToDataTable(xmlTag);
 
 
-            int desiredSize = 2;
+            //int desiredSize = 2;
 
-            while (dt.Columns.Count > desiredSize)
+            //while (dt.Columns.Count > desiredSize)
+            //{
+            //    dt.Columns.RemoveAt(desiredSize);
+            //}
+            //return dt;
+            TimeSpan ts;
+            if (m_dt != null && !m_InProgress)
             {
-                dt.Columns.RemoveAt(desiredSize);
+                Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - Data available.");
+                DataTable dt = m_dt;
+                m_dt = null;
+                return dt;
             }
-            return dt;
-            //TimeSpan ts;
-            //if (m_dt != null && !m_InProgress )
-            //{
-            //    Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - Data available.");
-            //    DataTable dt = m_dt;
-            //    m_dt = null;
-            //    return dt;
-            //}
-            //if (m_context == null && !m_InProgress && m_dt == null)
-            //{
-            //    m_exitnow = false;
-            //    ts = DateTime.Now - m_lastupdate;
-            //    if ((m_itemPosition == null && ts.TotalSeconds > m_updateinterval) || m_itemPosition != null)
-            //    {
-            //        if (m_itemPosition != null)
-            //            Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - start asynch bindGrid(). bMoreData");
-            //        else
-            //            Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - start asynch bindGrid().");
+            if (m_context == null && !m_InProgress && m_dt == null)
+            {
+                m_exitnow = false;
+                ts = DateTime.Now - m_lastupdate;
+                if ((m_itemPosition == null && ts.TotalSeconds > m_updateinterval) || m_itemPosition != null)
+                {
+                    if (m_itemPosition != null)
+                        Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - start asynch bindGrid(). bMoreData");
+                    else
+                        Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - start asynch bindGrid().");
 
-            //        m_InProgress = true;
-            //        AsynchronousDelegate eAsynch = new AsynchronousDelegate(bindGrid);
-            //        eAsynch.BeginInvoke(Url, null, null);
-            //        m_lastupdate = DateTime.Now;
-            //    }
-            //    return null;
-            //}
-            //ts = DateTime.Now - m_lastupdate;
-            //Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - Data not retreived yet. Seconds since last update = " + ts.TotalSeconds.ToString());
-            //if (ts.TotalSeconds > m_updatetimeout)
-            //{
-            //    Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - timeout. Timeout = " + m_updatetimeout.ToString());
-            //    m_LastError = "Timeout retrieving data";
-            //    m_InProgress = false;
-            //    if ( m_context != null)
-            //      m_context.Dispose();
-            //    m_context = null;
-            //    m_dt = null;
-            //}
-            //return null;
+                    m_InProgress = true;
+                    AsynchronousDelegate eAsynch = new AsynchronousDelegate(bindGrid);
+                    eAsynch.BeginInvoke(Url, null, null);
+                    m_lastupdate = DateTime.Now;
+                }
+                return null;
+            }
+            ts = DateTime.Now - m_lastupdate;
+            Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - Data not retreived yet. Seconds since last update = " + ts.TotalSeconds.ToString());
+            if (ts.TotalSeconds > m_updatetimeout)
+            {
+                Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - timeout. Timeout = " + m_updatetimeout.ToString());
+                m_LastError = "Timeout retrieving data";
+                m_InProgress = false;
+                if (m_context != null)
+                    m_context.Dispose();
+                m_context = null;
+                m_dt = null;
+            }
+            return null;
         }
 
         public bool IsImage(string url)

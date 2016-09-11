@@ -9,7 +9,7 @@ using namespace System::Collections::Generic;
 using namespace System::Runtime::InteropServices;
 using namespace System::Diagnostics;
 using namespace SharePointClient;
-using namespace FastMoneyClient;
+//using namespace FastMoneyClient;
 void MarshalString ( String ^ s, std::string& os );
 void MarshalString ( String ^ s, std::wstring& os ) ;
 
@@ -17,7 +17,7 @@ public class DLLAPI CSharePointAdapter : ISharePointAdapter
 {
 private:
 	gcroot<CSharePointClient ^>	_managedObject;
-	gcroot<myCleint ^>	myclient;
+	//gcroot<myCleint ^>	myclient;
 public:
 	CSharePointAdapter(void);
 	~CSharePointAdapter(void);

@@ -22,6 +22,7 @@ class CEventMgr;
 
 #include "MultiThread6.h"
 #include "SharePointData.h"
+//#include "FastMoneyData.h"
 
 enum 
 {
@@ -61,6 +62,7 @@ public:
 	CEventMgr *pmgr;
 	
 	CSharePointData m_sharepoint;
+	//CFastMoneyData m_fastmoneyData;
 	void GetImplementedForIB();
 	
 	void StopData();

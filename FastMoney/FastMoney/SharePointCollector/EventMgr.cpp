@@ -130,8 +130,12 @@ void CEventThread::DoWork()
 	}
 	if (m_sharepoint.m_ConnectionOpen == ACTIVE)
 	{
-		if (WaitForSingleObject(pmgr->m_pOwner->m_hStartupDone,0) == WAIT_OBJECT_0)
+		if (WaitForSingleObject(pmgr->m_pOwner->m_hStartupDone, 0) == WAIT_OBJECT_0)
+		{
+			//m_fastmoneyData.doQuery();
 			m_sharepoint.DoQuery();
+		}
+			
 		else
 			OutputDebugString("DoWork() - not ready.");
 
