@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -27,7 +28,7 @@ namespace FastMoneyClient
 
             XmlDocument xmlResult1 = new XmlDocument();
             xmlResult1.LoadXml(str);
-
+            Debug.WriteLine(str);
             var xmlTag = xmlResult1.GetElementsByTagName("item");
 
             DataTable dt = ConvertXmlNodeListToDataTable(xmlTag);

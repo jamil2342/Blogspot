@@ -11,6 +11,7 @@
 #include "PSDBDatum.h"
 #include "UpdateBlob.h"  //amy
 #include "PSDBCommon.h"
+//#include "FastMoneyAdapter.h"
 // The following macros set and clear, respectively, given bits
 // of the C runtime library debug flag, as specified by a bitmask.
 

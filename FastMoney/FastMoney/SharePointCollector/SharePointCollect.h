@@ -10,7 +10,7 @@
 #include "publisher2000Server.h"
 #include "SharePointCollector.h"
 #include "PSDBSchema.h"
-
+//#include "FastMoneyAdapter.h"
 
 class CPSDBSchema;
 class PSDBDatum;
