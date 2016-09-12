@@ -941,6 +941,7 @@ namespace SharePointClient
         DateTime m_lastupdate;
         public DataTable RetrieveListItems(string listName)
         {
+            return new DataTable("jamilj");
             TimeSpan ts;
             if (m_dt != null && !m_InProgress )
             {
@@ -1833,20 +1834,20 @@ namespace SharePointClient
             return retImages;
         }
 
-        static void Main(string[] args)
-        {
-            CSharePointClient spc = new CSharePointClient();
-            spc.ServiceUrl = "http://www.xsolive.com/";
-            spc.AuthMode = 0;
-            //spc.AuthMode = ClientAuthenticationMode.Anonymous;
-            //spc.AuthMode = ClientAuthenticationMode.FormsAuthentication;
-            spc.m_usr = "test@xsolive.com";
-            spc.m_pwd = "Xsolive2010";
-            spc.CertFile = @"E:\dev\Symon2010\sources\12.0\InternalTools\FirstClientApiApplication\test.cer";
-            List<string> rlist = spc.RetrieveLists();
-            Dictionary<string,string> flist = spc.RetrieveFields(rlist[0]);
-            //spc.RetrieveListItems(rlist[0]);
-        }
+        //static void Main(string[] args)
+        //{
+        //    CSharePointClient spc = new CSharePointClient();
+        //    spc.ServiceUrl = "http://www.xsolive.com/";
+        //    spc.AuthMode = 0;
+        //    //spc.AuthMode = ClientAuthenticationMode.Anonymous;
+        //    //spc.AuthMode = ClientAuthenticationMode.FormsAuthentication;
+        //    spc.m_usr = "test@xsolive.com";
+        //    spc.m_pwd = "Xsolive2010";
+        //    spc.CertFile = @"E:\dev\Symon2010\sources\12.0\InternalTools\FirstClientApiApplication\test.cer";
+        //    List<string> rlist = spc.RetrieveLists();
+        //    Dictionary<string,string> flist = spc.RetrieveFields(rlist[0]);
+        //    //spc.RetrieveListItems(rlist[0]);
+        //}
    
     }
 

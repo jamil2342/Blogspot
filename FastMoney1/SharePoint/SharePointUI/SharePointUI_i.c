@@ -6,7 +6,7 @@
 
 
  /* File created by MIDL compiler version 8.00.0603 */
-/* at Mon Sep 12 03:19:27 2016
+/* at Mon Sep 12 07:38:56 2016
  */
 /* Compiler settings for SharePointUI.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0603 
