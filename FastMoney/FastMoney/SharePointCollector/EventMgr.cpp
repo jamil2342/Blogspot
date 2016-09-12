@@ -135,7 +135,8 @@ void CEventThread::DoWork()
 			//m_fastmoneyData.doQuery();
 			m_sharepoint.DoQuery();
 		}
-			
+		//badhon.jain@rmgnetworks.com
+		//	Come2gether!
 		else
 			OutputDebugString("DoWork() - not ready.");
 

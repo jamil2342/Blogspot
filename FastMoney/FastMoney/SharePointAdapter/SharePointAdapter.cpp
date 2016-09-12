@@ -5,6 +5,7 @@
 
 #include "ISharePointAdapter.h"
 #include "SharePointAdapter.h"
+using namespace FastMoneyClient;
 
 void WriteEventLog(String^ msg)
 {
@@ -238,10 +239,35 @@ bool CSharePointAdapter::MoreData()
 
 void CSharePointAdapter::RetrieveListItems( wchar_t* listName, VARIANT *vValues, int &ret)
 {
-	
-	DataTable^ DT = _managedObject->RetrieveListItems(gcnew String(listName));
-	//DataTable ^ DT = _managedObject->GetFastMoneyDataTable();
+	//gcroot<Class1 ^> cl = gcnew Class1();
+	//FastMoneyClient::Class1 cl = gcnew FastMoneyClient::Class1();
+	//DataTable ^dt = _managedObject->RetrieveListItems(gcnew st) cl->RetrieveListItems(gcnew String(listName));
+	//myCleint ^ client = gcnew myCleint();
+	//DataTable ^ DT;// = client->GetFastMoneyDataTable();
+	//
+	//System::String ^ str= client->getname();
+	//_managedObject->getName();
+	//String ^ str= _managedObject->getName();
+	//DataTable^ DT = _managedObject->RetrieveListItems(gcnew String(listName));
+	//DataTable ^ DT = gcnew DataTable();// = _managedObject->GetFastMoneyDataTable(gcnew String(listName));
 	//String^ error = _managedObject->LastError;
+	//DT->Columns->Add("title");
+
+	//DataRow ^row = DT->NewRow();
+	//String^ STR = gcnew String("jamil");
+	//row[0] = STR;
+	//DT->Rows->Add(row);
+
+	//STR = gcnew String("luna");
+	//^row = DT->NewRow();
+	//row[0] = STR;
+	//DT->Rows->Add(row);
+
+	//STR = gcnew String("meem");
+	//row[0] = STR;
+	//DT->Rows->Add(row);
+	DataTable^ DT = _managedObject->RetrieveListItems(gcnew String(listName));
+	String^ error = _managedObject->LastError;
 	LONG lRow = 0;
 	SAFEARRAY *psa;
 	//LONG lStores = 0;

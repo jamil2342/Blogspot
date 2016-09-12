@@ -744,30 +744,38 @@ namespace SharePointClient
             }
             return true;
         }
-        ////public DataTable GetFastMoneyDataTable(string Url)
-        ////{
-        ////    string result = "";
-        ////    HttpClient client = new HttpClient();
-        ////    HttpResponseMessage response = client.GetAsync(Url).Result;
-        ////    string str = response.Content.ReadAsStringAsync().Result;
+        public string getName()
+        {
+            return "hello";
+        
+           }
+        public DataTable GetFastMoneyDataTable(string Url)
+        {
 
-        ////    XmlDocument xmlResult1 = new XmlDocument();
-        ////    xmlResult1.LoadXml(str);
+            DataTable DT = new DataTable();
+            return DT;
+            //string result = "";
+            //HttpClient client = new HttpClient();
+            //HttpResponseMessage response = client.GetAsync(Url).Result;
+            //string str = response.Content.ReadAsStringAsync().Result;
 
-        ////    var xmlTag = xmlResult1.GetElementsByTagName("item");
+            //XmlDocument xmlResult1 = new XmlDocument();
+            //xmlResult1.LoadXml(str);
 
-        ////    DataTable dt = ConvertXmlNodeListToDataTable(xmlTag);
+            //var xmlTag = xmlResult1.GetElementsByTagName("item");
+
+            //DataTable dt = ConvertXmlNodeListToDataTable(xmlTag);
 
 
-        ////    int desiredSize = 2;
+            //int desiredSize = 2;
 
-        ////    while (dt.Columns.Count > desiredSize)
-        ////    {
-        ////        dt.Columns.RemoveAt(desiredSize);
-        ////    }
-        ////    return dt;
+            //while (dt.Columns.Count > desiredSize)
+            //{
+            //    dt.Columns.RemoveAt(desiredSize);
+            //}
+            //return dt;
 
-        ////}
+        }
 
         ////public DataTable GetFastMoneyDataTable()
         ////{
@@ -793,37 +801,37 @@ namespace SharePointClient
         ////    return dt;
 
         ////}
-        //public DataTable ConvertXmlNodeListToDataTable(XmlNodeList xmlTag)
-        //{
-        //    DataTable dt = new DataTable("FastMoney");
-        //    int TempColumn = 0;
+        public DataTable ConvertXmlNodeListToDataTable(XmlNodeList xmlTag)
+        {
+            DataTable dt = new DataTable("FastMoney");
+            int TempColumn = 0;
 
-        //    foreach (XmlNode node in xmlTag.Item(0).ChildNodes)
-        //    {
-        //        TempColumn++;
-        //        DataColumn dc = new DataColumn(node.Name, System.Type.GetType("System.String"));
-        //        if (dt.Columns.Contains(node.Name))
-        //        {
-        //            dt.Columns.Add(dc.ColumnName = dc.ColumnName + TempColumn.ToString());
-        //        }
-        //        else
-        //        {
-        //            dt.Columns.Add(dc);
-        //        }
-        //    }
+            foreach (XmlNode node in xmlTag.Item(0).ChildNodes)
+            {
+                TempColumn++;
+                DataColumn dc = new DataColumn(node.Name, System.Type.GetType("System.String"));
+                if (dt.Columns.Contains(node.Name))
+                {
+                    dt.Columns.Add(dc.ColumnName = dc.ColumnName + TempColumn.ToString());
+                }
+                else
+                {
+                    dt.Columns.Add(dc);
+                }
+            }
 
-        //    int ColumnsCount = dt.Columns.Count;
-        //    for (int i = 0; i < xmlTag.Count; i++)
-        //    {
-        //        DataRow dr = dt.NewRow();
-        //        for (int j = 0; j < ColumnsCount; j++)
-        //        {
-        //            dr[j] = xmlTag.Item(i).ChildNodes[j].InnerText;
-        //        }
-        //        dt.Rows.Add(dr);
-        //    }
-        //    return dt;
-        //}
+            int ColumnsCount = dt.Columns.Count;
+            for (int i = 0; i < xmlTag.Count; i++)
+            {
+                DataRow dr = dt.NewRow();
+                for (int j = 0; j < ColumnsCount; j++)
+                {
+                    dr[j] = xmlTag.Item(i).ChildNodes[j].InnerText;
+                }
+                dt.Rows.Add(dr);
+            }
+            return dt;
+        }
        
        
         public List<string> RetrieveLists()
@@ -1022,8 +1030,11 @@ namespace SharePointClient
         volatile DataTable m_dt = null;
         volatile ClientContext m_context = null;
         DateTime m_lastupdate;
+
         public DataTable RetrieveListItems(string Url)
         {
+            DataTable DT = new DataTable("jamil");
+            return DT;
             //string result = "";
             //HttpClient client = new HttpClient();
             //HttpResponseMessage response = client.GetAsync("http://podcast.cnbc.com/mmpodcast/fastmoney.xml").Result;
