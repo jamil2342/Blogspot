@@ -66,6 +66,10 @@ void CSharePointData::InitData(CEventThread *pMgr)
 
 void CSharePointData::DoQueryLocal()
 {
+
+
+
+
 	int nres = 0;
 	TCHAR buf[1000];
 	CTableKeys *pTblKeys = NULL;
@@ -77,7 +81,7 @@ void CSharePointData::DoQueryLocal()
 	GetSystemTime(&st);
 	vTimeStamp.vt = VT_DATE;
 	SystemTimeToVariantTime(&st, &vTimeStamp.date);
-
+	CUpdateBlob * m_pDatum = m_pThreadMgr->pmgr->m_pOwner->m_pDatum;
 	if ((m_pThreadMgr->pmgr->m_pOwner->m_base.m_tableCount > 0) && (m_pThreadMgr->pmgr->m_pOwner->m_base.m_fieldCount > 0))
 	{
 		int tableid = 1;
@@ -93,7 +97,7 @@ void CSharePointData::DoQueryLocal()
 		//wchar_t* szName = name.c_str();
 
 		m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->RetrieveListItems(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szListTitle), &vtItems, nres);
-		bool bMoreData = m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->MoreData();
+		//bool bMoreData = m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->MoreData();
 		if (vtItems.vt != VT_EMPTY && nres == 0)
 		{
 			long			lLowerBound = 0;
@@ -106,7 +110,7 @@ void CSharePointData::DoQueryLocal()
 			SafeArrayGetElement(V_ARRAY(&vtItems), &idx, &vtData);
 			int cnt = vtData.iVal;
 			_stprintf_s(buf, _countof(buf), _T("DoQuery() cnt=%d, lbound=%d, ubound=%d\n"), cnt, lLowerBound, lUpperBound);
-			m_pThreadMgr->pmgr->m_pOwner->ShowMsgString(false, buf);
+			//m_pThreadMgr->pmgr->m_pOwner->ShowMsgString(false, buf);
 			idx++;
 			long lVal;
 			double dVal;
@@ -135,7 +139,7 @@ void CSharePointData::DoQueryLocal()
 							Implement_Options impl = IMPLEMENT_YES;
 							m_pThreadMgr->pmgr->m_pOwner->ShowMsgFmt(false, "DoQuery() Inserting key %s", (LPCTSTR)strNumber);
 							m_pThreadMgr->pmgr->m_pOwner->m_keys.AddKey(tableid, strNumber, impl);
-							m_pThreadMgr->pmgr->m_pOwner->m_pDatum->AppendRecVal(strNumber, _T(""), _T(""), true);
+							m_pDatum->AppendRecVal(strNumber, _T(""), _T(""), true);
 							CTableKeys* m_tKeys2 = m_pThreadMgr->pmgr->m_pOwner->m_keys.GetTable(tableid);//tableKeys;
 							ImpKeyMapIter iter2 = m_tKeys2->m_impKeys.find(strNumber);
 							if (iter2 != m_tKeys2->m_impKeys.end())
@@ -152,7 +156,7 @@ void CSharePointData::DoQueryLocal()
 								Implement_Options impl = IMPLEMENT_YES;
 								m_pThreadMgr->pmgr->m_pOwner->ShowMsgFmt(false, "DoQuery() Inserting key %s", (LPCTSTR)strNumber);
 								m_pThreadMgr->pmgr->m_pOwner->m_keys.AddKey(tableid, strNumber, impl);
-								m_pThreadMgr->pmgr->m_pOwner->m_pDatum->AppendRecVal(strNumber, _T(""), _T(""), true);
+								m_pDatum->AppendRecVal(strNumber, _T(""), _T(""), true);
 								ImpKeyMapIter iter3 = pTblKeys->m_impKeys.find(strNumber);
 								if (iter3 != pTblKeys->m_impKeys.end())
 								{
@@ -222,30 +226,30 @@ void CSharePointData::DoQueryLocal()
 						//tmpStr = (LPCSTR)_bstr_t(vtTemp.bstrVal);
 						//wstring tmpStr(vtTemp.bstrVal);
 						//m_pThreadMgr->pmgr->m_pOwner->ShowMsgFmt(false, _T("%s:%s:BSTR:%s\n"), (LPCTSTR)strNumber, fieldname,tmpStr.c_str());
-						m_pThreadMgr->pmgr->m_pOwner->m_pDatum->AppendRecVal((LPCWSTR)strNumber, fieldname, (LPCWSTR)_bstr_t(vtTemp.bstrVal), false);
+						m_pDatum->AppendRecVal((LPCWSTR)strNumber, fieldname, (LPCWSTR)_bstr_t(vtTemp.bstrVal), false);
 					}
 					else if (vtTemp.vt == VT_I4)
 					{
 						lVal = vtTemp.lVal;
 						//m_pThreadMgr->pmgr->m_pOwner->ShowMsgFmt(false, _T("%s:%s:INT:%d\n"), (LPCTSTR)strNumber, fieldname, lVal);
-						m_pThreadMgr->pmgr->m_pOwner->m_pDatum->AppendRecVal((LPCWSTR)strNumber, fieldname, lVal, false);
+						m_pDatum->AppendRecVal((LPCWSTR)strNumber, fieldname, lVal, false);
 					}
 					else if (vtTemp.vt == VT_R8)
 					{
 						dVal = vtTemp.dblVal;
 						//m_pThreadMgr->pmgr->m_pOwner->ShowMsgFmt(false, _T("%s:%s:FLOAT:%f\n"), (LPCTSTR)strNumber, fieldname, dVal);
-						m_pThreadMgr->pmgr->m_pOwner->m_pDatum->AppendRecVal((LPCWSTR)strNumber, fieldname, dVal, false);
+						m_pDatum->AppendRecVal((LPCWSTR)strNumber, fieldname, dVal, false);
 					}
 					else if (vtTemp.vt == VT_NULL)
 					{
 						//m_pThreadMgr->pmgr->m_pOwner->ShowMsgFmt(false, _T("%s:%s:NULL:(null)\n"), (LPCTSTR)strNumber, fieldname);
-						m_pThreadMgr->pmgr->m_pOwner->m_pDatum->AppendRecVal((LPCWSTR)strNumber, fieldname, _T(""), false);
+						m_pDatum->AppendRecVal((LPCWSTR)strNumber, fieldname, _T(""), false);
 					}
 					else
 					{
 						sprintf_s(buf, _countof(buf), _T("%s:%s:VT_TYPE %d\n"), (LPCTSTR)strNumber, fieldname, vtData.vt);
 						//m_pThreadMgr->pmgr->m_pOwner->ShowMsgString(false, buf);
-						m_pThreadMgr->pmgr->m_pOwner->m_pDatum->AppendRecVal((LPCWSTR)strNumber, fieldname, _T(""), false);
+						m_pDatum->AppendRecVal((LPCWSTR)strNumber, fieldname, _T(""), false);
 					}
 					VariantClear(&vtData);
 					VariantClear(&vtTemp);
@@ -287,7 +291,7 @@ void CSharePointData::DoQueryLocal()
 				VARIANT info;		VariantInit(&info);
 				Acquire lock(this);
 				//m_pThreadMgr->pmgr->m_pOwner->m_pDatum->m_tablename = "FastMoney";
-				m_pThreadMgr->pmgr->m_pOwner->m_pDatum->VariantOut(&impl2);
+				m_pDatum->VariantOut(&impl2);
 				IPSDBHelper *helper = m_pThreadMgr->pmgr->m_pOwner->GetPSDBHelper();
 				HRESULT hres;
 				int reqID = 0;
@@ -298,7 +302,7 @@ void CSharePointData::DoQueryLocal()
 					{
 						// new blob data
 						hres = helper->UpdateDataTblBlob(impl2);	//verify
-						m_pThreadMgr->pmgr->m_pOwner->m_pDatum->ResetBlobs();
+						m_pDatum->ResetBlobs();
 
 					}
 					catch (_com_error ex)
