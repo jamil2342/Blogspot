@@ -334,24 +334,24 @@ void CSharePointData::DoQueryLocal()
 				m_ConnectionOpen = ERR_RECOVERY;
 			}
 		}
-		else if (nres != 0)
-		{
-			//m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->GetLastError(&vtError);
-			sprintf_s(buf, _countof(buf), _T("DoQuery() - RetrieveListItems() timeout"));
-			m_pThreadMgr->pmgr->m_pOwner->ShowMsgString(true, buf);
-			m_ConnectionOpen = ERR_RECOVERY;
-			//LogEvent(EVENTLOG_INFORMATION_TYPE,szBuf);
-		}
+		//else if (nres != 0)
+		//{
+		//	//m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->GetLastError(&vtError);
+		//	sprintf_s(buf, _countof(buf), _T("DoQuery() - RetrieveListItems() timeout"));
+		//	m_pThreadMgr->pmgr->m_pOwner->ShowMsgString(true, buf);
+		//	m_ConnectionOpen = ERR_RECOVERY;
+		//	//LogEvent(EVENTLOG_INFORMATION_TYPE,szBuf);
+		//}
 		VariantClear(&vtItems);
 
 	}
 	m_iDataCounter++;
 #ifdef _DEBUG
-	OutputHeading(
-		"Dump all objects two memory checkpoints");
-	_CrtMemDumpAllObjectsSince(NULL);
-	OutputHeading("Perform a memory check for heap corruption.");
-	_CrtCheckMemory();
+	//OutputHeading(
+	//	"Dump all objects two memory checkpoints");
+	//_CrtMemDumpAllObjectsSince(NULL);
+	//OutputHeading("Perform a memory check for heap corruption.");
+	//_CrtCheckMemory();
 #endif
 	return;
 }
