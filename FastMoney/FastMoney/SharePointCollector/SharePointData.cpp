@@ -292,7 +292,18 @@ void CSharePointData::DoQueryLocal()
 				Acquire lock(this);
 				//m_pThreadMgr->pmgr->m_pOwner->m_pDatum->m_tablename = "FastMoney";
 				m_pDatum->VariantOut(&impl2);
-				IPSDBHelper *helper = m_pThreadMgr->pmgr->m_pOwner->GetPSDBHelper();
+				IPSDBHelper *helper;
+				
+				try
+				{
+					CoCreateInstance(CLSID_PSDBHelper, NULL, CLSCTX_SERVER, IID_IPSDBHelper, (void**)&helper);
+				}
+				catch (...)
+				{
+					//	CatchServerMsg(ex);
+					
+				}
+				//= m_pThreadMgr->pmgr->m_pOwner->GetPSDBHelper();
 				HRESULT hres;
 				int reqID = 0;
 
