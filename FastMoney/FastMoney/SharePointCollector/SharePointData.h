@@ -15,6 +15,7 @@ public:
 
 	void InitData(CEventThread *pThread);	
 	void DoQuery();
+	void DoQueryLocal();
 	void PublishFields();
 	int m_ConnectionOpen;
 	bool m_bQuitProcessing;		// Flag to help others quit early

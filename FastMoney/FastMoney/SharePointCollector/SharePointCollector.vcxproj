@@ -22,7 +22,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
     <SccProvider>SAK</SccProvider>
-    <ProjectName>FastMoneyCollector</ProjectName>
+    <ProjectName>FastMoneyCollector1</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">

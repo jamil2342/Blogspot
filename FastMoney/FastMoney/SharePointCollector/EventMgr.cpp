@@ -133,7 +133,7 @@ void CEventThread::DoWork()
 		if (WaitForSingleObject(pmgr->m_pOwner->m_hStartupDone, 0) == WAIT_OBJECT_0)
 		{
 			//m_fastmoneyData.doQuery();
-			m_sharepoint.DoQuery();
+			m_sharepoint.DoQueryLocal();
 		}
 		//badhon.jain@rmgnetworks.com
 		//	Come2gether!
