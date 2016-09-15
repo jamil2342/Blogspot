@@ -19,7 +19,7 @@ using System.Security;
 using System.Diagnostics;
 using Microsoft.Win32;
 
-namespace SharePointClient
+namespace FastMoneyClient
 {
 
     public static class Trace

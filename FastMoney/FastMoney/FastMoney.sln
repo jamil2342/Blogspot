@@ -8,7 +8,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SharePointAdapter", "ShareP
 		{27E1D7CE-CEE6-4590-9E50-9A536BE89DC3} = {27E1D7CE-CEE6-4590-9E50-9A536BE89DC3}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharePointClient", "SharePointClient\SharePointClient.csproj", "{27E1D7CE-CEE6-4590-9E50-9A536BE89DC3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastMoneyClient", "SharePointClient\FastMoneyClient.csproj", "{27E1D7CE-CEE6-4590-9E50-9A536BE89DC3}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestSharePointAdapter", "TestSharePointAdapter\TestSharePointAdapter.vcxproj", "{F3292C8D-7093-4BC9-99CD-4590EF770C9F}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -29,6 +29,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FastMoneyAdapter", "..\FastMoneyFinal\FastMoneyAdapter1\FastMoneyAdapter.vcxproj", "{98E48C7E-F7DB-474B-A633-2C964AE94649}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FastMoneyUiFinal", "FastMoneyUiFinal\FastMoneyUiFinal.vcxproj", "{C9A712A9-4C6C-429D-8E36-2FF495D400AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{09A3CB28-C072-4238-BEA5-96CA3CBF434B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -191,5 +193,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F3292C8D-7093-4BC9-99CD-4590EF770C9F} = {09A3CB28-C072-4238-BEA5-96CA3CBF434B}
+		{98E48C7E-F7DB-474B-A633-2C964AE94649} = {09A3CB28-C072-4238-BEA5-96CA3CBF434B}
 	EndGlobalSection
 EndGlobal
