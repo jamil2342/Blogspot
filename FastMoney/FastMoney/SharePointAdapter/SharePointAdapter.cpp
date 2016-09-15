@@ -41,7 +41,7 @@ void MarshalString ( String ^ s, std::wstring& os )
 CSharePointAdapter::CSharePointAdapter(void)
 {
     _managedObject = gcnew CSharePointClient();
-	//myclient = gcnew myCleint();
+	//myclient = gcnew Class1();
 }
 
 CSharePointAdapter::~CSharePointAdapter(void)
@@ -239,6 +239,7 @@ bool CSharePointAdapter::MoreData()
 
 void CSharePointAdapter::RetrieveListItems( wchar_t* listName, VARIANT *vValues, int &ret)
 {
+	//DataTable ^ data = myclient->RetrieveListItems(gcnew String(listName));
 	//gcroot<Class1 ^> cl = gcnew Class1();
 	//FastMoneyClient::Class1 cl = gcnew FastMoneyClient::Class1();
 	//DataTable ^dt = _managedObject->RetrieveListItems(gcnew st) cl->RetrieveListItems(gcnew String(listName));
