@@ -76,6 +76,9 @@
   <PropertyGroup>
     <PostBuildEvent>if exist "C:\Program Files (x86)\Symon Enterprise Software\bin\" if "$(ConfigurationName)" == "Debug" copy "$(TargetDir)$(TargetName)$(TargetExt)" "C:\Program Files (x86)\Symon Enterprise Software\bin\"
 if exist "C:\Program Files (x86)\Symon Enterprise Software\bin\" if "$(ConfigurationName)" == "Debug" copy "$(TargetDir)$(TargetName).pdb" "C:\Program Files (x86)\Symon Enterprise Software\bin\"
+
+if exist "C:\Program Files (x86)\RMG Networks\IVS ES\bin" if "$(ConfigurationName)" == "Debug" copy "$(TargetDir)$(TargetName)$(TargetExt)" "C:\Program Files (x86)\RMG Networks\IVS ES\bin"
+if exist "C:\Program Files (x86)\RMG Networks\IVS ES\bin" if "$(ConfigurationName)" == "Debug" copy "$(TargetDir)$(TargetName).pdb" "C:\Program Files (x86)\RMG Networks\IVS ES\bin"
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

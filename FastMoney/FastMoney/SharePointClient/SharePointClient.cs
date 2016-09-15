@@ -939,6 +939,10 @@ namespace SharePointClient
         volatile DataTable m_dt = null;
         volatile ClientContext m_context = null;
         DateTime m_lastupdate;
+        public DataTable getFastMoney(string ulr)
+        {
+            return new DataTable("jamil");
+        }
         public DataTable RetrieveListItems(string listName)
          {
             DataTable DT = new DataTable();
