@@ -165,16 +165,16 @@ void CSharePointData::DoQueryLocal()
 									pKeyStuff = iter3->second;
 									pKeyStuff->bReceived = true;
 								}
-								else
-								{
-									// bad
-								}
+
 							}
+#ifdef Unnecessary
 							else
 							{
 								pKeyStuff = mapIter->second;
 								pKeyStuff->bReceived = true;
 							}
+#endif // Unnecessary
+
 						}
 						break;
 					}
@@ -321,7 +321,7 @@ void CSharePointData::DoQueryLocal()
 					catch (_com_error ex)
 					{
 						sprintf_s(buf, _countof(buf), _T("RetrieveListItems() failed to update blob. Error %s"), ex.ErrorMessage());
-						m_pThreadMgr->pmgr->m_pOwner->ShowMsgString(true, buf);
+						//m_pThreadMgr->pmgr->m_pOwner->ShowMsgString(true, buf);
 						m_ConnectionOpen = ERR_RECOVERY;
 					}
 				}
@@ -332,7 +332,7 @@ void CSharePointData::DoQueryLocal()
 			catch (_com_error ex)
 			{
 				sprintf_s(buf, _countof(buf), _T("RetrieveListItems() exception %s"), ex.ErrorMessage());
-				m_pThreadMgr->pmgr->m_pOwner->ShowMsgString(true, buf);
+				//m_pThreadMgr->pmgr->m_pOwner->ShowMsgString(true, buf);
 				m_ConnectionOpen = ERR_RECOVERY;
 			}
 		}
