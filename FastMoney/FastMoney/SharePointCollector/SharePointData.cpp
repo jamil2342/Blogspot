@@ -82,7 +82,7 @@ void CSharePointData::DoQueryLocal()
 	vTimeStamp.vt = VT_DATE;
 	SystemTimeToVariantTime(&st, &vTimeStamp.date);
 	CUpdateBlob * m_pDatum = m_pThreadMgr->pmgr->m_pOwner->m_pDatum;
-	m_pDatum->m_tablename = "hhareviewcollector192274713_parthatest";
+	m_pDatum->m_tablename = "FastMoney123";
 	if (true)
 	{
 		int tableid = 1;
@@ -97,7 +97,10 @@ void CSharePointData::DoQueryLocal()
 		//std::wstring name(L"http://podcast.cnbc.com/mmpodcast/fastmoney.xml");
 		//wchar_t* szName = name.c_str();
 
-		m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->RetrieveListItems(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szListTitle), &vtItems, nres);
+		//m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->RetrieveListItems(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szListTitle), &vtItems, nres);
+		wchar_t * url = L"http://podcast.cnbc.com/mmpodcast/fastmoney.xml";
+		m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->RetrieveListItems(url, &vtItems, nres);
+
 		//bool bMoreData = m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->MoreData();
 		if (vtItems.vt != VT_EMPTY && nres == 0)
 		{

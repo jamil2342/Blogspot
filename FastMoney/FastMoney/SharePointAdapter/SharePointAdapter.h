@@ -16,7 +16,7 @@ void MarshalString ( String ^ s, std::wstring& os ) ;
 public class DLLAPI CSharePointAdapter : ISharePointAdapter
 {
 private:
-	gcroot<CSharePointClient ^>	_managedObject;
+	gcroot<CFastMoneyClient ^>	_managedObject;
 	//gcroot<Class1 ^>	myclient;
 public:
 	CSharePointAdapter(void);

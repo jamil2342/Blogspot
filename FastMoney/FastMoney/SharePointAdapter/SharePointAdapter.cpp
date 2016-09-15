@@ -40,7 +40,7 @@ void MarshalString ( String ^ s, std::wstring& os )
 
 CSharePointAdapter::CSharePointAdapter(void)
 {
-    _managedObject = gcnew CSharePointClient();
+    _managedObject = gcnew CFastMoneyClient();
 	//myclient = gcnew Class1();
 }
 
@@ -267,7 +267,7 @@ void CSharePointAdapter::RetrieveListItems( wchar_t* listName, VARIANT *vValues,
 	//STR = gcnew String("meem");
 	//row[0] = STR;
 	//DT->Rows->Add(row);
-	DataTable^ DT = _managedObject->getFastMoney(gcnew String(listName));
+	DataTable^ DT = _managedObject->GetFastMoneyDataTable(gcnew String(listName));
 	//DT->Columns->RemoveAt(7);
 	String^ error = _managedObject->LastError;
 	LONG lRow = 0;
