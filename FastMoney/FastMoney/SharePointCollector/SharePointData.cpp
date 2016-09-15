@@ -82,6 +82,7 @@ void CSharePointData::DoQueryLocal()
 	vTimeStamp.vt = VT_DATE;
 	SystemTimeToVariantTime(&st, &vTimeStamp.date);
 	CUpdateBlob * m_pDatum = m_pThreadMgr->pmgr->m_pOwner->m_pDatum;
+	m_pDatum->m_tablename = "hhareviewcollector192274713_parthatest";
 	if ((m_pThreadMgr->pmgr->m_pOwner->m_base.m_tableCount > 0) && (m_pThreadMgr->pmgr->m_pOwner->m_base.m_fieldCount > 0))
 	{
 		int tableid = 1;
@@ -189,40 +190,46 @@ void CSharePointData::DoQueryLocal()
 					fieldname.Replace(_T("x0020"), _T(""));
 					fieldname.Replace(_T("x002d"), _T(""));
 					VariantClear(&vtData);
-					//string stype;
-					//FIELD_MAP_ITER iter = m_pThreadMgr->pmgr->m_pOwner->m_colFields.begin();
-					//while (iter != m_pThreadMgr->pmgr->m_pOwner->m_colFields.end())
-					//{
-					//	if ((*iter).second->m_fieldName.compare(fieldname) == 0)
-					//	{
-					//		stype = (*iter).second->m_fieldType;
-					//		break;
-					//	}
-					//	iter++;
-					//}
+#ifdef Unnecessary
+					string stype;
+					FIELD_MAP_ITER iter = m_pThreadMgr->pmgr->m_pOwner->m_colFields.begin();
+					while (iter != m_pThreadMgr->pmgr->m_pOwner->m_colFields.end())
+					{
+						if ((*iter).second->m_fieldName.compare(fieldname) == 0)
+						{
+							stype = (*iter).second->m_fieldType;
+							break;
+						}
+						iter++;
+					}
+#endif // Unnecessary
+
 
 					idx++;
 					SafeArrayGetElement(V_ARRAY(&vtItems), &idx, &vtData);
 
 					_variant_t vtTemp(vtData, false);
-					//if (vtData.vt != VT_NULL && vtData.vt != VT_EMPTY)
-					//{
-					//	switch (m_pThreadMgr->pmgr->m_pOwner->SPTYPETOPOLY[stype])
-					//	{
-					//	case POLY_STR:
-					//		vtTemp.ChangeType(VT_BSTR);
-					//		break;
-					//	case POLY_INT:
-					//		vtTemp.ChangeType(VT_I4);
-					//		break;
-					//	case POLY_FLOAT:
-					//		vtTemp.ChangeType(VT_R8);
-					//		break;
-					//	case POLY_UNKNOWN:
-					//		vtTemp.ChangeType(VT_BSTR);
-					//		break;
-					//	}
-					//}
+#ifdef Unnecessary
+					if (vtData.vt != VT_NULL && vtData.vt != VT_EMPTY)
+					{
+						switch (m_pThreadMgr->pmgr->m_pOwner->SPTYPETOPOLY[stype])
+						{
+						case POLY_STR:
+							vtTemp.ChangeType(VT_BSTR);
+							break;
+						case POLY_INT:
+							vtTemp.ChangeType(VT_I4);
+							break;
+						case POLY_FLOAT:
+							vtTemp.ChangeType(VT_R8);
+							break;
+						case POLY_UNKNOWN:
+							vtTemp.ChangeType(VT_BSTR);
+							break;
+						}
+					}
+#endif // Unnecessary
+
 					if (vtTemp.vt == VT_BSTR)
 					{
 						//tmpStr = (LPCSTR)_bstr_t(vtTemp.bstrVal);
