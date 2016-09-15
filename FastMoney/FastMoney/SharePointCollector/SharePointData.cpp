@@ -136,6 +136,7 @@ void CSharePointData::DoQueryLocal()
 						pTblKeys = m_pThreadMgr->pmgr->m_pOwner->m_keys.GetTable(tableid);
 						if (pTblKeys == NULL)
 						{
+#ifdef Unnecessary
 							Implement_Options impl = IMPLEMENT_YES;
 							m_pThreadMgr->pmgr->m_pOwner->ShowMsgFmt(false, "DoQuery() Inserting key %s", (LPCTSTR)strNumber);
 							m_pThreadMgr->pmgr->m_pOwner->m_keys.AddKey(tableid, strNumber, impl);
@@ -147,6 +148,7 @@ void CSharePointData::DoQueryLocal()
 								pKeyStuff = iter2->second;
 								pKeyStuff->bReceived = true;
 							}
+#endif
 						}
 						else
 						{
@@ -334,24 +336,30 @@ void CSharePointData::DoQueryLocal()
 				m_ConnectionOpen = ERR_RECOVERY;
 			}
 		}
-		//else if (nres != 0)
-		//{
-		//	//m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->GetLastError(&vtError);
-		//	sprintf_s(buf, _countof(buf), _T("DoQuery() - RetrieveListItems() timeout"));
-		//	m_pThreadMgr->pmgr->m_pOwner->ShowMsgString(true, buf);
-		//	m_ConnectionOpen = ERR_RECOVERY;
-		//	//LogEvent(EVENTLOG_INFORMATION_TYPE,szBuf);
-		//}
+#ifdef Unnecessary
+						else if (nres != 0)
+						{
+							//m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->GetLastError(&vtError);
+							sprintf_s(buf, _countof(buf), _T("DoQuery() - RetrieveListItems() timeout"));
+							m_pThreadMgr->pmgr->m_pOwner->ShowMsgString(true, buf);
+							m_ConnectionOpen = ERR_RECOVERY;
+							//LogEvent(EVENTLOG_INFORMATION_TYPE,szBuf);
+						}
+#endif // Unnecessary
+
 		VariantClear(&vtItems);
 
 	}
 	m_iDataCounter++;
 #ifdef _DEBUG
-	//OutputHeading(
-	//	"Dump all objects two memory checkpoints");
-	//_CrtMemDumpAllObjectsSince(NULL);
-	//OutputHeading("Perform a memory check for heap corruption.");
-	//_CrtCheckMemory();
+#ifdef Unnecessary
+	OutputHeading(
+		"Dump all objects two memory checkpoints");
+	_CrtMemDumpAllObjectsSince(NULL);
+	OutputHeading("Perform a memory check for heap corruption.");
+	_CrtCheckMemory();
+#endif // Unnecessary
+
 #endif
 	return;
 }
