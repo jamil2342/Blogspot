@@ -5,7 +5,7 @@
 
 #include "ISharePointAdapter.h"
 #include "SharePointAdapter.h"
-using namespace FastMoneyClient;
+//using namespace FastMoneyClient;
 
 void WriteEventLog(String^ msg)
 {

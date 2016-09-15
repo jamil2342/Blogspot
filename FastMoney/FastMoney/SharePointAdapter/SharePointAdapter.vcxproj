@@ -147,7 +147,6 @@
     <None Include="Version.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FastMoneyDataAdapter.h" />
     <ClInclude Include="ISharePointAdapter.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SharePointAdapter.h" />
@@ -168,7 +167,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='VeraCode|Win32'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="FastMoneyDataAdapter.cpp" />
     <ClCompile Include="ISharePointAdapter.cpp" />
     <ClCompile Include="SharePointAdapter.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -186,9 +184,6 @@
     <ResourceCompile Include="SharePointAdapter.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\FastMoneyFinal\FastMoneyClient\FastMoneyClient.csproj">
-      <Project>{f4e4aaa8-5ea7-4a1c-896a-f02dd4084351}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\SharePointClient\SharePointClient.csproj">
       <Project>{27e1d7ce-cee6-4590-9e50-9a536be89dc3}</Project>
     </ProjectReference>
