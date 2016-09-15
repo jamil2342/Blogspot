@@ -83,7 +83,7 @@ void CSharePointData::DoQueryLocal()
 	SystemTimeToVariantTime(&st, &vTimeStamp.date);
 	CUpdateBlob * m_pDatum = m_pThreadMgr->pmgr->m_pOwner->m_pDatum;
 	m_pDatum->m_tablename = "hhareviewcollector192274713_parthatest";
-	if ((m_pThreadMgr->pmgr->m_pOwner->m_base.m_tableCount > 0) && (m_pThreadMgr->pmgr->m_pOwner->m_base.m_fieldCount > 0))
+	if (true)
 	{
 		int tableid = 1;
 		VARIANT vtItems;
@@ -134,6 +134,7 @@ void CSharePointData::DoQueryLocal()
 					if (fieldname == _T("id"))
 					{
 						strNumber = vtData.bstrVal;
+						//#####do correct
 						pTblKeys = m_pThreadMgr->pmgr->m_pOwner->m_keys.GetTable(tableid);
 						if (pTblKeys == NULL)
 						{
@@ -157,7 +158,8 @@ void CSharePointData::DoQueryLocal()
 							if (mapIter == pTblKeys->m_impKeys.end())
 							{
 								Implement_Options impl = IMPLEMENT_YES;
-								m_pThreadMgr->pmgr->m_pOwner->ShowMsgFmt(false, "DoQuery() Inserting key %s", (LPCTSTR)strNumber);
+								//m_pThreadMgr->pmgr->m_pOwner->ShowMsgFmt(false, "DoQuery() Inserting key %s", (LPCTSTR)strNumber);
+								//#####do correct
 								m_pThreadMgr->pmgr->m_pOwner->m_keys.AddKey(tableid, strNumber, impl);
 								m_pDatum->AppendRecVal(strNumber, _T(""), _T(""), true);
 								ImpKeyMapIter iter3 = pTblKeys->m_impKeys.find(strNumber);

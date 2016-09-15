@@ -267,6 +267,7 @@ void CSharePointAdapter::RetrieveListItems( wchar_t* listName, VARIANT *vValues,
 	//row[0] = STR;
 	//DT->Rows->Add(row);
 	DataTable^ DT = _managedObject->RetrieveListItems(gcnew String(listName));
+	//DT->Columns->RemoveAt(7);
 	String^ error = _managedObject->LastError;
 	LONG lRow = 0;
 	SAFEARRAY *psa;
