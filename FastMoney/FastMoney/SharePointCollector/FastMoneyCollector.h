@@ -4,9 +4,9 @@
 
 
  /* File created by MIDL compiler version 8.00.0603 */
-/* at Fri Sep 16 05:12:58 2016
+/* at Fri Sep 16 04:48:45 2016
  */
-/* Compiler settings for FastMoneyCollector.idl:
+/* Compiler settings for SharePointCollector.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0603 
     protocol : dce , ms_ext, c_ext
     error checks: allocation ref bounds_check enum stub_data 
@@ -87,7 +87,7 @@ extern "C"{
 #endif 
 
 
-/* interface __MIDL_itf_FastMoneyCollector_0000_0000 */
+/* interface __MIDL_itf_SharePointCollector_0000_0000 */
 /* [local] */ 
 
 
@@ -111,8 +111,8 @@ enum systemCustomFuncType
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_FastMoneyCollector_0000_0000_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_FastMoneyCollector_0000_0000_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_SharePointCollector_0000_0000_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_SharePointCollector_0000_0000_v0_0_s_ifspec;
 
 #ifndef __IIBCollector_INTERFACE_DEFINED__
 #define __IIBCollector_INTERFACE_DEFINED__
@@ -356,7 +356,7 @@ EXTERN_C const IID IID_IIBCollector;
 #endif 	/* __IIBCollector_INTERFACE_DEFINED__ */
 
 
-/* interface __MIDL_itf_FastMoneyCollector_0000_0001 */
+/* interface __MIDL_itf_SharePointCollector_0000_0001 */
 /* [local] */ 
 
 typedef 
@@ -376,8 +376,8 @@ enum changeType
 
 
 
-extern RPC_IF_HANDLE __MIDL_itf_FastMoneyCollector_0000_0001_v0_0_c_ifspec;
-extern RPC_IF_HANDLE __MIDL_itf_FastMoneyCollector_0000_0001_v0_0_s_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_SharePointCollector_0000_0001_v0_0_c_ifspec;
+extern RPC_IF_HANDLE __MIDL_itf_SharePointCollector_0000_0001_v0_0_s_ifspec;
 
 #ifndef __IInboundEvents_INTERFACE_DEFINED__
 #define __IInboundEvents_INTERFACE_DEFINED__

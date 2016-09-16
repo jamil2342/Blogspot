@@ -1,4 +1,4 @@
-; SharePointCollector.def : Declares the module parameters.
+; FastMoneyCollector.def : Declares the module parameters.
 
 LIBRARY      "FastMoneyAdapter.DLL"
 
