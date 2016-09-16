@@ -9,7 +9,7 @@
 #include "resource.h"
 #include <initguid.h>
 #include "SharePointUI.h"
-
+#include "FastMoneyDlg.h"
 //#include "SharePointUI_i.c"
 #include "FastMoneyInbound.h"
 #include "PubInboundUI_i.c"
@@ -51,6 +51,9 @@ CSharePointUIApp theApp;
 
 BOOL CSharePointUIApp::InitInstance()
 {
+	CFastMoneyDlg dlg;
+	dlg.DoModal();
+	return TRUE;
     _Module.Init(ObjectMap, m_hInstance, &LIBID_SharePointUILib);
     return CWinApp::InitInstance();
 }

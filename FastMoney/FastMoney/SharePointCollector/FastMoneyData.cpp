@@ -304,7 +304,7 @@ void CFastMoneyData::DoQueryLocal()
 				VARIANT impl2;		VariantInit(&impl2);
 				VARIANT info;		VariantInit(&info);
 				Acquire lock(this);
-				//m_pThreadMgr->pmgr->m_pOwner->m_pDatum->m_tablename = "FastMoney";
+				
 				m_pDatum->VariantOut(&impl2);
 				IPSDBHelper *helper;
 				
