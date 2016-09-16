@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "SharePointCollector.h"
+#include "FastMoneyCollector.h"
 #include "FastMoneyData.h"
 #include "FastMoneyCollect.h"
 

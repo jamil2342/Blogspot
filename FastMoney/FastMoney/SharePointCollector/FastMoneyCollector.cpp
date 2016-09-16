@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "resource.h"
-#include "SharePointCollector.h"
+#include "FastMoneyCollector.h"
 #include "dllmain.h"
 
 

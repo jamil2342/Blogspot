@@ -19,9 +19,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SharePointCollector.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -79,6 +76,9 @@
     <ClCompile Include="FastMoneyData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FastMoneyCollector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SharePointCollector.def">
@@ -112,9 +112,6 @@
     </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SharePointCollector.h">
-      <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\PublisherCommon\Asyncro.h">
       <Filter>Header Files</Filter>
@@ -202,6 +199,9 @@
     </ClInclude>
     <ClInclude Include="FastMoneyData.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FastMoneyCollector.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

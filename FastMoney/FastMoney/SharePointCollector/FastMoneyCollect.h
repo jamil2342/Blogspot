@@ -8,7 +8,7 @@
 #include "EventMgr.h"
 #include "mtobject6.h"
 #include "publisher2000Server.h"
-#include "SharePointCollector.h"
+#include "FastMoneyCollector.h"
 #include "PSDBSchema.h"
 //#include "FastMoneyAdapter.h"
 

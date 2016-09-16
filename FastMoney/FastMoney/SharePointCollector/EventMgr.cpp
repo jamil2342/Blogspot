@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "SharePointCollector.h"
+#include "FastMoneyCollector.h"
 #include "FastMoneyCollect.h"
 #include "EventMgr.h"
 

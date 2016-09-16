@@ -1,7 +1,7 @@
 // SharePointCollect.cpp : Implementation of CSharePointCollect
 
 #include "stdafx.h"
-#include "SharePointCollector.h"
+#include "FastMoneyCollector.h"
 #include "FastMoneyCollect.h"
 #include "streamhelper.h"
 
