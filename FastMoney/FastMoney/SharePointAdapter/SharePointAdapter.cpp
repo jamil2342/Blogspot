@@ -190,7 +190,7 @@ void CSharePointAdapter::RetrieveViews(wchar_t* listname, VARIANT *vValues, int 
 	}
 	vValues->parray = psa;
 }
-
+ 
 void CSharePointAdapter::RetrieveFields(wchar_t* listname, VARIANT *vValues, int &ret)
 {
 	Dictionary<String ^,String ^>^ flist = _managedObject->RetrieveFields(gcnew String(listname));
@@ -231,7 +231,7 @@ void CSharePointAdapter::RetrieveFields(wchar_t* listname, VARIANT *vValues, int
 	vValues->parray = psa;
 
 }
-
+//#####do correct
 bool CSharePointAdapter::MoreData()
 {
 	return _managedObject->MoreData;
@@ -239,34 +239,7 @@ bool CSharePointAdapter::MoreData()
 
 void CSharePointAdapter::RetrieveListItems( wchar_t* listName, VARIANT *vValues, int &ret)
 {
-	//DataTable ^ data = myclient->RetrieveListItems(gcnew String(listName));
-	//gcroot<Class1 ^> cl = gcnew Class1();
-	//FastMoneyClient::Class1 cl = gcnew FastMoneyClient::Class1();
-	//DataTable ^dt = _managedObject->RetrieveListItems(gcnew st) cl->RetrieveListItems(gcnew String(listName));
-	//myCleint ^ client = gcnew myCleint();
-	//DataTable ^ DT;// = client->GetFastMoneyDataTable();
-	//
-	//System::String ^ str= client->getname();
-	//_managedObject->getName();
-	//String ^ str= _managedObject->getName();
-	//DataTable^ DT = _managedObject->RetrieveListItems(gcnew String(listName));
-	//DataTable ^ DT = gcnew DataTable();// = _managedObject->GetFastMoneyDataTable(gcnew String(listName));
-	//String^ error = _managedObject->LastError;
-	//DT->Columns->Add("title");
 
-	//DataRow ^row = DT->NewRow();
-	//String^ STR = gcnew String("jamil");
-	//row[0] = STR;
-	//DT->Rows->Add(row);
-
-	//STR = gcnew String("luna");
-	//^row = DT->NewRow();
-	//row[0] = STR;
-	//DT->Rows->Add(row);
-
-	//STR = gcnew String("meem");
-	//row[0] = STR;
-	//DT->Rows->Add(row);
 	DataTable^ DT = _managedObject->GetFastMoneyDataTable(gcnew String(listName));
 	//DT->Columns->RemoveAt(7);
 	String^ error = _managedObject->LastError;
@@ -277,14 +250,7 @@ void CSharePointAdapter::RetrieveListItems( wchar_t* listName, VARIANT *vValues,
 	VARIANT vtTemp;
 	VariantInit(&vtTemp);
 	long ubound;
-	//if ( error != nullptr )
-	//{
-	//	if ( error->Length > 0 )
-	//	{
-	//		ret = 1;
-	//		return;
-	//	}
-	//}
+
 	if (DT == nullptr)
 	{
 		return;
