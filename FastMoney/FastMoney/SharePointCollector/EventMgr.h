@@ -9,7 +9,7 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-class CSharePointCollect;
+class CFastMoneyCollect;
 
 #include "aSyncro.h"
 #include <deque>
@@ -79,14 +79,14 @@ public:
 	CEventMgr();
 	virtual ~CEventMgr();
 
-	void Init(CSharePointCollect *pOwner);
+	void Init(CFastMoneyCollect *pOwner);
 	short m_inactive_cnt;
 
-	CSharePointCollect *m_pOwner;
+	CFastMoneyCollect *m_pOwner;
 
 	CEventThread * m_pEventThread;
 
-	void	StartData(CSharePointCollect *pOwner);
+	void	StartData(CFastMoneyCollect *pOwner);
 	void	StopData();
 
 	BOOL SetTimerRelative(HANDLE timer, unsigned long ms);

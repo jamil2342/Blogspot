@@ -32,7 +32,7 @@ CEventMgr::~CEventMgr()
 	m_pEventThread = NULL;
 }
 
-void CEventMgr::Init(CSharePointCollect *pOwner)
+void CEventMgr::Init(CFastMoneyCollect *pOwner)
 {
 	_ASSERTE(pOwner);
 	m_pOwner = pOwner;

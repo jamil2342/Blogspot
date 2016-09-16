@@ -16,7 +16,7 @@
 #include "time.h"
 
 
-STDMETHODIMP CSharePointCollect::InterfaceSupportsErrorInfo(REFIID riid)
+STDMETHODIMP CFastMoneyCollect::InterfaceSupportsErrorInfo(REFIID riid)
 {
 	static const IID* arr[] = 
 	{
@@ -33,7 +33,7 @@ STDMETHODIMP CSharePointCollect::InterfaceSupportsErrorInfo(REFIID riid)
 /////////////////////////////////////////////////////////////////////////////
 //	Construction
 /////////////////////////////////////////////////////////////////////////////
-STDMETHODIMP CSharePointCollect::GetConfig(/*[in,out]*/VARIANT *config)
+STDMETHODIMP CFastMoneyCollect::GetConfig(/*[in,out]*/VARIANT *config)
 {
 	//m_synchConfig.ReadLock();
 	VariantInit(config);
@@ -78,7 +78,7 @@ STDMETHODIMP CSharePointCollect::GetConfig(/*[in,out]*/VARIANT *config)
 	return S_OK;
 }
 
-HRESULT CSharePointCollect::doConfig(/*[in]*/VARIANT *config)
+HRESULT CFastMoneyCollect::doConfig(/*[in]*/VARIANT *config)
 {
 	m_synchConfig.WriteLock();
 	bool bChange = false;
@@ -250,7 +250,7 @@ HRESULT CSharePointCollect::doConfig(/*[in]*/VARIANT *config)
 	return S_OK;
 }
 
-STDMETHODIMP CSharePointCollect::SetConfig(/*[in]*/VARIANT *config, /*[in]*/BOOL ApplyNow)
+STDMETHODIMP CFastMoneyCollect::SetConfig(/*[in]*/VARIANT *config, /*[in]*/BOOL ApplyNow)
 {
 	string oldname = m_base.m_name;
 	HRESULT result = doConfig(config);
@@ -295,7 +295,7 @@ STDMETHODIMP CSharePointCollect::SetConfig(/*[in]*/VARIANT *config, /*[in]*/BOOL
 }
 
 
-STDMETHODIMP CSharePointCollect::CustomIF(/*[in]*/int type,/*[in,out]*/VARIANT *internalInfo)
+STDMETHODIMP CFastMoneyCollect::CustomIF(/*[in]*/int type,/*[in,out]*/VARIANT *internalInfo)
 {
 	HRESULT hResult = S_OK;
 	int nres = 0;
@@ -450,7 +450,7 @@ STDMETHODIMP CSharePointCollect::CustomIF(/*[in]*/int type,/*[in,out]*/VARIANT *
 }
 
 
-STDMETHODIMP CSharePointCollect::EnableConnection(/*[in]*/BOOL open)
+STDMETHODIMP CFastMoneyCollect::EnableConnection(/*[in]*/BOOL open)
 {
 //	MessageBox(NULL, "Stop in EnableConnection!!!", "Stop Here", MB_OK);
 
@@ -506,7 +506,7 @@ STDMETHODIMP CSharePointCollect::EnableConnection(/*[in]*/BOOL open)
 }
 
 
-STDMETHODIMP CSharePointCollect::RemoveListener(/*[in]*/short cookie)
+STDMETHODIMP CFastMoneyCollect::RemoveListener(/*[in]*/short cookie)
 {
 	ATLTRACE("CSharePointCollect::Unadvise \r\n");
 
@@ -524,7 +524,7 @@ STDMETHODIMP CSharePointCollect::RemoveListener(/*[in]*/short cookie)
 	return S_OK;
 }
 
-STDMETHODIMP CSharePointCollect::AddListener(/*[in]*/IInboundEvents *pListener, /*[in,out]*/short *cookie)
+STDMETHODIMP CFastMoneyCollect::AddListener(/*[in]*/IInboundEvents *pListener, /*[in,out]*/short *cookie)
 {
 	ATLTRACE("CSharePointCollect::Advise\n");
 	*cookie = 0;
@@ -545,7 +545,7 @@ STDMETHODIMP CSharePointCollect::AddListener(/*[in]*/IInboundEvents *pListener, 
 }
 
 
-STDMETHODIMP CSharePointCollect::SetInboundID(/*[in]*/VARIANT infovar)
+STDMETHODIMP CFastMoneyCollect::SetInboundID(/*[in]*/VARIANT infovar)
 {
 	// assign name and ref num. keep this avail for future use
 	// when we get here, we know we were successful at creating this 
@@ -562,7 +562,7 @@ STDMETHODIMP CSharePointCollect::SetInboundID(/*[in]*/VARIANT infovar)
 	return S_OK;//result;
 }
 
-void CSharePointCollect::CreateCollector()
+void CFastMoneyCollect::CreateCollector()
 {
 	CPSDBCollector schema;
 
@@ -601,7 +601,7 @@ void CSharePointCollect::CreateCollector()
 	VariantClear(&typeInfo);
 }
 
-void CSharePointCollect::DeleteTable(string &table)
+void CFastMoneyCollect::DeleteTable(string &table)
 {
 	VARIANT info;	VariantInit(&info);
 	if(table.length())
@@ -640,7 +640,7 @@ void CSharePointCollect::DeleteTable(string &table)
 	VariantClear(&info);
 }
 
-ULONG CSharePointCollect::GetPubRefnum()
+ULONG CFastMoneyCollect::GetPubRefnum()
 {
 	Acquire lock(&m_SyncPSDBSvr);
 	IPSDBHelper *helper = GetPSDBHelper();
@@ -664,7 +664,7 @@ ULONG CSharePointCollect::GetPubRefnum()
 	return refnum;
 }
 
-STDMETHODIMP CSharePointCollect::SetUpdatePulse(int secs, BOOL onlyOnNoActivity)
+STDMETHODIMP CFastMoneyCollect::SetUpdatePulse(int secs, BOOL onlyOnNoActivity)
 {
 	m_synchConfig.WriteLock();
 
@@ -689,7 +689,7 @@ STDMETHODIMP CSharePointCollect::SetUpdatePulse(int secs, BOOL onlyOnNoActivity)
 
 #include <comdef.h>
 
-void CSharePointCollect::DoEvent(changeType type, short state, VARIANT *err)
+void CFastMoneyCollect::DoEvent(changeType type, short state, VARIANT *err)
 {
 	Acquire lock(this);	
 
@@ -762,7 +762,7 @@ void CSharePointCollect::DoEvent(changeType type, short state, VARIANT *err)
 /////////////////////////////////////////////
 
 
-CSharePointCollect::CSharePointCollect()
+CFastMoneyCollect::CFastMoneyCollect()
 {
 	ZeroMemory(&m_base,SIZEOF_SHAREPOINT_COMMON);
 
@@ -815,7 +815,7 @@ CSharePointCollect::CSharePointCollect()
 	SPTYPETOPOLY["MaxItems"] = POLY_STR;
 }
 
-CSharePointCollect::~CSharePointCollect()
+CFastMoneyCollect::~CFastMoneyCollect()
 {
 //	ClearMaps();
 	m_keys.ReleaseAll();
@@ -849,7 +849,7 @@ CSharePointCollect::~CSharePointCollect()
 }
 
 
-HRESULT  CSharePointCollect::AddEvent(int reqID, int type, int errCode, BSTR msg,VARIANT response)
+HRESULT  CFastMoneyCollect::AddEvent(int reqID, int type, int errCode, BSTR msg,VARIANT response)
 {
 	Acquire lock(this);	
 
@@ -858,7 +858,7 @@ HRESULT  CSharePointCollect::AddEvent(int reqID, int type, int errCode, BSTR msg
 	return S_OK;		
 }
 
-void CSharePointCollect::AddInboundInstanceInfo()
+void CFastMoneyCollect::AddInboundInstanceInfo()
 {
 	_bstr_t bsName = m_base.m_name;
 	string name = bsName;
@@ -892,7 +892,7 @@ void CSharePointCollect::AddInboundInstanceInfo()
 	SetEvent(m_hStartupDone);
 }
 
-bool CSharePointCollect::CreateSharePointInstance()
+bool CFastMoneyCollect::CreateSharePointInstance()
 {
 	HRESULT hr = S_OK;
 
@@ -919,7 +919,7 @@ bool CSharePointCollect::CreateSharePointInstance()
 	return true;
 }
 
-void CSharePointCollect::PublishFields()
+void CFastMoneyCollect::PublishFields()
 {
 	int cnt = 1;
 	string strTableName;
@@ -1098,7 +1098,7 @@ void CSharePointCollect::PublishFields()
 	}
 }
 
-void CSharePointCollect::ModifyImplemented()
+void CFastMoneyCollect::ModifyImplemented()
 {
 	_bstr_t bsName = m_base.m_name;
 	string name = bsName;
@@ -1125,7 +1125,7 @@ void CSharePointCollect::ModifyImplemented()
 	m_impModFlds.ReleaseMap();
 }
 
-IPSDBHelper *CSharePointCollect::GetPSDBHelper()
+IPSDBHelper *CFastMoneyCollect::GetPSDBHelper()
 {
 	if(m_pHelper)
 		return m_pHelper;
@@ -1158,7 +1158,7 @@ IPSDBHelper *CSharePointCollect::GetPSDBHelper()
 }
 
 
-void CSharePointCollect::ReleasePSDBHelper()
+void CFastMoneyCollect::ReleasePSDBHelper()
 {
 	if(m_pHelper == NULL)
 		return;
@@ -1178,7 +1178,7 @@ void CSharePointCollect::ReleasePSDBHelper()
 	m_pHelper = NULL;
 }
 
-void CSharePointCollect::OnAddListener() 
+void CFastMoneyCollect::OnAddListener() 
 {
 
 	CComObject<CPSDBListener>::CreateInstance(&m_pDBListener);
@@ -1213,7 +1213,7 @@ void CSharePointCollect::OnAddListener()
 
 }
 
-void CSharePointCollect::OnRemoveListener() 
+void CFastMoneyCollect::OnRemoveListener() 
 {
 	if(m_pDBListener)	
 	{
@@ -1239,14 +1239,14 @@ void CSharePointCollect::OnRemoveListener()
 	
 }
 
-STDMETHODIMP CSharePointCollect::GetAllKeys(VARIANT *keys)
+STDMETHODIMP CFastMoneyCollect::GetAllKeys(VARIANT *keys)
 {
 	m_keys.m_ibRef = m_base.m_refnum;
 	m_keys.VariantOut(keys, false);
 	return S_OK;
 }
 
-STDMETHODIMP CSharePointCollect::SetImplemented(VARIANT keys, VARIANT flds)
+STDMETHODIMP CFastMoneyCollect::SetImplemented(VARIANT keys, VARIANT flds)
 {
 	updatekeys.ReleaseAll();
 	if (keys.vt != VT_EMPTY)
@@ -1256,7 +1256,7 @@ STDMETHODIMP CSharePointCollect::SetImplemented(VARIANT keys, VARIANT flds)
 	return S_OK;
 }
 
-STDMETHODIMP CSharePointCollect::SpecialImplement(specialImpType type, VARIANT info)
+STDMETHODIMP CFastMoneyCollect::SpecialImplement(specialImpType type, VARIANT info)
 {
 	CString folder;
 	switch (type)
@@ -1288,7 +1288,7 @@ STDMETHODIMP CSharePointCollect::SpecialImplement(specialImpType type, VARIANT i
 	return S_OK;
 }
 
-bool CSharePointCollect::DeleteFolder(CString& szFolder)
+bool CFastMoneyCollect::DeleteFolder(CString& szFolder)
 {
 	WIN32_FIND_DATA wfd;
 	ZeroMemory(&wfd, sizeof(WIN32_FIND_DATA));
@@ -1354,7 +1354,7 @@ bool CSharePointCollect::DeleteFolder(CString& szFolder)
 	return true;
 }
 
-LPCTSTR CSharePointCollect::GetErrorMessage(CString &err)
+LPCTSTR CFastMoneyCollect::GetErrorMessage(CString &err)
 {
 	DWORD dwError = GetLastError();
 	if (dwError)
@@ -1394,7 +1394,7 @@ LPCTSTR CSharePointCollect::GetErrorMessage(CString &err)
 	return err;
 }
 
-void CSharePointCollect::BuildSchema()
+void CFastMoneyCollect::BuildSchema()
 {
 	int cnt; 
 	string strTableName;

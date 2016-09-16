@@ -33,9 +33,9 @@ enum
 
 // CSharePointCollect
 
-class ATL_NO_VTABLE CSharePointCollect :
+class ATL_NO_VTABLE CFastMoneyCollect :
 	public CComObjectRootEx<CComMultiThreadModel>,
-	public CComCoClass<CSharePointCollect, &CLSID_SharePointCollect>,
+	public CComCoClass<CFastMoneyCollect, &CLSID_SharePointCollect>,
 	public ISupportErrorInfo,
 	public IDispatchImpl<ISharePointCollect, &IID_ISharePointCollect, &LIBID_SharePointCollectorLib, /*wMajor =*/ 1, /*wMinor =*/ 0>,
 	public IDispatchImpl<IIBCollector, &IID_IIBCollector, &LIBID_SharePointCollectorLib>,
@@ -43,13 +43,13 @@ class ATL_NO_VTABLE CSharePointCollect :
 	public MTObject
 {
 public:
-	CSharePointCollect();
-	virtual ~CSharePointCollect();
+	CFastMoneyCollect();
+	virtual ~CFastMoneyCollect();
 
 DECLARE_REGISTRY_RESOURCEID(IDR_SHAREPOINTCOLLECT)
-DECLARE_NOT_AGGREGATABLE(CSharePointCollect)
+DECLARE_NOT_AGGREGATABLE(CFastMoneyCollect)
 
-BEGIN_COM_MAP(CSharePointCollect)
+BEGIN_COM_MAP(CFastMoneyCollect)
 	COM_INTERFACE_ENTRY(ISharePointCollect)
 	COM_INTERFACE_ENTRY(IIBCollector)
 	COM_INTERFACE_ENTRY(ISupportErrorInfo)
@@ -136,4 +136,4 @@ public:
 	LPCTSTR GetErrorMessage(CString &err);
 };
 
-OBJECT_ENTRY_AUTO(__uuidof(SharePointCollect), CSharePointCollect)
+OBJECT_ENTRY_AUTO(__uuidof(SharePointCollect), CFastMoneyCollect)
