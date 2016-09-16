@@ -2,6 +2,7 @@
 #include "FastMoneyCollector.h"
 #include "FastMoneyData.h"
 #include "FastMoneyCollect.h"
+#include "Globals.h"
 
 #include <COMDEF.H>
 #include "objectdefs.h"
@@ -82,7 +83,8 @@ void CFastMoneyData::DoQueryLocal()
 	vTimeStamp.vt = VT_DATE;
 	SystemTimeToVariantTime(&st, &vTimeStamp.date);
 	CUpdateBlob * m_pDatum = m_pThreadMgr->pmgr->m_pOwner->m_pDatum;
-	m_pDatum->m_tablename = "FastMoney123";
+
+	
 	if (true)
 	{
 		int tableid = 1;
@@ -94,12 +96,25 @@ void CFastMoneyData::DoQueryLocal()
 		VariantInit(&vtError);
 
 		_bstr_t strNumber(_T("1"));
-		//std::wstring name(L"http://podcast.cnbc.com/mmpodcast/fastmoney.xml");
-		//wchar_t* szName = name.c_str();
 
-		//m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->RetrieveListItems(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szListTitle), &vtItems, nres);
 		wchar_t * url = L"http://podcast.cnbc.com/mmpodcast/fastmoney.xml";
-		m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(url, &vtItems, nres);
+
+		
+		if (method==1)
+		{
+
+			m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szListTitle), &vtItems, nres);
+			m_pDatum->m_tablename = "hhareviewcollector192274713_parthatest";
+
+
+		}
+		else
+		{
+			m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(url, &vtItems, nres);
+			m_pDatum->m_tablename = "FastMoney123";
+		}
+
+
 
 		//bool bMoreData = m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->MoreData();
 		if (vtItems.vt != VT_EMPTY && nres == 0)
@@ -141,7 +156,7 @@ void CFastMoneyData::DoQueryLocal()
 						pTblKeys = m_pThreadMgr->pmgr->m_pOwner->m_keys.GetTable(tableid);
 						if (pTblKeys == NULL)
 						{
-#ifdef Unnecessary
+
 							Implement_Options impl = IMPLEMENT_YES;
 							m_pThreadMgr->pmgr->m_pOwner->ShowMsgFmt(false, "DoQuery() Inserting key %s", (LPCTSTR)strNumber);
 							m_pThreadMgr->pmgr->m_pOwner->m_keys.AddKey(tableid, strNumber, impl);
@@ -153,7 +168,7 @@ void CFastMoneyData::DoQueryLocal()
 								pKeyStuff = iter2->second;
 								pKeyStuff->bReceived = true;
 							}
-#endif
+
 						}
 						else
 						{
@@ -173,13 +188,13 @@ void CFastMoneyData::DoQueryLocal()
 								}
 
 							}
-#ifdef Unnecessary
+
 							else
 							{
 								pKeyStuff = mapIter->second;
 								pKeyStuff->bReceived = true;
 							}
-#endif // Unnecessary
+
 
 						}
 						break;
@@ -362,7 +377,7 @@ void CFastMoneyData::DoQueryLocal()
 		VariantClear(&vtItems);
 
 	}
-	m_iDataCounter++;
+	m_iDataCounter++; 
 #ifdef _DEBUG
 #ifdef Unnecessary
 	OutputHeading(

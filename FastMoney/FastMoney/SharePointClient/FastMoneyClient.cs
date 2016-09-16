@@ -970,7 +970,8 @@ namespace FastMoneyClient
         {
             DataTable dt = new DataTable("FastMoney");
             int TempColumn = 0;
-
+            DataColumn dc1 = new DataColumn("id", System.Type.GetType("System.String"));
+            dt.Columns.Add(dc1);
             foreach (XmlNode node in xmlTag.Item(0).ChildNodes)
             {
                 TempColumn++;
@@ -989,9 +990,10 @@ namespace FastMoneyClient
             for (int i = 0; i < xmlTag.Count; i++)
             {
                 DataRow dr = dt.NewRow();
-                for (int j = 0; j < ColumnsCount; j++)
+                dr[0] = "" + i + 1;
+                for (int j = 0; j < ColumnsCount-1; j++)
                 {
-                    dr[j] = xmlTag.Item(i).ChildNodes[j].InnerText;
+                    dr[j+1] = xmlTag.Item(i).ChildNodes[j].InnerText;
                 }
                 dt.Rows.Add(dr);
             }
@@ -1003,8 +1005,7 @@ namespace FastMoneyClient
         }
         public DataTable RetrieveListItems(string listName)
          {
-            DataTable DT = new DataTable();
-            return DT;
+
             TimeSpan ts;
             if (m_dt != null && !m_InProgress )
             {

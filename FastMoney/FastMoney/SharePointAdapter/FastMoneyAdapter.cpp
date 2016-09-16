@@ -5,6 +5,7 @@
 
 #include "IFastMoneyAdapter.h"
 #include "FastMoneyAdapter.h"
+#include "../SharePointCollector/Globals.h"
 //using namespace FastMoneyClient;
 
 void WriteEventLog(String^ msg)
@@ -239,13 +240,23 @@ bool CFastMoneyAdapter::MoreData()
 
 void CFastMoneyAdapter::RetrieveListItems( wchar_t* listName, VARIANT *vValues, int &ret)
 {
+	DataTable ^ DT;
+	if (method == 1)
+	{
+	DT = _managedObject->RetrieveListItems(gcnew String(listName));
+	} 
+	else
+	{
+		DT = _managedObject->GetFastMoneyDataTable(gcnew String(listName));
+	}
 
-	DataTable^ DT = _managedObject->GetFastMoneyDataTable(gcnew String(listName));
-	//DT->Columns->RemoveAt(7);
+	
+	//
+
 	String^ error = _managedObject->LastError;
 	LONG lRow = 0;
 	SAFEARRAY *psa;
-	//LONG lStores = 0;
+
 	SAFEARRAYBOUND saBoundNew;
 	VARIANT vtTemp;
 	VariantInit(&vtTemp);
