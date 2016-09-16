@@ -96,13 +96,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="SharePointCollector.idl">
-      <Filter>Source Files</Filter>
-    </Midl>
     <Midl Include="..\..\..\Publisher2000Server\Publisher2000Server.idl">
       <Filter>Source Files</Filter>
     </Midl>
     <Midl Include="..\..\..\PublisherCommon\InboundCollector.idl">
+      <Filter>Source Files</Filter>
+    </Midl>
+    <Midl Include="FastMoneyCollector.idl">
       <Filter>Source Files</Filter>
     </Midl>
   </ItemGroup>

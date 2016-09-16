@@ -292,7 +292,7 @@
       <ProxyFileName Condition="'$(Configuration)|$(Platform)'=='VeraCode|Win32'">
       </ProxyFileName>
     </Midl>
-    <Midl Include="SharePointCollector.idl" />
+    <Midl Include="FastMoneyCollector.idl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\common classes\Symon\ErrorsAndDebug.h" />
