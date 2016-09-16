@@ -16,12 +16,12 @@ class CSharePointCollect;
 
 class CEventMgr;
 
-#include "SharepointCommon.h"
+#include "FastMoneyCommon.h"
 
 #include "mtobject6.h"
 
 #include "MultiThread6.h"
-#include "SharePointData.h"
+#include "FastMoneyData.h"
 //#include "FastMoneyData.h"
 
 enum 

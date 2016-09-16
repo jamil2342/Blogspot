@@ -286,7 +286,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='VeraCode|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="SharePointInbound.cpp" />
+    <ClCompile Include="FastMoneyInbound.cpp" />
     <ClCompile Include="SharePointUI.cpp" />
     <ClCompile Include="SharePointUI_i.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -351,7 +351,7 @@
     <ClInclude Include="..\..\..\PublisherCommon\BmpInfo.h" />
     <ClInclude Include="..\..\..\PublisherCommon\BuildP6.h" />
     <ClInclude Include="..\..\..\..\Include\ObjectDefs.h" />
-    <ClInclude Include="..\SharePointCommon\SharePointCommon.h" />
+    <ClInclude Include="..\SharePointCommon\FastMoneyCommon.h" />
     <ClInclude Include="DiagnosticDlg.h" />
     <ClInclude Include="Page1.h" />
     <ClInclude Include="Page2.h" />
@@ -359,7 +359,7 @@
     <ClInclude Include="Page4.h" />
     <ClInclude Include="..\..\..\PublisherCommon\PubUtility.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="SharePointInbound.h" />
+    <ClInclude Include="FastMoneyInbound.h" />
     <ClInclude Include="SharePointUI_i.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="..\..\..\..\Common Classes\Symon\StreamHelper.h" />

@@ -5,7 +5,7 @@
 #include "resource.h"
 #include "Wizzard1.h"
 #include "SharePointUI.h"
-#include "SharePointInbound.h"
+#include "FastMoneyInbound.h"
 #include "PSDBDefines.h"
 
 #ifdef _DEBUG

@@ -227,9 +227,9 @@
     <ClCompile Include="ErrorsAndDebug.cpp" />
     <ClCompile Include="EventMgr.cpp" />
     <ClCompile Include="PSDBListener.cpp" />
-    <ClCompile Include="SharePointCollect.cpp" />
+    <ClCompile Include="FastMoneyCollect.cpp" />
     <ClCompile Include="SharePointCollector.cpp" />
-    <ClCompile Include="SharePointData.cpp" />
+    <ClCompile Include="FastMoneyData.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -318,13 +318,13 @@
     <ClInclude Include="..\..\..\PublisherCommon\PublisherCommon.h" />
     <ClInclude Include="..\..\..\PublisherCommon\PubUtility.h" />
     <ClInclude Include="..\..\..\PublisherCommon\UpdateBlob.h" />
-    <ClInclude Include="..\SharePointCommon\SharePointCommon.h" />
+    <ClInclude Include="..\SharePointCommon\FastMoneyCommon.h" />
     <ClInclude Include="dllmain.h" />
     <ClInclude Include="EventMgr.h" />
     <ClInclude Include="PSDBListener.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="SharePointCollect.h" />
-    <ClInclude Include="SharePointData.h" />
+    <ClInclude Include="FastMoneyCollect.h" />
+    <ClInclude Include="FastMoneyData.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SharePointCollector.h" />
   </ItemGroup>

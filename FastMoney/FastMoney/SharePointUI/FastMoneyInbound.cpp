@@ -1,7 +1,7 @@
 // SharePointInbound.cpp : Implementation of CSharePointInbound
 #include "stdafx.h"
 #include "SharePointUI.h"
-#include "SharePointInbound.h"
+#include "FastMoneyInbound.h"
 
 /////////////////////////////////////////////////////////////////////////////
 // CSharePointInbound

@@ -5,7 +5,7 @@
 
 #include "resource.h"       // main symbols
 #include "publisher2000Server.h"
-#include "SharePointCommon.h"
+#include "FastMoneyCommon.h"
 #include "ErrorsAndDebug.h"
 #include "mtobject6.h"
 

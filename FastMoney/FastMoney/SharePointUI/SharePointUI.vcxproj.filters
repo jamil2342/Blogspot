@@ -51,9 +51,6 @@
     <ClCompile Include="Wizzard2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SharePointInbound.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SharePointUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -79,6 +76,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Common Classes\Symon\StringHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FastMoneyInbound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -129,12 +129,6 @@
     <ClInclude Include="Wizzard2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SharePointInbound.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SharePointCommon\SharePointCommon.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SharePointUI_i.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
@@ -160,6 +154,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Include\Interfaces\adohelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SharePointCommon\FastMoneyCommon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FastMoneyInbound.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

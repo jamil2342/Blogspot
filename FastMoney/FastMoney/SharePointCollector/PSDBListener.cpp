@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include "SharePointCollector.h"
-#include "SharePointCollect.h"
+#include "FastMoneyCollect.h"
 #include "PSDBListener.h"
 #include "PSDBMsgs.h"
 

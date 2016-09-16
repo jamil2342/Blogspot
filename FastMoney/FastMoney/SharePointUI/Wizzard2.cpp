@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "resource.h"
 #include "SharePointUI.h"
-#include "SharePointInbound.h"
+#include "FastMoneyInbound.h"
 #include "Wizzard2.h"
 
 #ifdef _DEBUG

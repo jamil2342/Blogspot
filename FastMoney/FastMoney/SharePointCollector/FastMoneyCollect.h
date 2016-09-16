@@ -3,7 +3,7 @@
 #pragma once
 #include "resource.h"       // main symbols
 #include "aSyncro.h"
-#include "SharePointCommon.h"
+#include "FastMoneyCommon.h"
 
 #include "EventMgr.h"
 #include "mtobject6.h"

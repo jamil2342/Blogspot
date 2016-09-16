@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 #include "SharePointCollector.h"
-#include "SharePointCollect.h"
+#include "FastMoneyCollect.h"
 #include "streamhelper.h"
 
 #define IID_DEFINED

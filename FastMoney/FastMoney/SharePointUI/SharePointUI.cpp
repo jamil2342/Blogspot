@@ -11,7 +11,7 @@
 #include "SharePointUI.h"
 
 //#include "SharePointUI_i.c"
-#include "SharePointInbound.h"
+#include "FastMoneyInbound.h"
 #include "PubInboundUI_i.c"
 
 

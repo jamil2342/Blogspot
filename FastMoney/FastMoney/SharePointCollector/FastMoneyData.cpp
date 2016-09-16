@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "SharePointCollector.h"
-#include "SharePointData.h"
-#include "SharePointCollect.h"
+#include "FastMoneyData.h"
+#include "FastMoneyCollect.h"
 
 #include <COMDEF.H>
 #include "objectdefs.h"
