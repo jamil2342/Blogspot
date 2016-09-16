@@ -22,7 +22,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
     <SccProvider>SAK</SccProvider>
-    <ProjectName>FastMoneyAdapter</ProjectName>
+    <ProjectName>SharePointAdapter</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -147,10 +147,9 @@
     <None Include="Version.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ISharePointAdapter.h" />
+    <ClInclude Include="IFastMoneyAdapter.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="SharePointAdapter.h" />
-    <ClInclude Include="SharePointEnums.h" />
+    <ClInclude Include="FastMoneyAdapter.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -167,8 +166,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='VeraCode|Win32'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="ISharePointAdapter.cpp" />
-    <ClCompile Include="SharePointAdapter.cpp" />
+    <ClCompile Include="IFastMoneyAdapter.cpp" />
+    <ClCompile Include="FastMoneyAdapter.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

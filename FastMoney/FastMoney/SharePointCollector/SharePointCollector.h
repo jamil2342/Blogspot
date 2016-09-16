@@ -4,7 +4,7 @@
 
 
  /* File created by MIDL compiler version 8.00.0603 */
-/* at Thu Sep 15 13:58:55 2016
+/* at Fri Sep 16 04:14:49 2016
  */
 /* Compiler settings for SharePointCollector.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0603 

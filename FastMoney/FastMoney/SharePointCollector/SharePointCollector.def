@@ -1,6 +1,6 @@
 ; SharePointCollector.def : Declares the module parameters.
 
-LIBRARY      "SharePointCollector.DLL"
+LIBRARY      "FastMoneyAdapter.DLL"
 
 EXPORTS
 	DllCanUnloadNow		PRIVATE

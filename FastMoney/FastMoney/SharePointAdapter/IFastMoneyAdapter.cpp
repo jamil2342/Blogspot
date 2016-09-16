@@ -1,6 +1,6 @@
 #include "StdAfx.h"
-#include "ISharePointAdapter.h"
-#include "SharePointAdapter.h"
+#include "IFastMoneyAdapter.h"
+#include "FastMoneyAdapter.h"
 
 ISharePointAdapter *ISharePointAdapter::CreateInstance(void)
 {

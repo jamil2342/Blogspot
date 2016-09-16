@@ -1,6 +1,6 @@
 #pragma once
 #include <vcclr.h>
-#include "ISharePointAdapter.h"
+#include "IFastMoneyAdapter.h"
 #include <list>
 
 using namespace System;

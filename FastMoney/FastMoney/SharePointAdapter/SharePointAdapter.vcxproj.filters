@@ -27,16 +27,13 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SharePointAdapter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ISharePointAdapter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SharePointEnums.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IFastMoneyAdapter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FastMoneyAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -44,16 +41,16 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SharePointAdapter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ISharePointAdapter.cpp">
+    <ClCompile Include="AssemblyInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AssemblyInfo.cpp">
+    <ClCompile Include="IFastMoneyAdapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FastMoneyAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -3,8 +3,8 @@
 
 #include "stdafx.h"
 
-#include "ISharePointAdapter.h"
-#include "SharePointAdapter.h"
+#include "IFastMoneyAdapter.h"
+#include "FastMoneyAdapter.h"
 //using namespace FastMoneyClient;
 
 void WriteEventLog(String^ msg)
