@@ -99,7 +99,7 @@ void CFastMoneyData::DoQueryLocal()
 
 		//m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->RetrieveListItems(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szListTitle), &vtItems, nres);
 		wchar_t * url = L"http://podcast.cnbc.com/mmpodcast/fastmoney.xml";
-		m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->RetrieveListItems(url, &vtItems, nres);
+		m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(url, &vtItems, nres);
 
 		//bool bMoreData = m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->MoreData();
 		if (vtItems.vt != VT_EMPTY && nres == 0)
@@ -405,8 +405,8 @@ void CFastMoneyData::DoQuery()
 			//std::wstring name(L"http://podcast.cnbc.com/mmpodcast/fastmoney.xml");
 			//wchar_t* szName = name.c_str();
 			
-			m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->RetrieveListItems(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szListTitle),&vtItems, nres);
-			bool bMoreData = m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->MoreData();
+			m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szListTitle),&vtItems, nres);
+			bool bMoreData = m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->MoreData();
 			if ( vtItems.vt != VT_EMPTY && nres == 0 )
 			{
 				long			lLowerBound = 0;
@@ -677,7 +677,7 @@ ULONG CFastMoneyData::Connect()
 	if(m_pThreadMgr == NULL)
 		return S_FALSE;
 	m_pThreadMgr->pmgr->m_pOwner->CreateSharePointInstance();
-	m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->SetConfig(
+	m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->SetConfig(
 		_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szServiceUrl),
 		_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szProxy),
 		_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szUser),
@@ -689,11 +689,11 @@ ULONG CFastMoneyData::Connect()
 		m_pThreadMgr->pmgr->m_pOwner->m_base.m_update_interval,
 		m_pThreadMgr->pmgr->m_pOwner->m_base.m_update_timeout);
 
-	m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->SetViewTitle(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szViewTitle));
-	m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->SetFuagConfig(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szFuagAuth), L"" );
-	m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->SetContentLocation(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szContentFolder));
+	m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->SetViewTitle(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szViewTitle));
+	m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->SetFuagConfig(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szFuagAuth), L"" );
+	m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->SetContentLocation(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szContentFolder));
 
-	m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->SetProxySettings(
+	m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->SetProxySettings(
 		m_pThreadMgr->pmgr->m_pOwner->m_base.m_bUseProxy,
 		m_pThreadMgr->pmgr->m_pOwner->m_base.m_bBypassProxy,
 		_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szProxyUser),
@@ -722,7 +722,7 @@ void CFastMoneyData::doDisconnect()
 
 	m_bQuitProcessing = true;
 	m_ConnectionOpen = INACTIVE;
-	m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->Disconnect();
+	m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->Disconnect();
 }
 
 void CFastMoneyData::PublishFields()

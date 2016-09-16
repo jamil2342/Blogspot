@@ -325,7 +325,7 @@ STDMETHODIMP CFastMoneyCollect::CustomIF(/*[in]*/int type,/*[in,out]*/VARIANT *i
 			VariantClear(internalInfo);
 			if ( CreateSharePointInstance() )
 			{
-				m_pSharePoint->GetLastError(internalInfo);
+				m_pFastMoney->GetLastError(internalInfo);
 			}
 			break;
 		case CONFIGURE_SHAREPOINT:
@@ -369,14 +369,14 @@ STDMETHODIMP CFastMoneyCollect::CustomIF(/*[in]*/int type,/*[in,out]*/VARIANT *i
 			VariantClear(internalInfo);
 			if ( CreateSharePointInstance() )
 			{
-				m_pSharePoint->SetConfig(bsData[0], bsData[1], bsData[2], bsData[3], bsData[4], bsData[6], (enum ClientAuthenticationMode)lAuthMode, lNtlm, lInterval, ltimeout);
-				m_pSharePoint->SetFuagConfig(bsData[5],	L"");
+				m_pFastMoney->SetConfig(bsData[0], bsData[1], bsData[2], bsData[3], bsData[4], bsData[6], (enum ClientAuthenticationMode)lAuthMode, lNtlm, lInterval, ltimeout);
+				m_pFastMoney->SetFuagConfig(bsData[5],	L"");
 				if ( bsData[7].length() > 0 )
-					m_pSharePoint->SetCertFile(bsData[7]);
-				m_pSharePoint->SetViewTitle(bsData[8]);
+					m_pFastMoney->SetCertFile(bsData[7]);
+				m_pFastMoney->SetViewTitle(bsData[8]);
 				if ( bsData[9].length() > 0 )
-					m_pSharePoint->SetContentLocation(bsData[9]);
-				m_pSharePoint->SetProxySettings(lUseProxy, lBypassLocal, bsData[10], bsData[11], bsData[12], bsData[13], bsData[14]);
+					m_pFastMoney->SetContentLocation(bsData[9]);
+				m_pFastMoney->SetProxySettings(lUseProxy, lBypassLocal, bsData[10], bsData[11], bsData[12], bsData[13], bsData[14]);
 			}
 			break;
 		case GET_LIST_TITLES:
@@ -385,7 +385,7 @@ STDMETHODIMP CFastMoneyCollect::CustomIF(/*[in]*/int type,/*[in,out]*/VARIANT *i
 			VariantClear(internalInfo);
 			if ( CreateSharePointInstance() )
 			{
-				m_pSharePoint->RetrieveLists(internalInfo, nres);
+				m_pFastMoney->RetrieveLists(internalInfo, nres);
 				if ( nres )
 					hResult = S_FALSE;
 			}
@@ -405,7 +405,7 @@ STDMETHODIMP CFastMoneyCollect::CustomIF(/*[in]*/int type,/*[in,out]*/VARIANT *i
 			VariantClear(internalInfo);
 			if ( CreateSharePointInstance() )
 			{
-				m_pSharePoint->RetrieveViews(bsData[0], internalInfo, nres);
+				m_pFastMoney->RetrieveViews(bsData[0], internalInfo, nres);
 				if ( nres )
 					hResult = S_FALSE;
 			}
@@ -425,7 +425,7 @@ STDMETHODIMP CFastMoneyCollect::CustomIF(/*[in]*/int type,/*[in,out]*/VARIANT *i
 			VariantClear(internalInfo);
 			if ( CreateSharePointInstance() )
 			{
-				m_pSharePoint->RetrieveFields(bsData[0], internalInfo, nres);
+				m_pFastMoney->RetrieveFields(bsData[0], internalInfo, nres);
 				if ( nres )
 					hResult = S_FALSE;
 			}
@@ -435,8 +435,8 @@ STDMETHODIMP CFastMoneyCollect::CustomIF(/*[in]*/int type,/*[in,out]*/VARIANT *i
 				bTF = (internalInfo->boolVal == TRUE);
 
 			m_bShowDebugMsgs = bTF;
-			if ( m_pSharePoint )
-				m_pSharePoint->SetDebug(bTF);
+			if ( m_pFastMoney )
+				m_pFastMoney->SetDebug(bTF);
 			break;
 		case GetDebugMsgs:
 			VariantClear(internalInfo);		// Reuqired on In/out
@@ -776,7 +776,7 @@ CFastMoneyCollect::CFastMoneyCollect()
 	m_pHelper = NULL;
 	m_pDBListener = NULL;
 	m_bFirst = true;
-	m_pSharePoint = NULL;
+	m_pFastMoney = NULL;
 	m_bTablesExist = false;
 
 	SPTYPETOPOLY[""] = POLY_STR;
@@ -839,10 +839,10 @@ CFastMoneyCollect::~CFastMoneyCollect()
 	if(m_pListener)
 		m_pListener->Release();
 	m_pListener = NULL;
-	if ( m_pSharePoint )
+	if ( m_pFastMoney )
 	{
-		IFastMoneyAdapter::Destroy(m_pSharePoint);
-		m_pSharePoint = NULL;
+		IFastMoneyAdapter::Destroy(m_pFastMoney);
+		m_pFastMoney = NULL;
 	}
 	if (m_hStartupDone )
 		CloseHandle(m_hStartupDone);
@@ -896,20 +896,20 @@ bool CFastMoneyCollect::CreateSharePointInstance()
 {
 	HRESULT hr = S_OK;
 
-	if ( m_pSharePoint == NULL )
+	if ( m_pFastMoney == NULL )
 	{
 		ShowMsgFmt(false, "ISharePointAdapter::CreateInstance()\n");
-		m_pSharePoint = IFastMoneyAdapter::CreateInstance();
+		m_pFastMoney = IFastMoneyAdapter::CreateInstance();
 	}
 
-	if ( m_pSharePoint == NULL )
+	if ( m_pFastMoney == NULL )
 	{
 		if ( !m_bErrorIssued )
 		{
 			ShowMsgFmt(true, "Failed to load ISharePointAdapter - error %x\n", hr );
 			//LogEvent(EVENTLOG_ERROR_TYPE, "Failed to load ISharePointAdapter - error %x", hr );
 		}
-		m_pSharePoint = NULL;
+		m_pFastMoney = NULL;
 		m_bErrorIssued = true;
 		return false;
 	}
