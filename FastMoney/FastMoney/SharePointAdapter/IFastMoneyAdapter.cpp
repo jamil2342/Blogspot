@@ -2,12 +2,12 @@
 #include "IFastMoneyAdapter.h"
 #include "FastMoneyAdapter.h"
 
-ISharePointAdapter *ISharePointAdapter::CreateInstance(void)
+IFastMoneyAdapter *IFastMoneyAdapter::CreateInstance(void)
 {
-	return ((ISharePointAdapter *)new CSharePointAdapter());
+	return ((IFastMoneyAdapter *)new CFastMoneyAdapter());
 }
 
-void ISharePointAdapter::Destroy(ISharePointAdapter *instance)
+void IFastMoneyAdapter::Destroy(IFastMoneyAdapter *instance)
 {
 	instance->Disconnect();
 	delete instance;

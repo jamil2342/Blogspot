@@ -38,17 +38,17 @@ void MarshalString ( String ^ s, std::wstring& os )
    Marshal::FreeHGlobal(IntPtr((void*)chars));
 }
 
-CSharePointAdapter::CSharePointAdapter(void)
+CFastMoneyAdapter::CFastMoneyAdapter(void)
 {
     _managedObject = gcnew CFastMoneyClient();
 	//myclient = gcnew Class1();
 }
 
-CSharePointAdapter::~CSharePointAdapter(void)
+CFastMoneyAdapter::~CFastMoneyAdapter(void)
 {
 }
 
-int CSharePointAdapter::Disconnect()
+int CFastMoneyAdapter::Disconnect()
 { 
 	_managedObject->ExitNow = true;
 	int timeout = 0;
@@ -61,7 +61,7 @@ int CSharePointAdapter::Disconnect()
 	return 0;
 }
 
-void CSharePointAdapter::SetConfig(wchar_t* url,  wchar_t* proxy,  wchar_t* user,  wchar_t* password,  wchar_t* domain, wchar_t* authtype, enum ClientAuthenticationMode am, bool ntlm, int interval, int updatetimeout)
+void CFastMoneyAdapter::SetConfig(wchar_t* url,  wchar_t* proxy,  wchar_t* user,  wchar_t* password,  wchar_t* domain, wchar_t* authtype, enum ClientAuthenticationMode am, bool ntlm, int interval, int updatetimeout)
 {
 	_managedObject->ServiceUrl = Marshal::PtrToStringUni(static_cast<IntPtr>(url));
 	_managedObject->ProxyUrl = Marshal::PtrToStringUni(static_cast<IntPtr>(proxy));
@@ -76,12 +76,12 @@ void CSharePointAdapter::SetConfig(wchar_t* url,  wchar_t* proxy,  wchar_t* user
 	return;
 }
 
-void CSharePointAdapter::SetDebug(bool bDebug)
+void CFastMoneyAdapter::SetDebug(bool bDebug)
 {
 	_managedObject->SetDebug(bDebug);
 }
 
-void CSharePointAdapter::SetProxySettings(bool useproxy, bool bypassproxy, wchar_t* proxyuser, wchar_t* proxypassword, wchar_t* proxydomain, wchar_t*proxybypass, wchar_t* authtype)
+void CFastMoneyAdapter::SetProxySettings(bool useproxy, bool bypassproxy, wchar_t* proxyuser, wchar_t* proxypassword, wchar_t* proxydomain, wchar_t*proxybypass, wchar_t* authtype)
 {
 	_managedObject->ProxyUser = Marshal::PtrToStringUni(static_cast<IntPtr>(proxyuser));
 	_managedObject->ProxyPassword = Marshal::PtrToStringUni(static_cast<IntPtr>(proxypassword));
@@ -93,7 +93,7 @@ void CSharePointAdapter::SetProxySettings(bool useproxy, bool bypassproxy, wchar
 }
 
 
-void CSharePointAdapter::SetFuagConfig(wchar_t* fuagAuth,  wchar_t* userAgent)
+void CFastMoneyAdapter::SetFuagConfig(wchar_t* fuagAuth,  wchar_t* userAgent)
 {
 	if ( fuagAuth != NULL && wcslen(fuagAuth) > 0 )
 		_managedObject->FuagAuth = Marshal::PtrToStringUni(static_cast<IntPtr>(fuagAuth));
@@ -103,22 +103,22 @@ void CSharePointAdapter::SetFuagConfig(wchar_t* fuagAuth,  wchar_t* userAgent)
 	return;
 }
 
-void CSharePointAdapter::SetCertFile(wchar_t* certfile)
+void CFastMoneyAdapter::SetCertFile(wchar_t* certfile)
 {
 	_managedObject->CertFile = Marshal::PtrToStringUni(static_cast<IntPtr>(certfile));
 }
 
-void CSharePointAdapter::SetViewTitle(wchar_t* query)
+void CFastMoneyAdapter::SetViewTitle(wchar_t* query)
 {
 	_managedObject->ViewTitle = Marshal::PtrToStringUni(static_cast<IntPtr>(query));
 }
 
-void CSharePointAdapter::SetContentLocation(wchar_t* folder)
+void CFastMoneyAdapter::SetContentLocation(wchar_t* folder)
 {
 	_managedObject->ContentFolder = Marshal::PtrToStringUni(static_cast<IntPtr>(folder));
 }
 
-void CSharePointAdapter::GetLastError(VARIANT *vError)
+void CFastMoneyAdapter::GetLastError(VARIANT *vError)
 {
 	String ^error =  _managedObject->LastError;
 	VariantInit(vError);
@@ -129,7 +129,7 @@ void CSharePointAdapter::GetLastError(VARIANT *vError)
 	_managedObject->LastError = nullptr;
 }
 
-void CSharePointAdapter::RetrieveLists(VARIANT *vValues, int &ret)
+void CFastMoneyAdapter::RetrieveLists(VARIANT *vValues, int &ret)
 {
 	List<String ^>^ rlist = _managedObject->RetrieveLists();
 	String ^error =  _managedObject->LastError;
@@ -160,7 +160,7 @@ void CSharePointAdapter::RetrieveLists(VARIANT *vValues, int &ret)
 	vValues->parray = psa;
 }
 
-void CSharePointAdapter::RetrieveViews(wchar_t* listname, VARIANT *vValues, int &ret)
+void CFastMoneyAdapter::RetrieveViews(wchar_t* listname, VARIANT *vValues, int &ret)
 {
 	List<String ^>^ rlist = _managedObject->RetrieveViews(gcnew String(listname));
 	String^ error = _managedObject->LastError;
@@ -191,7 +191,7 @@ void CSharePointAdapter::RetrieveViews(wchar_t* listname, VARIANT *vValues, int 
 	vValues->parray = psa;
 }
  
-void CSharePointAdapter::RetrieveFields(wchar_t* listname, VARIANT *vValues, int &ret)
+void CFastMoneyAdapter::RetrieveFields(wchar_t* listname, VARIANT *vValues, int &ret)
 {
 	Dictionary<String ^,String ^>^ flist = _managedObject->RetrieveFields(gcnew String(listname));
 	String^ error = _managedObject->LastError;
@@ -232,12 +232,12 @@ void CSharePointAdapter::RetrieveFields(wchar_t* listname, VARIANT *vValues, int
 
 }
 //#####do correct
-bool CSharePointAdapter::MoreData()
+bool CFastMoneyAdapter::MoreData()
 {
 	return _managedObject->MoreData;
 }
 
-void CSharePointAdapter::RetrieveListItems( wchar_t* listName, VARIANT *vValues, int &ret)
+void CFastMoneyAdapter::RetrieveListItems( wchar_t* listName, VARIANT *vValues, int &ret)
 {
 
 	DataTable^ DT = _managedObject->GetFastMoneyDataTable(gcnew String(listName));
@@ -305,7 +305,7 @@ void CSharePointAdapter::RetrieveListItems( wchar_t* listName, VARIANT *vValues,
 //}
 //
 
-void CSharePointAdapter::StripHTML( wchar_t* listName, VARIANT *vValue)
+void CFastMoneyAdapter::StripHTML( wchar_t* listName, VARIANT *vValue)
 {
 	IntPtr ip = Marshal::StringToBSTR(_managedObject->StripHTML(gcnew String(listName)));
 	BSTR bs = SysAllocString(static_cast<BSTR>(ip.ToPointer()));
@@ -317,7 +317,7 @@ void CSharePointAdapter::StripHTML( wchar_t* listName, VARIANT *vValue)
 	Marshal::FreeBSTR(ip);
 }
 
-void CSharePointAdapter::ExtractImagesFromHtml(wchar_t* listName, VARIANT *vValues)
+void CFastMoneyAdapter::ExtractImagesFromHtml(wchar_t* listName, VARIANT *vValues)
 {
 	List<String ^>^ rlist = _managedObject->ExtractImages(gcnew String(listName));
 	VariantInit(vValues);

@@ -841,7 +841,7 @@ CSharePointCollect::~CSharePointCollect()
 	m_pListener = NULL;
 	if ( m_pSharePoint )
 	{
-		ISharePointAdapter::Destroy(m_pSharePoint);
+		IFastMoneyAdapter::Destroy(m_pSharePoint);
 		m_pSharePoint = NULL;
 	}
 	if (m_hStartupDone )
@@ -899,7 +899,7 @@ bool CSharePointCollect::CreateSharePointInstance()
 	if ( m_pSharePoint == NULL )
 	{
 		ShowMsgFmt(false, "ISharePointAdapter::CreateInstance()\n");
-		m_pSharePoint = ISharePointAdapter::CreateInstance();
+		m_pSharePoint = IFastMoneyAdapter::CreateInstance();
 	}
 
 	if ( m_pSharePoint == NULL )

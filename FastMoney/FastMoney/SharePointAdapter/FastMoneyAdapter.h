@@ -13,14 +13,14 @@ using namespace FastMoneyClient;
 void MarshalString ( String ^ s, std::string& os );
 void MarshalString ( String ^ s, std::wstring& os ) ;
 
-public class DLLAPI CSharePointAdapter : ISharePointAdapter
+public class DLLAPI CFastMoneyAdapter : IFastMoneyAdapter
 {
 private:
 	gcroot<CFastMoneyClient ^>	_managedObject;
 	//gcroot<Class1 ^>	myclient;
 public:
-	CSharePointAdapter(void);
-	~CSharePointAdapter(void);
+	CFastMoneyAdapter(void);
+	~CFastMoneyAdapter(void);
 	int Disconnect();
 
 public:
