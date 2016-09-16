@@ -61,7 +61,7 @@ public:
 	CDBEvent m_currentEvent;
 	CEventMgr *pmgr;
 	
-	CSharePointData m_sharepoint;
+	CFastMoneyData m_sharepoint;
 	//CFastMoneyData m_fastmoneyData;
 	void GetImplementedForIB();
 	

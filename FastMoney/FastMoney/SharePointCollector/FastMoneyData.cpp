@@ -34,7 +34,7 @@ void OutputHeading(const char * explanation)
 
 }
 // **************************************************************************
-CSharePointData::CSharePointData()
+CFastMoneyData::CFastMoneyData()
 //
 //	Create a new CNTSSData for Runner or for Property Page.
 // **********************************************************************
@@ -44,7 +44,7 @@ CSharePointData::CSharePointData()
 }
 
 // **************************************************************************
-void CSharePointData::InitData(CEventThread *pMgr)
+void CFastMoneyData::InitData(CEventThread *pMgr)
 //
 //	Initialize data done from Constructor
 // **********************************************************************
@@ -64,7 +64,7 @@ void CSharePointData::InitData(CEventThread *pMgr)
 	_CrtMemCheckpoint(&m_s1);
 }
 
-void CSharePointData::DoQueryLocal()
+void CFastMoneyData::DoQueryLocal()
 {
 
 
@@ -377,7 +377,7 @@ void CSharePointData::DoQueryLocal()
 }
 
 
-void CSharePointData::DoQuery()
+void CFastMoneyData::DoQuery()
 {
 	int nres = 0;
 	TCHAR buf[1000];
@@ -656,7 +656,7 @@ void CSharePointData::DoQuery()
 
 
 // **************************************************************************
-CSharePointData::~CSharePointData()
+CFastMoneyData::~CFastMoneyData()
 //
 //	Data class destructor for cleanup.
 // **********************************************************************
@@ -672,7 +672,7 @@ CSharePointData::~CSharePointData()
 
 
 // **************************************************************************
-ULONG CSharePointData::Connect()
+ULONG CFastMoneyData::Connect()
 {
 	if(m_pThreadMgr == NULL)
 		return S_FALSE;
@@ -711,7 +711,7 @@ ULONG CSharePointData::Connect()
 
 
 // **************************************************************************
-void CSharePointData::doDisconnect()
+void CFastMoneyData::doDisconnect()
 //
 // Stop Data Feed and Logout
 // if (we got a data update in-between checking enabled, stop feed 
@@ -725,7 +725,7 @@ void CSharePointData::doDisconnect()
 	m_pThreadMgr->pmgr->m_pOwner->m_pSharePoint->Disconnect();
 }
 
-void CSharePointData::PublishFields()
+void CFastMoneyData::PublishFields()
 {
 	m_pThreadMgr->pmgr->m_pOwner->PublishFields();
 }

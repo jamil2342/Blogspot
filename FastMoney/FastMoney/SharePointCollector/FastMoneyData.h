@@ -1,15 +1,15 @@
 #pragma once
 #include "mtobject6.h"
-
+//#include "FastMoneyAdapter.h"
 class CEventThread;
 #define SHAREPOINT_ERROR_RECOVERY_TIMEOUT 120
 
-class CSharePointData :
+class CFastMoneyData :
 	public MTObject
 {
 public:
-	CSharePointData(void);
-	~CSharePointData(void);
+	CFastMoneyData(void);
+	~CFastMoneyData(void);
 	CEventThread* m_pThreadMgr;				// Ptr to the parent
 	map<string, string> m_mapImages;
 
