@@ -53,7 +53,7 @@ BOOL CSharePointUIApp::InitInstance()
 {
 	CFastMoneyDlg dlg;
 	dlg.DoModal();
-	return TRUE;
+	//return TRUE;
     _Module.Init(ObjectMap, m_hInstance, &LIBID_SharePointUILib);
     return CWinApp::InitInstance();
 }

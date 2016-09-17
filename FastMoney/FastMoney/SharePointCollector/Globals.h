@@ -1,2 +1,2 @@
 
-int method = 1;
+int method = 0;

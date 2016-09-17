@@ -990,7 +990,7 @@ namespace FastMoneyClient
             for (int i = 0; i < xmlTag.Count; i++)
             {
                 DataRow dr = dt.NewRow();
-                dr[0] = "" + i + 1;
+                dr[0] = "" + (i + 1);
                 for (int j = 0; j < ColumnsCount-1; j++)
                 {
                     dr[j+1] = xmlTag.Item(i).ChildNodes[j].InnerText;
