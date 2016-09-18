@@ -82,7 +82,8 @@ void CFastMoneyData::DoQueryLocal()
 	GetSystemTime(&st);
 	vTimeStamp.vt = VT_DATE;
 	SystemTimeToVariantTime(&st, &vTimeStamp.date);
-	CUpdateBlob * m_pDatum = m_pThreadMgr->pmgr->m_pOwner->m_pDatum;
+	CUpdateBlob * m_pDatum;
+	m_pDatum= m_pThreadMgr->pmgr->m_pOwner->m_pDatum;
 
 	
 	if (true)
@@ -104,14 +105,14 @@ void CFastMoneyData::DoQueryLocal()
 		{
 
 			m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szListTitle), &vtItems, nres);
-			m_pDatum->m_tablename = "hhareviewcollector192274713_parthatest";
+			//m_pDatum->m_tablename = "hhareviewcollector192274713_parthatest";
 
 
 		}
 		else
 		{
 			m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(url, &vtItems, nres);
-			m_pDatum->m_tablename = "FastMoney123";
+			//m_pDatum->m_tablename = "FastMoney123";
 		}
 
 

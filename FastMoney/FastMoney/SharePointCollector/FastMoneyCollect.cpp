@@ -934,7 +934,7 @@ void CFastMoneyCollect::PublishFields()
 	{
 		strcpy_s(buf, _countof(buf), m_base.m_szListTitle);
 		strTableName = StripBadChars(buf, false);
-		sprintf_s(szMsg, _countof(szMsg), _T("CSharePointCollect::PublishFields() - m_szListTitle = %s\n"), strTableName.c_str());
+ 		sprintf_s(szMsg, _countof(szMsg), _T("CSharePointCollect::PublishFields() - m_szListTitle = %s\n"), strTableName.c_str());
 		OutputDebugString(szMsg);
 	}
 	if (strlen(m_base.m_szPrevListTitle) > 0)
