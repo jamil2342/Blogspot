@@ -956,7 +956,7 @@ namespace FastMoneyClient
             DataTable dt = ConvertXmlNodeListToDataTable(xmlTag);
 
 
-            int desiredSize = 2;
+            int desiredSize = 4;
 
             while (dt.Columns.Count > desiredSize)
             {

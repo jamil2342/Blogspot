@@ -112,7 +112,7 @@ void CFastMoneyData::DoQueryLocal()
 		else
 		{
 			m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(url, &vtItems, nres);
-			//m_pDatum->m_tablename = "FastMoney123";
+			m_pDatum->m_tablename = "fast_money";
 		}
 
 
