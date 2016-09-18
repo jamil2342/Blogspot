@@ -75,15 +75,16 @@ void CFastMoneyData::DoQueryLocal()
 	TCHAR buf[1000];
 	CTableKeys *pTblKeys = NULL;
 	CKeyStuff *pKeyStuff;
-	ImpKeyMapIter mapIter;
+	ImpKeyMapIter mapIter; 
+	CUpdateBlob * m_pDatum;
+	m_pDatum = m_pThreadMgr->pmgr->m_pOwner->m_pDatum;
 
 	VARIANT     vTimeStamp;	VariantInit(&vTimeStamp);
 	SYSTEMTIME  st;
 	GetSystemTime(&st);
 	vTimeStamp.vt = VT_DATE;
 	SystemTimeToVariantTime(&st, &vTimeStamp.date);
-	CUpdateBlob * m_pDatum;
-	m_pDatum= m_pThreadMgr->pmgr->m_pOwner->m_pDatum;
+
 
 	
 	if (true)
