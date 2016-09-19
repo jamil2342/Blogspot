@@ -145,10 +145,10 @@ void CEventThread::DoWork()
 		int cycletime = this->m_nCycleTime / 1000;
 		cycletime = cycletime < 1 ? 1 : cycletime;
 		char szBuf[256];
-		sprintf_s(szBuf, _countof(szBuf), "DoWork() countdown to retry = %d\n", SHAREPOINT_ERROR_RECOVERY_TIMEOUT - m_fastmoney.m_nErrorRecovery*cycletime);
+		sprintf_s(szBuf, _countof(szBuf), "DoWork() countdown to retry = %d\n", FASTMONEY_ERROR_RECOVERY_TIMEOUT - m_fastmoney.m_nErrorRecovery*cycletime);
 		OutputDebugString(szBuf);
 		pmgr->m_pOwner->DoEvent(CT_InboundStateChange, ERR_RECOVERY);
-		if (m_fastmoney.m_nErrorRecovery++ >= SHAREPOINT_ERROR_RECOVERY_TIMEOUT / cycletime)
+		if (m_fastmoney.m_nErrorRecovery++ >= FASTMONEY_ERROR_RECOVERY_TIMEOUT / cycletime)
 		{
 			sprintf_s(szBuf, _countof(szBuf), "DoWork() Attempting to restart\n");
 			OutputDebugString(szBuf);

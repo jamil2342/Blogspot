@@ -2,7 +2,7 @@
 #include "mtobject6.h"
 //#include "FastMoneyAdapter.h"
 class CEventThread;
-#define SHAREPOINT_ERROR_RECOVERY_TIMEOUT 120
+#define FASTMONEY_ERROR_RECOVERY_TIMEOUT 120
 
 class CFastMoneyData :
 	public MTObject
