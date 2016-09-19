@@ -86,6 +86,11 @@ void CFastMoneyData::DoQueryLocal()
 	SystemTimeToVariantTime(&st, &vTimeStamp.date);
 
 	m_pDatum->m_fieldnames.insert(pair<string, int>("author", 4));
+	m_pDatum->m_fieldnames.insert(pair<string, int>("pubdate", 3));
+
+	m_pDatum->m_fieldnames.insert(pair<string, int>("id", 9));
+	m_pDatum->m_fieldnames.insert(pair<string, int>("title", 8));
+
 	
 	if (true)
 	{
