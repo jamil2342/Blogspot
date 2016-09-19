@@ -91,7 +91,7 @@ CEventThread::CEventThread(CEventMgr * parent)
 
 CEventThread::~CEventThread()
 {
-	m_sharepoint.m_pThreadMgr = NULL;
+	m_fastmoney.m_pThreadMgr = NULL;
 }
 
 
@@ -128,27 +128,27 @@ void CEventThread::DoWork()
 				break;
 		}
 	}
-	if (m_sharepoint.m_ConnectionOpen == ACTIVE)
+	if (m_fastmoney.m_ConnectionOpen == ACTIVE)
 	{
 		if (WaitForSingleObject(pmgr->m_pOwner->m_hStartupDone, 0) == WAIT_OBJECT_0)
 		{
 			//m_sharepoint.DoQuery();
-			m_sharepoint.DoQueryLocal();
+			m_fastmoney.DoQueryLocal();
 		}
 
 		else
 			OutputDebugString("DoWork() - not ready.");
 
 	}
-	if (m_sharepoint.m_ConnectionOpen == ERR_RECOVERY)
+	if (m_fastmoney.m_ConnectionOpen == ERR_RECOVERY)
 	{
 		int cycletime = this->m_nCycleTime / 1000;
 		cycletime = cycletime < 1 ? 1 : cycletime;
 		char szBuf[256];
-		sprintf_s(szBuf, _countof(szBuf), "DoWork() countdown to retry = %d\n", SHAREPOINT_ERROR_RECOVERY_TIMEOUT - m_sharepoint.m_nErrorRecovery*cycletime);
+		sprintf_s(szBuf, _countof(szBuf), "DoWork() countdown to retry = %d\n", SHAREPOINT_ERROR_RECOVERY_TIMEOUT - m_fastmoney.m_nErrorRecovery*cycletime);
 		OutputDebugString(szBuf);
 		pmgr->m_pOwner->DoEvent(CT_InboundStateChange, ERR_RECOVERY);
-		if (m_sharepoint.m_nErrorRecovery++ >= SHAREPOINT_ERROR_RECOVERY_TIMEOUT / cycletime)
+		if (m_fastmoney.m_nErrorRecovery++ >= SHAREPOINT_ERROR_RECOVERY_TIMEOUT / cycletime)
 		{
 			sprintf_s(szBuf, _countof(szBuf), "DoWork() Attempting to restart\n");
 			OutputDebugString(szBuf);
@@ -210,33 +210,33 @@ void CEventThread::GetImplementedForIB()
  
 void CEventThread::StartData()
 {
-	m_sharepoint.InitData(this);
-	if(m_sharepoint.Connect() == S_OK)	
+	m_fastmoney.InitData(this);
+	if(m_fastmoney.Connect() == S_OK)	
 	{
 		pmgr->m_pOwner->DoEvent(CT_InboundStateChange,ACTIVE);
-		m_sharepoint.m_ConnectionOpen = ACTIVE;
+		m_fastmoney.m_ConnectionOpen = ACTIVE;
 	}
 	else
 	{
 		pmgr->m_pOwner->DoEvent(CT_InboundStateChange,INACTIVE);
-		m_sharepoint.m_ConnectionOpen = INACTIVE;
+		m_fastmoney.m_ConnectionOpen = INACTIVE;
 	}
 }
 
 void CEventThread::StopData()
 {
 	ATLTRACE("StopData() - attempting disconnect\n");
-	m_sharepoint.doDisconnect();
+	m_fastmoney.doDisconnect();
 	ATLTRACE("StopData() - disconnected\n");
 	if(pmgr && pmgr->m_pOwner)
 		pmgr->m_pOwner->DoEvent(CT_InboundStateChange,INACTIVE);
-	m_sharepoint.m_nErrorRecovery = 0;
+	m_fastmoney.m_nErrorRecovery = 0;
 }
 
 void CEventThread::PublishFields()
 {
 	if (pmgr->m_pOwner->m_base.m_state != ACTIVE)
-		m_sharepoint.InitData(this);
+		m_fastmoney.InitData(this);
 
-	m_sharepoint.PublishFields();
+	m_fastmoney.PublishFields();
 }

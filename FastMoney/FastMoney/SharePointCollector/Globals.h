@@ -16,7 +16,7 @@ struct basicInfo
 };
 
 basicInfo a;
-char filename[] = "disk5.dat";
+char filename[] = "disk6.dat";
 void writeDisk()
 {
 	FILE *file = fopen(filename, "ab");

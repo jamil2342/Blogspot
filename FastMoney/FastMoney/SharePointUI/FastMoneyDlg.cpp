@@ -22,13 +22,15 @@ CFastMoneyDlg::~CFastMoneyDlg()
 
 BOOL CFastMoneyDlg::OnInitDialog()
 {
-	//loadDisk();
+	loadDisk();
 
 	////AfxMessageBox(a.url.c_str());
 	//SetDlgItemText(IDC_EDIT1, a.url.c_str());
 	//string str = "" + a.refreshTime;
 	////AfxMessageBox(a.url.c_str());
 	//SetDlgItemText(IDC_EDIT1, str.c_str());
+	SetDlgItemText(IDC_EDIT1, "http://podcast.cnbc.com/mmpodcast/fastmoney.xml");
+	SetDlgItemText(IDC_EDIT2, "60");
 
 	return TRUE;
 }
@@ -51,14 +53,14 @@ void CFastMoneyDlg::OnBnClickedOk()
 {
 	// TODO: Add your control notification handler code here
 	//emptyDisk();
-	//CString str;
+	CString str;
 
-	//GetDlgItemText(IDC_EDIT1,str);
-	//a.url = (LPCTSTR)str;
-	//AfxMessageBox((LPCTSTR)str);
-	//GetDlgItemText(IDC_EDIT2, str);
-	//a.refreshTime = atoi(str);
-	//writeDisk();
+	GetDlgItemText(IDC_EDIT1,str);
+	a.url = (LPCTSTR)str;
+	AfxMessageBox((LPCTSTR)str);
+	GetDlgItemText(IDC_EDIT2, str);
+	a.refreshTime = atoi(str);
+	writeDisk();
 
 
 
