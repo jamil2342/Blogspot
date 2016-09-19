@@ -85,7 +85,7 @@ void CFastMoneyData::DoQueryLocal()
 	vTimeStamp.vt = VT_DATE;
 	SystemTimeToVariantTime(&st, &vTimeStamp.date);
 
-
+	m_pDatum->m_fieldnames.insert(pair<string, int>("author", 4));
 	
 	if (true)
 	{
@@ -102,12 +102,11 @@ void CFastMoneyData::DoQueryLocal()
 		wchar_t * url = L"http://podcast.cnbc.com/mmpodcast/fastmoney.xml";
 
 		
-		if (method==1)
+		if (method == 1)
 		{
 
 			m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szListTitle), &vtItems, nres);
 			//m_pDatum->m_tablename = "hhareviewcollector192274713_parthatest";
-
 
 		}
 		else
@@ -115,6 +114,7 @@ void CFastMoneyData::DoQueryLocal()
 			m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(url, &vtItems, nres);
 			m_pDatum->m_tablename = "fast_money";
 		}
+
 
 
 
@@ -212,7 +212,7 @@ void CFastMoneyData::DoQueryLocal()
 					fieldname.Replace(_T("x0020"), _T(""));
 					fieldname.Replace(_T("x002d"), _T(""));
 					VariantClear(&vtData);
-#ifdef Unnecessary
+
 					string stype;
 					FIELD_MAP_ITER iter = m_pThreadMgr->pmgr->m_pOwner->m_colFields.begin();
 					while (iter != m_pThreadMgr->pmgr->m_pOwner->m_colFields.end())
@@ -224,14 +224,14 @@ void CFastMoneyData::DoQueryLocal()
 						}
 						iter++;
 					}
-#endif // Unnecessary
+
 
 
 					idx++;
 					SafeArrayGetElement(V_ARRAY(&vtItems), &idx, &vtData);
 
 					_variant_t vtTemp(vtData, false);
-#ifdef Unnecessary
+
 					if (vtData.vt != VT_NULL && vtData.vt != VT_EMPTY)
 					{
 						switch (m_pThreadMgr->pmgr->m_pOwner->SPTYPETOPOLY[stype])
@@ -250,14 +250,14 @@ void CFastMoneyData::DoQueryLocal()
 							break;
 						}
 					}
-#endif // Unnecessary
+
 
 					if (vtTemp.vt == VT_BSTR)
 					{
 						//tmpStr = (LPCSTR)_bstr_t(vtTemp.bstrVal);
 						//wstring tmpStr(vtTemp.bstrVal);
 						//m_pThreadMgr->pmgr->m_pOwner->ShowMsgFmt(false, _T("%s:%s:BSTR:%s\n"), (LPCTSTR)strNumber, fieldname,tmpStr.c_str());
-						m_pDatum->AppendRecVal((LPCWSTR)strNumber, fieldname, (LPCWSTR)_bstr_t(vtTemp.bstrVal), false);
+				 		m_pDatum->AppendRecVal((LPCWSTR)strNumber, fieldname, (LPCWSTR)_bstr_t(vtTemp.bstrVal), false);
 					}
 					else if (vtTemp.vt == VT_I4)
 					{
