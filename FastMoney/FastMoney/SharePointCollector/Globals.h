@@ -16,16 +16,23 @@ struct basicInfo
 };
 
 basicInfo a;
+char filename[] = "disk5.dat";
 void writeDisk()
 {
-	FILE *file = fopen("disk.dat", "ab");
+	FILE *file = fopen(filename, "ab");
 	fwrite(&a, sizeof(basicInfo), 1, file);
 	fclose(file);
 }
+void emptyDisk()
+{
 
+	FILE *file = fopen(filename, "rw");
+	fopen("disk1.dat", "wb");
+
+}
 void loadDisk()
 {
-	FILE *file = fopen("disk.dat", "rb");
+	FILE *file = fopen(filename, "rb");
 	if (file != NULL)
 	{
 		fread(&a, sizeof(basicInfo), 1, file);

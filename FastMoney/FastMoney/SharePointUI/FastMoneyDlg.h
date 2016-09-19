@@ -10,6 +10,7 @@ class CFastMoneyDlg : public CDialogEx
 public:
 	CFastMoneyDlg(CWnd* pParent = NULL);   // standard constructor
 	virtual ~CFastMoneyDlg();
+	virtual BOOL OnInitDialog();
 
 // Dialog Data
 	enum { IDD = IDD_DIALOG1 };

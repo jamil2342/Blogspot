@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "FastMoneyDlg.h"
 #include "afxdialogex.h"
-
+#include "Globals.h"
 
 // CFastMoneyDlg dialog
 
@@ -18,6 +18,19 @@ CFastMoneyDlg::CFastMoneyDlg(CWnd* pParent /*=NULL*/)
 
 CFastMoneyDlg::~CFastMoneyDlg()
 {
+}
+
+BOOL CFastMoneyDlg::OnInitDialog()
+{
+	//loadDisk();
+
+	////AfxMessageBox(a.url.c_str());
+	//SetDlgItemText(IDC_EDIT1, a.url.c_str());
+	//string str = "" + a.refreshTime;
+	////AfxMessageBox(a.url.c_str());
+	//SetDlgItemText(IDC_EDIT1, str.c_str());
+
+	return TRUE;
 }
 
 void CFastMoneyDlg::DoDataExchange(CDataExchange* pDX)
@@ -37,5 +50,19 @@ END_MESSAGE_MAP()
 void CFastMoneyDlg::OnBnClickedOk()
 {
 	// TODO: Add your control notification handler code here
+	//emptyDisk();
+	//CString str;
+
+	//GetDlgItemText(IDC_EDIT1,str);
+	//a.url = (LPCTSTR)str;
+	//AfxMessageBox((LPCTSTR)str);
+	//GetDlgItemText(IDC_EDIT2, str);
+	//a.refreshTime = atoi(str);
+	//writeDisk();
+
+
+
+
+	
 	CDialogEx::OnOK();
 }
