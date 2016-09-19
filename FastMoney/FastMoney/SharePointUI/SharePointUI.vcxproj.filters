@@ -33,22 +33,10 @@
     </Midl>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Page1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\PublisherCommon\PubUtility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StdAfx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SvrListener.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Wizzard1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Wizzard2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SharePointUI.cpp">
@@ -57,18 +45,6 @@
     <ClCompile Include="SharePointUI_i.c">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="Page2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Page3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Page4.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DiagnosticDlg.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\SharePointCollector\ErrorsAndDebug.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -76,9 +52,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Common Classes\Symon\StringHelper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FastMoneyInbound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FastMoneyDlg.cpp">
@@ -111,9 +84,6 @@
     <ClInclude Include="..\..\..\PublisherCommon\BuildP6.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Page1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\PublisherCommon\PubUtility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -123,29 +93,8 @@
     <ClInclude Include="StdAfx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SvrListener.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Wizzard1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Wizzard2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SharePointUI_i.h">
       <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Page2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Page3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Page4.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DiagnosticDlg.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Common Classes\Symon\memfile.h">
       <Filter>Header Files</Filter>
@@ -160,9 +109,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\SharePointCommon\FastMoneyCommon.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FastMoneyInbound.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FastMoneyDlg.h">

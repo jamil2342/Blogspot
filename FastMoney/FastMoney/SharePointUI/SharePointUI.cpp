@@ -17,9 +17,9 @@
 
 CComModule _Module;
 
-BEGIN_OBJECT_MAP(ObjectMap)
-OBJECT_ENTRY(CLSID_SharePointInbound, CSharePointInbound)
-END_OBJECT_MAP()
+//BEGIN_OBJECT_MAP(ObjectMap)
+//OBJECT_ENTRY(CLSID_SharePointInbound, CSharePointInbound)
+//END_OBJECT_MAP()
 
 class CSharePointUIApp : public CWinApp
 {
@@ -53,9 +53,9 @@ BOOL CSharePointUIApp::InitInstance()
 {
 	CFastMoneyDlg dlg;
 	dlg.DoModal();
-	//return TRUE;
-    _Module.Init(ObjectMap, m_hInstance, &LIBID_SharePointUILib);
-    return CWinApp::InitInstance();
+	return TRUE;
+    //_Module.Init(ObjectMap, m_hInstance, &LIBID_SharePointUILib);
+    //return CWinApp::InitInstance();
 }
 
 int CSharePointUIApp::ExitInstance()
