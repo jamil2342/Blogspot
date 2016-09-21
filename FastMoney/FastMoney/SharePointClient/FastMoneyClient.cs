@@ -24,6 +24,7 @@ using System.Xml;
 namespace FastMoneyClient
 {
 
+
     public static class Trace
     {
         private static Mutex mut = new Mutex();
