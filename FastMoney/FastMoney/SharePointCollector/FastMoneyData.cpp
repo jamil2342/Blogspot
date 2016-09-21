@@ -104,7 +104,7 @@ void CFastMoneyData::DoQueryLocal()
 
 		_bstr_t strNumber(_T("1"));
 
-		wchar_t * url = L"http://podcast.cnbc.com/mmpodcast/fastmoney.xml";
+
 
 		
 		if (method == 1)

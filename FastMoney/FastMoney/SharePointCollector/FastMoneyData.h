@@ -7,6 +7,7 @@ class CEventThread;
 class CFastMoneyData :
 	public MTObject
 {
+	wchar_t * url = L"http://podcast.cnbc.com/mmpodcast/fastmoney.xml";
 public:
 	CFastMoneyData(void);
 	~CFastMoneyData(void);
