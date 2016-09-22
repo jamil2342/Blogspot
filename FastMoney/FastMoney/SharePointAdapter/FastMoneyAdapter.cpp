@@ -241,6 +241,7 @@ bool CFastMoneyAdapter::MoreData()
 void CFastMoneyAdapter::RetrieveListItems( wchar_t* listName, VARIANT *vValues, int &ret)
 {
 	DataTable ^ DT;
+	DataTable ^ dt = _managedObject->GetAemDataTable();
 	if (method == 1)
 	{
 	DT = _managedObject->RetrieveListItems(gcnew String(listName));

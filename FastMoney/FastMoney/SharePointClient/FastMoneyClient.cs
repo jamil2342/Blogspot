@@ -20,6 +20,8 @@ using System.Diagnostics;
 using Microsoft.Win32;
 using System.Net.Http;
 using System.Xml;
+using Newtonsoft.Json;
+using System.ComponentModel;
 
 namespace FastMoneyClient
 {
@@ -965,6 +967,42 @@ namespace FastMoneyClient
             }
             return dt;
 
+        }
+
+        public DataTable GetAemDataTable()
+        {
+            string url = "http://172.25.7.92:99/Api/JsonFile";
+            string result = "";
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            string str = response.Content.ReadAsStringAsync().Result;
+
+            List<Rootobject> n = new List<Rootobject>();
+            Rootobject r = JsonConvert.DeserializeObject<Rootobject>(str);
+
+            DataTable dt = ToDataTable<Newslist>(r.newsList.ToList<Newslist>());
+            return dt;
+        }
+        public static  DataTable ToDataTable<T>( IList<T> data)
+        {
+            PropertyDescriptorCollection props =
+            TypeDescriptor.GetProperties(typeof(T));
+            DataTable table = new DataTable();
+            for (int i = 0; i < props.Count; i++)
+            {
+                PropertyDescriptor prop = props[i];
+                table.Columns.Add(prop.Name, prop.PropertyType);
+            }
+            object[] values = new object[props.Count];
+            foreach (T item in data)
+            {
+                for (int i = 0; i < values.Length; i++)
+                {
+                    values[i] = props[i].GetValue(item);
+                }
+                table.Rows.Add(values);
+            }
+            return table;
         }
 
         public DataTable ConvertXmlNodeListToDataTable(XmlNodeList xmlTag)
