@@ -2,16 +2,16 @@ HKCR
 {
 	SharePointCollector.SharePointCollect.1 = s 'SharePointCollect Class'
 	{
-		CLSID = s '{16B172C2-8025-4E85-A636-90EF654A115A}'
+		CLSID = s '{A2CAC6E8-9FAA-490C-86A3-DFFBEEB7923B}'
 	}
 	SharePointCollector.SharePointCollect = s 'SharePointCollect Class'
 	{
-		CLSID = s '{16B172C2-8025-4E85-A636-90EF654A115A}'
+		CLSID = s '{A2CAC6E8-9FAA-490C-86A3-DFFBEEB7923B}'
 		CurVer = s 'SharePointCollector.SharePointCollect.1'
 	}
 	NoRemove CLSID
 	{
-		ForceRemove {16B172C2-8025-4E85-A636-90EF654A115A} = s 'SharePointCollect Class'
+		ForceRemove {A2CAC6E8-9FAA-490C-86A3-DFFBEEB7923B} = s 'SharePointCollect Class'
 		{
 			ProgID = s 'SharePointCollector.SharePointCollect.1'
 			VersionIndependentProgID = s 'SharePointCollector.SharePointCollect'
