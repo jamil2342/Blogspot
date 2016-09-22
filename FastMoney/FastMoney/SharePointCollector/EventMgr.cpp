@@ -132,8 +132,8 @@ void CEventThread::DoWork()
 	{
 		if (WaitForSingleObject(pmgr->m_pOwner->m_hStartupDone, 0) == WAIT_OBJECT_0)
 		{
-			//m_sharepoint.DoQuery();
-			m_fastmoney.DoQueryLocal();
+			m_fastmoney.DoQuery();
+			//m_fastmoney.DoQueryLocal();
 		}
 
 		else

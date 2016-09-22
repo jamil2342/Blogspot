@@ -6,7 +6,7 @@
 using namespace std;
 //#include <stdio.h>
 //#include <afxwin.h>
-int method = 0;
+int method = 1;
 
 
 struct basicInfo
