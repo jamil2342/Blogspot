@@ -23,7 +23,7 @@ using System.Xml;
 using Newtonsoft.Json;
 using System.ComponentModel;
 
-namespace FastMoneyClient
+namespace AemClient
 {
 
 
@@ -305,7 +305,7 @@ namespace FastMoneyClient
         }
     }
 
-    public class CFastMoneyClient
+    public class CAemClient
     {
         private CookieCollection cookies;
         private string m_serviceUrl;
@@ -514,7 +514,7 @@ namespace FastMoneyClient
             get { return m_updatetimeout; }
             set { m_updatetimeout = value; }
         }
-        public CFastMoneyClient()
+        public CAemClient()
         {
             m_context = null;
             m_dt = null;
@@ -537,7 +537,7 @@ namespace FastMoneyClient
             m_exts = (string)myreg.GetValue("AllowedGraphicExts", ".jpg.png.gif.bmp.wdp.jpeg.xaml.xca.hdp");
         }
 
-        ~CFastMoneyClient()
+        ~CAemClient()
         {
         }
 
@@ -1939,7 +1939,7 @@ namespace FastMoneyClient
 
         static void Main(string[] args)
         {
-            CFastMoneyClient spc = new CFastMoneyClient();
+            CAemClient spc = new CAemClient();
             spc.ServiceUrl = "http://www.xsolive.com/";
             spc.AuthMode = 0;
             //spc.AuthMode = ClientAuthenticationMode.Anonymous;

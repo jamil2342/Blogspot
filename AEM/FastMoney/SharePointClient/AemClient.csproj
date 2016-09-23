@@ -8,8 +8,8 @@
     <ProjectGuid>{27E1D7CE-CEE6-4590-9E50-9A536BE89DC3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FastMoneyClient</RootNamespace>
-    <AssemblyName>FastMoneyClient</AssemblyName>
+    <RootNamespace>AemClient</RootNamespace>
+    <AssemblyName>AemClient</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -95,8 +95,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AemClient.cs" />
     <Compile Include="Entity.cs" />
-    <Compile Include="FastMoneyClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

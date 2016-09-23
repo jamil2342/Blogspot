@@ -8,7 +8,7 @@ using namespace System::Data;
 using namespace System::Collections::Generic;
 using namespace System::Runtime::InteropServices;
 using namespace System::Diagnostics;
-using namespace FastMoneyClient;
+using namespace AemClient;
 //using namespace FastMoneyClient;
 void MarshalString ( String ^ s, std::string& os );
 void MarshalString ( String ^ s, std::wstring& os ) ;
@@ -16,7 +16,7 @@ void MarshalString ( String ^ s, std::wstring& os ) ;
 public class DLLAPI CFastMoneyAdapter : IFastMoneyAdapter
 {
 private:
-	gcroot<CFastMoneyClient ^>	_managedObject;
+	gcroot<CAemClient ^>	_managedObject;
 	//gcroot<Class1 ^>	myclient;
 public:
 	CFastMoneyAdapter(void);

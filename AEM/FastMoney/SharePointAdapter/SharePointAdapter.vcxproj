@@ -183,7 +183,7 @@
     <ResourceCompile Include="SharePointAdapter.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SharePointClient\FastMoneyClient.csproj">
+    <ProjectReference Include="..\SharePointClient\AemClient.csproj">
       <Project>{27e1d7ce-cee6-4590-9e50-9a536be89dc3}</Project>
     </ProjectReference>
   </ItemGroup>

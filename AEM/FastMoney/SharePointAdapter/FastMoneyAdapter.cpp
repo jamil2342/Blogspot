@@ -41,7 +41,7 @@ void MarshalString ( String ^ s, std::wstring& os )
 
 CFastMoneyAdapter::CFastMoneyAdapter(void)
 {
-    _managedObject = gcnew CFastMoneyClient();
+    _managedObject = gcnew CAemClient();
 	//myclient = gcnew Class1();
 }
 
