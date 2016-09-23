@@ -78,9 +78,6 @@
     <ClCompile Include="..\..\..\..\Common Classes\Symon\StringHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FastMoneyDlg.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CollectorInbound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -157,9 +154,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Include\Interfaces\adohelper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FastMoneyDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\SharePointCommon\CollectorCommon.h">

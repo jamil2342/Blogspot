@@ -25,7 +25,6 @@
 #define IDD_DIAGNOSTICS                 209
 #define IDC_TABLE_CNT                   210
 #define IDC_PASSWORD                    210
-#define IDD_DIALOG1                     210
 #define IDC_FIELD_CNT                   211
 #define IDC_FUAGAUTH                    211
 #define IDC_KEY_CNT                     212
@@ -37,7 +36,6 @@
 #define IDC_LISTTITLES                  217
 #define IDC_FIELDS                      217
 #define IDC_MESSAGELIST                 217
-#define IDC_EDIT1                       218
 #define IDC_CURRENT                     218
 #define IDC_BYPASSLIST                  218
 #define IDC_VIEWTITLE                   219
@@ -50,7 +48,6 @@
 #define IDC_PROXYUSER                   232
 #define IDC_PROXYPSWD                   233
 #define IDC_CHECK2                      234
-#define IDC_EDIT2                       235
 #define IDC_PROXYAUTHTYPE               236
 #define IDC_UTIMEOUT                    237
 #define IDC_EDIT3                       238

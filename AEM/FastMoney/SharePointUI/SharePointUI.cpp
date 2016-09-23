@@ -9,7 +9,7 @@
 #include "resource.h"
 #include <initguid.h>
 #include "SharePointUI.h"
-#include "FastMoneyDlg.h"
+//#include "FastMoneyDlg.h"
 //#include "SharePointUI_i.c"
 #include "CollectorInbound.h"
 #include "PubInboundUI_i.c"
