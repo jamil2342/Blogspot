@@ -75,17 +75,17 @@ STDMETHODIMP CSharePointInbound::DoProperties(/*[in]*/unsigned long refnum)
 		InitConfig(blob);
 		VariantClear(&blob);
 
-		CPropertySheet sheet1("ShareView Collector Properties");
+		CPropertySheet sheet1("AEM Collector Properties");
 		CPage1 pg1(this);
 		sheet1.AddPage(&pg1);
-		CPage2 pg2(this);
-		sheet1.AddPage(&pg2);
-		CPage3 pg3(this);
-		sheet1.AddPage(&pg3);
-		CPage4 pg4(this);
-		sheet1.AddPage(&pg4);
-		CDiagnosticDlg dlgDiag(this);
-		sheet1.AddPage(&dlgDiag);
+		//CPage2 pg2(this);
+		//sheet1.AddPage(&pg2);
+		//CPage3 pg3(this);
+		//sheet1.AddPage(&pg3);
+		//CPage4 pg4(this);
+		//sheet1.AddPage(&pg4);
+		//CDiagnosticDlg dlgDiag(this);
+		//sheet1.AddPage(&dlgDiag);
 
 		if (strlen(m_base.m_szListTitle) == 0)
 			sheet1.SetActivePage(2);
@@ -319,7 +319,7 @@ CSharePointInbound::CSharePointInbound()
 
 	ZeroMemory(&m_base,SIZEOF_SHAREPOINT_COMMON);
 
-	strncpy(m_base.m_name,"ShareView Collector",STANDARD_STRING);
+	strncpy(m_base.m_name,"Aem Collector",STANDARD_STRING);
 
 	memcpy(&m_base.m_clsid,&CLSID_SharePointCollect,sizeof(CLSID));		// the data collectors clsid
 	memcpy(&m_base.m_UIclsid,&CLSID_SharePointInbound,sizeof(CLSID));		// the inbound UI clsid

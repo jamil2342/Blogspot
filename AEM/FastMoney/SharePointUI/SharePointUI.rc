@@ -76,22 +76,28 @@ BEGIN
     ICON            IDI_SharePointICO,IDC_STATIC,8,15,20,20
     EDITTEXT        IDC_FREQ,181,20,28,12,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
     LTEXT           "seconds",IDC_STATIC,218,22,28,11
-    LTEXT           "Enter an update timeout. This is used to determine how long to wait before going into error recovery.",IDC_STATIC,40,51,133,27
-    EDITTEXT        IDC_UTIMEOUT,181,58,28,12,ES_AUTOHSCROLL,WS_EX_RIGHT
-    LTEXT           "seconds",IDC_STATIC,218,59,28,11
+    LTEXT           "Enter an update timeout. This is used to determine how long to wait before going into error recovery.",IDC_STATIC,40,51,133,27,NOT WS_VISIBLE
+    EDITTEXT        IDC_UTIMEOUT,181,58,28,12,ES_AUTOHSCROLL | NOT WS_VISIBLE,WS_EX_RIGHT
+    LTEXT           "seconds",IDC_STATIC,218,59,28,11,NOT WS_VISIBLE
 END
 
 IDD_PAGE1 DIALOGEX 0, 0, 313, 285
 STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
-CAPTION "ShareView Setup"
+CAPTION "AEM Setup"
 FONT 8, "MS Sans Serif", 0, 0, 0x1
 BEGIN
     LTEXT           "&Collector Name:",IDC_STATIC,17,30,75,12
     EDITTEXT        IDC_NAME,93,30,173,13,ES_AUTOHSCROLL
     LTEXT           "&Refresh Rate (sec):",IDC_STATIC,17,53,75,12
     EDITTEXT        IDC_FREQ,93,52,56,13,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "Update &Timeout (sec):",IDC_STATIC,17,76,75,12
-    EDITTEXT        IDC_UTIMEOUT,93,74,56,13,ES_AUTOHSCROLL
+    LTEXT           "Update &Timeout (sec):",IDC_STATIC,17,76,75,12,NOT WS_VISIBLE
+    EDITTEXT        IDC_UTIMEOUT,93,74,56,13,ES_AUTOHSCROLL | NOT WS_VISIBLE
+    EDITTEXT        IDC_EDIT_URL1,94,96,203,14,ES_AUTOHSCROLL
+    LTEXT           "Url1",IDC_STATIC_URL1,21,100,14,8
+    EDITTEXT        IDC_EDIT_URL2,94,115,203,14,ES_AUTOHSCROLL
+    LTEXT           "Url2",IDC_STATIC_URL2,21,119,14,8
+    EDITTEXT        IDC_EDIT_URL3,95,135,203,14,ES_AUTOHSCROLL
+    LTEXT           "Url3",IDC_STATIC_URL3,21,139,14,8
 END
 
 IDD_PAGE2 DIALOGEX 0, 0, 313, 285

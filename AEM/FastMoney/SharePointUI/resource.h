@@ -55,6 +55,12 @@
 #define IDC_UTIMEOUT                    237
 #define IDC_EDIT3                       238
 #define IDC_BUTTON1                     239
+#define IDC_EDIT_URL1                   240
+#define IDC_STATIC_URL1                 241
+#define IDC_EDIT_URL2                   242
+#define IDC_STATIC_URL2                 243
+#define IDC_EDIT_URL3                   244
+#define IDC_STATIC_URL3                 245
 
 // Next default values for new objects
 // 
@@ -62,7 +68,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        211
 #define _APS_NEXT_COMMAND_VALUE         32768
-#define _APS_NEXT_CONTROL_VALUE         240
+#define _APS_NEXT_CONTROL_VALUE         242
 #define _APS_NEXT_SYMED_VALUE           103
 #endif
 #endif

@@ -35,6 +35,9 @@ public:
 	enum { IDD = IDD_PAGE1 };
 	CString	m_name;
 	int		m_freq;
+	CString m_url1;
+	CString m_url2;
+	CString m_url3;
 	//}}AFX_DATA
 
 
@@ -64,6 +67,9 @@ public:
 	afx_msg void OnEnChangeUtimeout();
 	int m_timeout;
 	CEdit m_editTimeout;
+	CEdit m_edit_url1;
+	CEdit m_edit_url2;
+	CEdit m_edit_url3;
 };
 
 //{{AFX_INSERT_LOCATION}}

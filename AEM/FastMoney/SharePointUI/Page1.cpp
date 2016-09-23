@@ -37,6 +37,9 @@ CPage1::CPage1(CSharePointInbound *pInbound) : CPropertyPage(CPage1::IDD)
 	m_name = m_pInbound->m_base.m_name;
 	m_freq = m_pInbound->m_base.m_update_interval;
 	m_timeout = m_pInbound->m_base.m_update_timeout;
+	m_url1 = m_pInbound->m_base.m_szServiceUrl1;
+	m_url2 = m_pInbound->m_base.m_szServiceUrl2;
+	m_url3 = m_pInbound->m_base.m_szServiceUrl3;
 	//}}AFX_DATA_INIT
 }
 
@@ -58,6 +61,18 @@ void CPage1::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_UTIMEOUT, m_timeout);
 	DDV_MinMaxInt(pDX, m_timeout, 0, 32000);
 	DDX_Control(pDX, IDC_UTIMEOUT, m_editTimeout);
+	DDX_Control(pDX, IDC_EDIT_URL1, m_edit_url1);
+	DDX_Control(pDX, IDC_EDIT_URL2, m_edit_url2);
+	DDX_Control(pDX, IDC_EDIT_URL3, m_edit_url3);
+
+	DDX_Text(pDX, IDC_EDIT_URL1, m_url1);
+	DDV_MaxChars(pDX, m_url1, 75);
+
+	DDX_Text(pDX, IDC_EDIT_URL2, m_url2);
+	DDV_MaxChars(pDX, m_url2, 75);
+
+	DDX_Text(pDX, IDC_EDIT_URL3, m_url3);
+	DDV_MaxChars(pDX, m_url3, 75);
 }
 
 
@@ -141,6 +156,9 @@ BOOL CPage1::SaveItOff()
 		m_chg = true;
 		m_pInbound->m_base.m_update_timeout = m_timeout;
 	}
+	strncpy(m_pInbound->m_base.m_szServiceUrl1, (LPCTSTR)m_url1, 75);
+	strncpy(m_pInbound->m_base.m_szServiceUrl2,(LPCTSTR)m_url2, 75);
+	strncpy(m_pInbound->m_base.m_szServiceUrl3, (LPCTSTR)m_url3, 75);
 	return true;
 }
 
@@ -155,6 +173,9 @@ BOOL CPage1::OnInitDialog()
 		m_editName.EnableWindow(FALSE);
 		m_editFreq.EnableWindow(FALSE);
 		m_editTimeout.EnableWindow(FALSE);
+		m_edit_url1.EnableWindow(FALSE);
+		m_edit_url1.EnableWindow(FALSE);
+		m_edit_url2.EnableWindow(FALSE);
 	}
 
 	
