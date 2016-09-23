@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "Page2.h"
 #include "SharePointUI.h"
-#include "FastMoneyInbound.h"
+#include "CollectorInbound.h"
 
 // CPage2 dialog
 

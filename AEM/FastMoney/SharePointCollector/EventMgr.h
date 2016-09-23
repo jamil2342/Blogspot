@@ -16,7 +16,7 @@ class CFastMoneyCollect;
 
 class CEventMgr;
 
-#include "FastMoneyCommon.h"
+#include "CollectorCommon.h"
 
 #include "mtobject6.h"
 

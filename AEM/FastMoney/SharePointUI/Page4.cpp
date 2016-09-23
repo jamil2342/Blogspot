@@ -5,7 +5,7 @@
 #include "Page4.h"
 #include "afxdialogex.h"
 #include "SharePointUI.h"
-#include "FastMoneyInbound.h"
+#include "CollectorInbound.h"
 #include "comutil.h"
 
 // CPage4 dialog

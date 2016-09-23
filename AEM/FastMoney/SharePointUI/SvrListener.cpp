@@ -9,7 +9,7 @@
 #include "Page1.h"
 #include "publisherCommon.h"
 //#include "propsheet.h"
-#include "FastMoneyInbound.h"
+#include "CollectorInbound.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE

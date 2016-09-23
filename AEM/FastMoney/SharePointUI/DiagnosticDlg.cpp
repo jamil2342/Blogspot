@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "DiagnosticDlg.h"
 #include "SharePointUI.h"
-#include "FastMoneyInbound.h"
+#include "CollectorInbound.h"
 #include "pubutility.h"
 #include <memfile.h>
 

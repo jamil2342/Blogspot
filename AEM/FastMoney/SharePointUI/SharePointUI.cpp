@@ -11,7 +11,7 @@
 #include "SharePointUI.h"
 #include "FastMoneyDlg.h"
 //#include "SharePointUI_i.c"
-#include "FastMoneyInbound.h"
+#include "CollectorInbound.h"
 #include "PubInboundUI_i.c"
 
 

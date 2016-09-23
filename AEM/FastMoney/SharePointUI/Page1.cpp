@@ -7,7 +7,7 @@
 #include "bmpinfo.h"
 
 #include "SharePointUI.h"
-#include "FastMoneyInbound.h"
+#include "CollectorInbound.h"
 
 #include "svrListener.h"
 #include "pubutility.h"
