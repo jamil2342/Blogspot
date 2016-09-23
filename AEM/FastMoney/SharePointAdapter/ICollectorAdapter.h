@@ -13,11 +13,11 @@
 #pragma comment (lib, "SharePointAdapter.lib") // if importing, link also
 #endif
 
-class DLLAPI IFastMoneyAdapter
+class DLLAPI ICollectorAdapter
 {
 public:
-	static IFastMoneyAdapter   *CreateInstance(void);
-	static void  Destroy(IFastMoneyAdapter *instance);
+	static ICollectorAdapter   *CreateInstance(void);
+	static void  Destroy(ICollectorAdapter *instance);
 	virtual int Disconnect() = 0;
 	virtual void SetConfig(wchar_t* url, wchar_t* proxy, wchar_t* user, wchar_t* password, wchar_t* domain, wchar_t* authtype, enum ClientAuthenticationMode am, bool ntlm, int interval, int timeout) = 0;
 	virtual void SetCertFile(wchar_t* certfile) = 0;

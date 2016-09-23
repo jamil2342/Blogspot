@@ -841,7 +841,7 @@ CFastMoneyCollect::~CFastMoneyCollect()
 	m_pListener = NULL;
 	if ( m_pFastMoney )
 	{
-		IFastMoneyAdapter::Destroy(m_pFastMoney);
+		ICollectorAdapter::Destroy(m_pFastMoney);
 		m_pFastMoney = NULL;
 	}
 	if (m_hStartupDone )
@@ -899,7 +899,7 @@ bool CFastMoneyCollect::CreateSharePointInstance()
 	if ( m_pFastMoney == NULL )
 	{
 		ShowMsgFmt(false, "ISharePointAdapter::CreateInstance()\n");
-		m_pFastMoney = IFastMoneyAdapter::CreateInstance();
+		m_pFastMoney = ICollectorAdapter::CreateInstance();
 	}
 
 	if ( m_pFastMoney == NULL )

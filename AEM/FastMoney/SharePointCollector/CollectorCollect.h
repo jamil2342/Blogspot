@@ -98,7 +98,7 @@ public:
 	void BuildSchema();
 
 	CSharePointCommon m_base;
-	IFastMoneyAdapter *m_pFastMoney;
+	ICollectorAdapter *m_pFastMoney;
 	bool m_bErrorIssued;
 	bool CreateSharePointInstance(); 
 	HRESULT doConfig(/*[in]*/VARIANT *config); // for update and startup

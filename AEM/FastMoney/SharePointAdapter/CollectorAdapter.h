@@ -1,6 +1,6 @@
 #pragma once
 #include <vcclr.h>
-#include "IFastMoneyAdapter.h"
+#include "ICollectorAdapter.h"
 #include <list>
 
 using namespace System;
@@ -13,14 +13,14 @@ using namespace AemClient;
 void MarshalString ( String ^ s, std::string& os );
 void MarshalString ( String ^ s, std::wstring& os ) ;
 
-public class DLLAPI CFastMoneyAdapter : IFastMoneyAdapter
+public class DLLAPI CCollectorAdapter : ICollectorAdapter
 {
 private:
 	gcroot<CAemClient ^>	_managedObject;
 	//gcroot<Class1 ^>	myclient;
 public:
-	CFastMoneyAdapter(void);
-	~CFastMoneyAdapter(void);
+	CCollectorAdapter(void);
+	~CCollectorAdapter(void);
 	int Disconnect();
 
 public:

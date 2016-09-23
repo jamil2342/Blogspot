@@ -3,8 +3,8 @@
 
 #include "stdafx.h"
 
-#include "IFastMoneyAdapter.h"
-#include "FastMoneyAdapter.h"
+#include "ICollectorAdapter.h"
+#include "CollectorAdapter.h"
 #include "../SharePointCollector/Globals.h"
 //using namespace FastMoneyClient;
 
@@ -39,17 +39,17 @@ void MarshalString ( String ^ s, std::wstring& os )
    Marshal::FreeHGlobal(IntPtr((void*)chars));
 }
 
-CFastMoneyAdapter::CFastMoneyAdapter(void)
+CCollectorAdapter::CCollectorAdapter(void)
 {
     _managedObject = gcnew CAemClient();
 	//myclient = gcnew Class1();
 }
 
-CFastMoneyAdapter::~CFastMoneyAdapter(void)
+CCollectorAdapter::~CCollectorAdapter(void)
 {
 }
 
-int CFastMoneyAdapter::Disconnect()
+int CCollectorAdapter::Disconnect()
 { 
 	_managedObject->ExitNow = true;
 	int timeout = 0;
@@ -62,7 +62,7 @@ int CFastMoneyAdapter::Disconnect()
 	return 0;
 }
 
-void CFastMoneyAdapter::SetConfig(wchar_t* url,  wchar_t* proxy,  wchar_t* user,  wchar_t* password,  wchar_t* domain, wchar_t* authtype, enum ClientAuthenticationMode am, bool ntlm, int interval, int updatetimeout)
+void CCollectorAdapter::SetConfig(wchar_t* url,  wchar_t* proxy,  wchar_t* user,  wchar_t* password,  wchar_t* domain, wchar_t* authtype, enum ClientAuthenticationMode am, bool ntlm, int interval, int updatetimeout)
 {
 	_managedObject->ServiceUrl = Marshal::PtrToStringUni(static_cast<IntPtr>(url));
 	_managedObject->ProxyUrl = Marshal::PtrToStringUni(static_cast<IntPtr>(proxy));
@@ -77,12 +77,12 @@ void CFastMoneyAdapter::SetConfig(wchar_t* url,  wchar_t* proxy,  wchar_t* user,
 	return;
 }
 
-void CFastMoneyAdapter::SetDebug(bool bDebug)
+void CCollectorAdapter::SetDebug(bool bDebug)
 {
 	_managedObject->SetDebug(bDebug);
 }
 
-void CFastMoneyAdapter::SetProxySettings(bool useproxy, bool bypassproxy, wchar_t* proxyuser, wchar_t* proxypassword, wchar_t* proxydomain, wchar_t*proxybypass, wchar_t* authtype)
+void CCollectorAdapter::SetProxySettings(bool useproxy, bool bypassproxy, wchar_t* proxyuser, wchar_t* proxypassword, wchar_t* proxydomain, wchar_t*proxybypass, wchar_t* authtype)
 {
 	_managedObject->ProxyUser = Marshal::PtrToStringUni(static_cast<IntPtr>(proxyuser));
 	_managedObject->ProxyPassword = Marshal::PtrToStringUni(static_cast<IntPtr>(proxypassword));
@@ -94,7 +94,7 @@ void CFastMoneyAdapter::SetProxySettings(bool useproxy, bool bypassproxy, wchar_
 }
 
 
-void CFastMoneyAdapter::SetFuagConfig(wchar_t* fuagAuth,  wchar_t* userAgent)
+void CCollectorAdapter::SetFuagConfig(wchar_t* fuagAuth,  wchar_t* userAgent)
 {
 	if ( fuagAuth != NULL && wcslen(fuagAuth) > 0 )
 		_managedObject->FuagAuth = Marshal::PtrToStringUni(static_cast<IntPtr>(fuagAuth));
@@ -104,22 +104,22 @@ void CFastMoneyAdapter::SetFuagConfig(wchar_t* fuagAuth,  wchar_t* userAgent)
 	return;
 }
 
-void CFastMoneyAdapter::SetCertFile(wchar_t* certfile)
+void CCollectorAdapter::SetCertFile(wchar_t* certfile)
 {
 	_managedObject->CertFile = Marshal::PtrToStringUni(static_cast<IntPtr>(certfile));
 }
 
-void CFastMoneyAdapter::SetViewTitle(wchar_t* query)
+void CCollectorAdapter::SetViewTitle(wchar_t* query)
 {
 	_managedObject->ViewTitle = Marshal::PtrToStringUni(static_cast<IntPtr>(query));
 }
 
-void CFastMoneyAdapter::SetContentLocation(wchar_t* folder)
+void CCollectorAdapter::SetContentLocation(wchar_t* folder)
 {
 	_managedObject->ContentFolder = Marshal::PtrToStringUni(static_cast<IntPtr>(folder));
 }
 
-void CFastMoneyAdapter::GetLastError(VARIANT *vError)
+void CCollectorAdapter::GetLastError(VARIANT *vError)
 {
 	String ^error =  _managedObject->LastError;
 	VariantInit(vError);
@@ -130,7 +130,7 @@ void CFastMoneyAdapter::GetLastError(VARIANT *vError)
 	_managedObject->LastError = nullptr;
 }
 
-void CFastMoneyAdapter::RetrieveLists(VARIANT *vValues, int &ret)
+void CCollectorAdapter::RetrieveLists(VARIANT *vValues, int &ret)
 {
 	List<String ^>^ rlist = _managedObject->RetrieveLists();
 	String ^error =  _managedObject->LastError;
@@ -161,7 +161,7 @@ void CFastMoneyAdapter::RetrieveLists(VARIANT *vValues, int &ret)
 	vValues->parray = psa;
 }
 
-void CFastMoneyAdapter::RetrieveViews(wchar_t* listname, VARIANT *vValues, int &ret)
+void CCollectorAdapter::RetrieveViews(wchar_t* listname, VARIANT *vValues, int &ret)
 {
 	List<String ^>^ rlist = _managedObject->RetrieveViews(gcnew String(listname));
 	String^ error = _managedObject->LastError;
@@ -192,7 +192,7 @@ void CFastMoneyAdapter::RetrieveViews(wchar_t* listname, VARIANT *vValues, int &
 	vValues->parray = psa;
 }
  
-void CFastMoneyAdapter::RetrieveFields(wchar_t* listname, VARIANT *vValues, int &ret)
+void CCollectorAdapter::RetrieveFields(wchar_t* listname, VARIANT *vValues, int &ret)
 {
 	Dictionary<String ^,String ^>^ flist = _managedObject->RetrieveFields(gcnew String(listname));
 	String^ error = _managedObject->LastError;
@@ -233,12 +233,12 @@ void CFastMoneyAdapter::RetrieveFields(wchar_t* listname, VARIANT *vValues, int 
 
 }
 //#####do correct
-bool CFastMoneyAdapter::MoreData()
+bool CCollectorAdapter::MoreData()
 {
 	return _managedObject->MoreData;
 }
 
-void CFastMoneyAdapter::RetrieveListItems( wchar_t* listName, VARIANT *vValues, int &ret)
+void CCollectorAdapter::RetrieveListItems( wchar_t* listName, VARIANT *vValues, int &ret)
 {
 
 	DataTable ^ DT = _managedObject->GetAemDataTable();
@@ -310,7 +310,7 @@ void CFastMoneyAdapter::RetrieveListItems( wchar_t* listName, VARIANT *vValues, 
 //}
 //
 
-void CFastMoneyAdapter::StripHTML( wchar_t* listName, VARIANT *vValue)
+void CCollectorAdapter::StripHTML( wchar_t* listName, VARIANT *vValue)
 {
 	IntPtr ip = Marshal::StringToBSTR(_managedObject->StripHTML(gcnew String(listName)));
 	BSTR bs = SysAllocString(static_cast<BSTR>(ip.ToPointer()));
@@ -322,7 +322,7 @@ void CFastMoneyAdapter::StripHTML( wchar_t* listName, VARIANT *vValue)
 	Marshal::FreeBSTR(ip);
 }
 
-void CFastMoneyAdapter::ExtractImagesFromHtml(wchar_t* listName, VARIANT *vValues)
+void CCollectorAdapter::ExtractImagesFromHtml(wchar_t* listName, VARIANT *vValues)
 {
 	List<String ^>^ rlist = _managedObject->ExtractImages(gcnew String(listName));
 	VariantInit(vValues);

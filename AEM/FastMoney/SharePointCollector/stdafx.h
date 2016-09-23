@@ -64,6 +64,6 @@ using namespace std;
 #include "Sock.h"
 #pragma warning(disable:4786)
 
-#include "IFastMoneyAdapter.h"
+#include "ICollectorAdapter.h"
 
 extern void LogEvent(int logType,LPCSTR pFormat, ...);

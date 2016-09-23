@@ -30,10 +30,10 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IFastMoneyAdapter.h">
+    <ClInclude Include="ICollectorAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FastMoneyAdapter.h">
+    <ClInclude Include="CollectorAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,10 +47,10 @@
     <ClCompile Include="AssemblyInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IFastMoneyAdapter.cpp">
+    <ClCompile Include="ICollectorAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FastMoneyAdapter.cpp">
+    <ClCompile Include="CollectorAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
