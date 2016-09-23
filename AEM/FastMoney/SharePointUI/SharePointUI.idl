@@ -28,7 +28,7 @@ library SharePointUILib
 	importlib("stdole32.tlb");
 	importlib("stdole2.tlb");
 	[
-		uuid(C365B72C-AC3B-454D-8FBA-9E0EB7C8605A),
+		uuid(CC6ED2D9-0877-495E-BF97-3A37F680F7F5),
 		helpstring("SharePointInbound Class")
 	]
 	coclass SharePointInbound

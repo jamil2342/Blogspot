@@ -27,7 +27,7 @@ library SharePointCollectorLib
 {
 	importlib("stdole2.tlb");
 	[
-		uuid(A2CAC6E8-9FAA-490C-86A3-DFFBEEB7923B),
+		uuid(76872a8d-ed85-4ec6-8d95-cf221cfd9ea0),
 		helpstring("SharePointCollect Class")
 	]
 	coclass SharePointCollect
