@@ -15,7 +15,7 @@ public:
 	map<string, string> m_mapImages;
 
 	void InitData(CEventThread *pThread);	
-	void DoQuery();
+	void DoQuery(char * url);
 	void DoQueryLocal();
 	void PublishFields();
 	int m_ConnectionOpen;

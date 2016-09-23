@@ -91,7 +91,7 @@ CEventThread::CEventThread(CEventMgr * parent)
 
 CEventThread::~CEventThread()
 {
-	m_fastmoney.m_pThreadMgr = NULL;
+	m_collectorData.m_pThreadMgr = NULL;
 }
 
 
@@ -128,11 +128,13 @@ void CEventThread::DoWork()
 				break;
 		}
 	}
-	if (m_fastmoney.m_ConnectionOpen == ACTIVE)
+	if (m_collectorData.m_ConnectionOpen == ACTIVE)
 	{
 		if (WaitForSingleObject(pmgr->m_pOwner->m_hStartupDone, 0) == WAIT_OBJECT_0)
 		{
-			m_fastmoney.DoQuery();
+			m_collectorData.DoQuery(pmgr->m_pOwner->m_base.m_szServiceUrl1);
+			m_collectorData.DoQuery(pmgr->m_pOwner->m_base.m_szServiceUrl2);
+			m_collectorData.DoQuery(pmgr->m_pOwner->m_base.m_szServiceUrl2);
 			//m_fastmoney.DoQueryLocal();
 		}
 
@@ -140,15 +142,15 @@ void CEventThread::DoWork()
 			OutputDebugString("DoWork() - not ready.");
 
 	}
-	if (m_fastmoney.m_ConnectionOpen == ERR_RECOVERY)
+	if (m_collectorData.m_ConnectionOpen == ERR_RECOVERY)
 	{
 		int cycletime = this->m_nCycleTime / 1000;
 		cycletime = cycletime < 1 ? 1 : cycletime;
 		char szBuf[256];
-		sprintf_s(szBuf, _countof(szBuf), "DoWork() countdown to retry = %d\n", FASTMONEY_ERROR_RECOVERY_TIMEOUT - m_fastmoney.m_nErrorRecovery*cycletime);
+		sprintf_s(szBuf, _countof(szBuf), "DoWork() countdown to retry = %d\n", FASTMONEY_ERROR_RECOVERY_TIMEOUT - m_collectorData.m_nErrorRecovery*cycletime);
 		OutputDebugString(szBuf);
 		pmgr->m_pOwner->DoEvent(CT_InboundStateChange, ERR_RECOVERY);
-		if (m_fastmoney.m_nErrorRecovery++ >= FASTMONEY_ERROR_RECOVERY_TIMEOUT / cycletime)
+		if (m_collectorData.m_nErrorRecovery++ >= FASTMONEY_ERROR_RECOVERY_TIMEOUT / cycletime)
 		{
 			sprintf_s(szBuf, _countof(szBuf), "DoWork() Attempting to restart\n");
 			OutputDebugString(szBuf);
@@ -210,33 +212,33 @@ void CEventThread::GetImplementedForIB()
  
 void CEventThread::StartData()
 {
-	m_fastmoney.InitData(this);
-	if(m_fastmoney.Connect() == S_OK)	
+	m_collectorData.InitData(this);
+	if(m_collectorData.Connect() == S_OK)	
 	{
 		pmgr->m_pOwner->DoEvent(CT_InboundStateChange,ACTIVE);
-		m_fastmoney.m_ConnectionOpen = ACTIVE;
+		m_collectorData.m_ConnectionOpen = ACTIVE;
 	}
 	else
 	{
 		pmgr->m_pOwner->DoEvent(CT_InboundStateChange,INACTIVE);
-		m_fastmoney.m_ConnectionOpen = INACTIVE;
+		m_collectorData.m_ConnectionOpen = INACTIVE;
 	}
 }
 
 void CEventThread::StopData()
 {
 	ATLTRACE("StopData() - attempting disconnect\n");
-	m_fastmoney.doDisconnect();
+	m_collectorData.doDisconnect();
 	ATLTRACE("StopData() - disconnected\n");
 	if(pmgr && pmgr->m_pOwner)
 		pmgr->m_pOwner->DoEvent(CT_InboundStateChange,INACTIVE);
-	m_fastmoney.m_nErrorRecovery = 0;
+	m_collectorData.m_nErrorRecovery = 0;
 }
 
 void CEventThread::PublishFields()
 {
 	if (pmgr->m_pOwner->m_base.m_state != ACTIVE)
-		m_fastmoney.InitData(this);
+		m_collectorData.InitData(this);
 
-	m_fastmoney.PublishFields();
+	m_collectorData.PublishFields();
 }

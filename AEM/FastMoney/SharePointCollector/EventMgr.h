@@ -61,7 +61,7 @@ public:
 	CDBEvent m_currentEvent;
 	CEventMgr *pmgr;
 	
-	CCollectorData m_fastmoney;
+	CCollectorData m_collectorData;
 	//CFastMoneyData m_fastmoneyData;
 	void GetImplementedForIB();
 	

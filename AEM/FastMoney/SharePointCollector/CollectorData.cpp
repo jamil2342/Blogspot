@@ -399,7 +399,7 @@ void CCollectorData::DoQueryLocal()
 }
 
 
-void CCollectorData::DoQuery()
+void CCollectorData::DoQuery(char * url)
 {
 	int nres = 0;
 	TCHAR buf[1000];
