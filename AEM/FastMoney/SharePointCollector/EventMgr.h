@@ -21,7 +21,7 @@ class CEventMgr;
 #include "mtobject6.h"
 
 #include "MultiThread6.h"
-#include "FastMoneyData.h"
+#include "CollectorData.h"
 //#include "FastMoneyData.h"
 
 enum 

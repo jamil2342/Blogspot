@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include "FastMoneyCollector.h"
-#include "FastMoneyCollect.h"
+#include "CollectorCollect.h"
 #include "PSDBListener.h"
 #include "PSDBMsgs.h"
 

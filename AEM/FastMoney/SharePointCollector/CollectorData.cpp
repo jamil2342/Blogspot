@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "FastMoneyCollector.h"
-#include "FastMoneyData.h"
-#include "FastMoneyCollect.h"
+#include "CollectorData.h"
+#include "CollectorCollect.h"
 #include "Globals.h"
 
 #include <COMDEF.H>

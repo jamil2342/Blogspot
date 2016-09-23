@@ -227,9 +227,9 @@
     <ClCompile Include="ErrorsAndDebug.cpp" />
     <ClCompile Include="EventMgr.cpp" />
     <ClCompile Include="PSDBListener.cpp" />
-    <ClCompile Include="FastMoneyCollect.cpp" />
+    <ClCompile Include="CollectorCollect.cpp" />
     <ClCompile Include="FastMoneyCollector.cpp" />
-    <ClCompile Include="FastMoneyData.cpp" />
+    <ClCompile Include="CollectorData.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -324,8 +324,8 @@
     <ClInclude Include="Globals.h" />
     <ClInclude Include="PSDBListener.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="FastMoneyCollect.h" />
-    <ClInclude Include="FastMoneyData.h" />
+    <ClInclude Include="CollectorCollect.h" />
+    <ClInclude Include="CollectorData.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="FastMoneyCollector.h" />
   </ItemGroup>

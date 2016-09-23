@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 #include "FastMoneyCollector.h"
-#include "FastMoneyCollect.h"
+#include "CollectorCollect.h"
 #include "streamhelper.h"
 
 #define IID_DEFINED

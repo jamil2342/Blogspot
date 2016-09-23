@@ -70,13 +70,13 @@
     <ClCompile Include="..\..\..\..\common classes\Symon\StringHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FastMoneyCollect.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FastMoneyData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="FastMoneyCollector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CollectorCollect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CollectorData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -191,12 +191,6 @@
     <ClInclude Include="..\..\..\PublisherCommon\PublisherCommon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FastMoneyCollect.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FastMoneyData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FastMoneyCollector.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
@@ -204,6 +198,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\SharePointCommon\CollectorCommon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CollectorCollect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CollectorData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
