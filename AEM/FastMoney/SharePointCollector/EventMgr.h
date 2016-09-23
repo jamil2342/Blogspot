@@ -9,7 +9,7 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-class CFastMoneyCollect;
+class CCollectorCollect;
 
 #include "aSyncro.h"
 #include <deque>
@@ -61,7 +61,7 @@ public:
 	CDBEvent m_currentEvent;
 	CEventMgr *pmgr;
 	
-	CFastMoneyData m_fastmoney;
+	CCollectorData m_fastmoney;
 	//CFastMoneyData m_fastmoneyData;
 	void GetImplementedForIB();
 	
@@ -79,14 +79,14 @@ public:
 	CEventMgr();
 	virtual ~CEventMgr();
 
-	void Init(CFastMoneyCollect *pOwner);
+	void Init(CCollectorCollect *pOwner);
 	short m_inactive_cnt;
 
-	CFastMoneyCollect *m_pOwner;
+	CCollectorCollect *m_pOwner;
 
 	CEventThread * m_pEventThread;
 
-	void	StartData(CFastMoneyCollect *pOwner);
+	void	StartData(CCollectorCollect *pOwner);
 	void	StopData();
 
 	BOOL SetTimerRelative(HANDLE timer, unsigned long ms);

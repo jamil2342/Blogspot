@@ -32,7 +32,7 @@ CEventMgr::~CEventMgr()
 	m_pEventThread = NULL;
 }
 
-void CEventMgr::Init(CFastMoneyCollect *pOwner)
+void CEventMgr::Init(CCollectorCollect *pOwner)
 {
 	_ASSERTE(pOwner);
 	m_pOwner = pOwner;

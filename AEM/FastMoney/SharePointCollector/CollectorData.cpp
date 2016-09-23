@@ -35,7 +35,7 @@ void OutputHeading(const char * explanation)
 
 }
 // **************************************************************************
-CFastMoneyData::CFastMoneyData()
+CCollectorData::CCollectorData()
 //
 //	Create a new CNTSSData for Runner or for Property Page.
 // **********************************************************************
@@ -45,7 +45,7 @@ CFastMoneyData::CFastMoneyData()
 }
 
 // **************************************************************************
-void CFastMoneyData::InitData(CEventThread *pMgr)
+void CCollectorData::InitData(CEventThread *pMgr)
 //
 //	Initialize data done from Constructor
 // **********************************************************************
@@ -65,7 +65,7 @@ void CFastMoneyData::InitData(CEventThread *pMgr)
 	_CrtMemCheckpoint(&m_s1);
 }
 
-void CFastMoneyData::DoQueryLocal()
+void CCollectorData::DoQueryLocal()
 {
 
 
@@ -399,7 +399,7 @@ void CFastMoneyData::DoQueryLocal()
 }
 
 
-void CFastMoneyData::DoQuery()
+void CCollectorData::DoQuery()
 {
 	int nres = 0;
 	TCHAR buf[1000];
@@ -678,7 +678,7 @@ void CFastMoneyData::DoQuery()
 
 
 // **************************************************************************
-CFastMoneyData::~CFastMoneyData()
+CCollectorData::~CCollectorData()
 //
 //	Data class destructor for cleanup.
 // **********************************************************************
@@ -694,7 +694,7 @@ CFastMoneyData::~CFastMoneyData()
 
 
 // **************************************************************************
-ULONG CFastMoneyData::Connect()
+ULONG CCollectorData::Connect()
 {
 	if(m_pThreadMgr == NULL)
 		return S_FALSE;
@@ -733,7 +733,7 @@ ULONG CFastMoneyData::Connect()
 
 
 // **************************************************************************
-void CFastMoneyData::doDisconnect()
+void CCollectorData::doDisconnect()
 //
 // Stop Data Feed and Logout
 // if (we got a data update in-between checking enabled, stop feed 
@@ -747,7 +747,7 @@ void CFastMoneyData::doDisconnect()
 	m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->Disconnect();
 }
 
-void CFastMoneyData::PublishFields()
+void CCollectorData::PublishFields()
 {
 	m_pThreadMgr->pmgr->m_pOwner->PublishFields();
 }

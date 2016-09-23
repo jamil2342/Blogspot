@@ -4,13 +4,13 @@
 class CEventThread;
 #define FASTMONEY_ERROR_RECOVERY_TIMEOUT 120
 
-class CFastMoneyData :
+class CCollectorData :
 	public MTObject
 {
 	wchar_t * url = L"http://podcast.cnbc.com/mmpodcast/fastmoney.xml";
 public:
-	CFastMoneyData(void);
-	~CFastMoneyData(void);
+	CCollectorData(void);
+	~CCollectorData(void);
 	CEventThread* m_pThreadMgr;				// Ptr to the parent
 	map<string, string> m_mapImages;
 

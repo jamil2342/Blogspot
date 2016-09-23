@@ -22,8 +22,8 @@ typedef	map<int,int>::iterator REQUESTIter;
 
 class CPSDBListener : public CComObjectRoot ,public IPSDBListener 
 {
-	friend class CFastMoneyCollect;
-	CFastMoneyCollect *m_pMgr;
+	friend class CCollectorCollect;
+	CCollectorCollect *m_pMgr;
 
 public:
 	CPSDBListener();
@@ -40,7 +40,7 @@ public:
 
 	map<int,int> m_myReqs;
 	void AddReqID(int reqID);
-	void SetMgr(CFastMoneyCollect *pMgr) {m_pMgr = pMgr;};
+	void SetMgr(CCollectorCollect *pMgr) {m_pMgr = pMgr;};
 
 	BEGIN_COM_MAP(CPSDBListener)
 		COM_INTERFACE_ENTRY(IPSDBListener)

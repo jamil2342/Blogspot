@@ -16,7 +16,7 @@
 #include "time.h"
 
 
-STDMETHODIMP CFastMoneyCollect::InterfaceSupportsErrorInfo(REFIID riid)
+STDMETHODIMP CCollectorCollect::InterfaceSupportsErrorInfo(REFIID riid)
 {
 	static const IID* arr[] = 
 	{
@@ -33,7 +33,7 @@ STDMETHODIMP CFastMoneyCollect::InterfaceSupportsErrorInfo(REFIID riid)
 /////////////////////////////////////////////////////////////////////////////
 //	Construction
 /////////////////////////////////////////////////////////////////////////////
-STDMETHODIMP CFastMoneyCollect::GetConfig(/*[in,out]*/VARIANT *config)
+STDMETHODIMP CCollectorCollect::GetConfig(/*[in,out]*/VARIANT *config)
 {
 	//m_synchConfig.ReadLock();
 	VariantInit(config);
@@ -78,7 +78,7 @@ STDMETHODIMP CFastMoneyCollect::GetConfig(/*[in,out]*/VARIANT *config)
 	return S_OK;
 }
 
-HRESULT CFastMoneyCollect::doConfig(/*[in]*/VARIANT *config)
+HRESULT CCollectorCollect::doConfig(/*[in]*/VARIANT *config)
 {
 	m_synchConfig.WriteLock();
 	bool bChange = false;
@@ -250,7 +250,7 @@ HRESULT CFastMoneyCollect::doConfig(/*[in]*/VARIANT *config)
 	return S_OK;
 }
 
-STDMETHODIMP CFastMoneyCollect::SetConfig(/*[in]*/VARIANT *config, /*[in]*/BOOL ApplyNow)
+STDMETHODIMP CCollectorCollect::SetConfig(/*[in]*/VARIANT *config, /*[in]*/BOOL ApplyNow)
 {
 	string oldname = m_base.m_name;
 	HRESULT result = doConfig(config);
@@ -295,7 +295,7 @@ STDMETHODIMP CFastMoneyCollect::SetConfig(/*[in]*/VARIANT *config, /*[in]*/BOOL 
 }
 
 
-STDMETHODIMP CFastMoneyCollect::CustomIF(/*[in]*/int type,/*[in,out]*/VARIANT *internalInfo)
+STDMETHODIMP CCollectorCollect::CustomIF(/*[in]*/int type,/*[in,out]*/VARIANT *internalInfo)
 {
 	HRESULT hResult = S_OK;
 	int nres = 0;
@@ -450,7 +450,7 @@ STDMETHODIMP CFastMoneyCollect::CustomIF(/*[in]*/int type,/*[in,out]*/VARIANT *i
 }
 
 
-STDMETHODIMP CFastMoneyCollect::EnableConnection(/*[in]*/BOOL open)
+STDMETHODIMP CCollectorCollect::EnableConnection(/*[in]*/BOOL open)
 {
 //	MessageBox(NULL, "Stop in EnableConnection!!!", "Stop Here", MB_OK);
 
@@ -506,7 +506,7 @@ STDMETHODIMP CFastMoneyCollect::EnableConnection(/*[in]*/BOOL open)
 }
 
 
-STDMETHODIMP CFastMoneyCollect::RemoveListener(/*[in]*/short cookie)
+STDMETHODIMP CCollectorCollect::RemoveListener(/*[in]*/short cookie)
 {
 	ATLTRACE("CSharePointCollect::Unadvise \r\n");
 
@@ -524,7 +524,7 @@ STDMETHODIMP CFastMoneyCollect::RemoveListener(/*[in]*/short cookie)
 	return S_OK;
 }
 
-STDMETHODIMP CFastMoneyCollect::AddListener(/*[in]*/IInboundEvents *pListener, /*[in,out]*/short *cookie)
+STDMETHODIMP CCollectorCollect::AddListener(/*[in]*/IInboundEvents *pListener, /*[in,out]*/short *cookie)
 {
 	ATLTRACE("CSharePointCollect::Advise\n");
 	*cookie = 0;
@@ -545,7 +545,7 @@ STDMETHODIMP CFastMoneyCollect::AddListener(/*[in]*/IInboundEvents *pListener, /
 }
 
 
-STDMETHODIMP CFastMoneyCollect::SetInboundID(/*[in]*/VARIANT infovar)
+STDMETHODIMP CCollectorCollect::SetInboundID(/*[in]*/VARIANT infovar)
 {
 	// assign name and ref num. keep this avail for future use
 	// when we get here, we know we were successful at creating this 
@@ -562,7 +562,7 @@ STDMETHODIMP CFastMoneyCollect::SetInboundID(/*[in]*/VARIANT infovar)
 	return S_OK;//result;
 }
 
-void CFastMoneyCollect::CreateCollector()
+void CCollectorCollect::CreateCollector()
 {
 	CPSDBCollector schema;
 
@@ -601,7 +601,7 @@ void CFastMoneyCollect::CreateCollector()
 	VariantClear(&typeInfo);
 }
 
-void CFastMoneyCollect::DeleteTable(string &table)
+void CCollectorCollect::DeleteTable(string &table)
 {
 	VARIANT info;	VariantInit(&info);
 	if(table.length())
@@ -640,7 +640,7 @@ void CFastMoneyCollect::DeleteTable(string &table)
 	VariantClear(&info);
 }
 
-ULONG CFastMoneyCollect::GetPubRefnum()
+ULONG CCollectorCollect::GetPubRefnum()
 {
 	Acquire lock(&m_SyncPSDBSvr);
 	IPSDBHelper *helper = GetPSDBHelper();
@@ -664,7 +664,7 @@ ULONG CFastMoneyCollect::GetPubRefnum()
 	return refnum;
 }
 
-STDMETHODIMP CFastMoneyCollect::SetUpdatePulse(int secs, BOOL onlyOnNoActivity)
+STDMETHODIMP CCollectorCollect::SetUpdatePulse(int secs, BOOL onlyOnNoActivity)
 {
 	m_synchConfig.WriteLock();
 
@@ -689,7 +689,7 @@ STDMETHODIMP CFastMoneyCollect::SetUpdatePulse(int secs, BOOL onlyOnNoActivity)
 
 #include <comdef.h>
 
-void CFastMoneyCollect::DoEvent(changeType type, short state, VARIANT *err)
+void CCollectorCollect::DoEvent(changeType type, short state, VARIANT *err)
 {
 	Acquire lock(this);	
 
@@ -762,7 +762,7 @@ void CFastMoneyCollect::DoEvent(changeType type, short state, VARIANT *err)
 /////////////////////////////////////////////
 
 
-CFastMoneyCollect::CFastMoneyCollect()
+CCollectorCollect::CCollectorCollect()
 {
 	ZeroMemory(&m_base,SIZEOF_SHAREPOINT_COMMON);
 
@@ -815,7 +815,7 @@ CFastMoneyCollect::CFastMoneyCollect()
 	SPTYPETOPOLY["MaxItems"] = POLY_STR;
 }
 
-CFastMoneyCollect::~CFastMoneyCollect()
+CCollectorCollect::~CCollectorCollect()
 {
 //	ClearMaps();
 	m_keys.ReleaseAll();
@@ -849,7 +849,7 @@ CFastMoneyCollect::~CFastMoneyCollect()
 }
 
 
-HRESULT  CFastMoneyCollect::AddEvent(int reqID, int type, int errCode, BSTR msg,VARIANT response)
+HRESULT  CCollectorCollect::AddEvent(int reqID, int type, int errCode, BSTR msg,VARIANT response)
 {
 	Acquire lock(this);	
 
@@ -858,7 +858,7 @@ HRESULT  CFastMoneyCollect::AddEvent(int reqID, int type, int errCode, BSTR msg,
 	return S_OK;		
 }
 
-void CFastMoneyCollect::AddInboundInstanceInfo()
+void CCollectorCollect::AddInboundInstanceInfo()
 {
 	_bstr_t bsName = m_base.m_name;
 	string name = bsName;
@@ -892,7 +892,7 @@ void CFastMoneyCollect::AddInboundInstanceInfo()
 	SetEvent(m_hStartupDone);
 }
 
-bool CFastMoneyCollect::CreateSharePointInstance()
+bool CCollectorCollect::CreateSharePointInstance()
 {
 	HRESULT hr = S_OK;
 
@@ -919,7 +919,7 @@ bool CFastMoneyCollect::CreateSharePointInstance()
 	return true;
 }
 
-void CFastMoneyCollect::PublishFields()
+void CCollectorCollect::PublishFields()
 {
 	int cnt = 1;
 	string strTableName;
@@ -1098,7 +1098,7 @@ void CFastMoneyCollect::PublishFields()
 	}
 }
 
-void CFastMoneyCollect::ModifyImplemented()
+void CCollectorCollect::ModifyImplemented()
 {
 	_bstr_t bsName = m_base.m_name;
 	string name = bsName;
@@ -1125,7 +1125,7 @@ void CFastMoneyCollect::ModifyImplemented()
 	m_impModFlds.ReleaseMap();
 }
 
-IPSDBHelper *CFastMoneyCollect::GetPSDBHelper()
+IPSDBHelper *CCollectorCollect::GetPSDBHelper()
 {
 	if(m_pHelper)
 		return m_pHelper;
@@ -1158,7 +1158,7 @@ IPSDBHelper *CFastMoneyCollect::GetPSDBHelper()
 }
 
 
-void CFastMoneyCollect::ReleasePSDBHelper()
+void CCollectorCollect::ReleasePSDBHelper()
 {
 	if(m_pHelper == NULL)
 		return;
@@ -1178,7 +1178,7 @@ void CFastMoneyCollect::ReleasePSDBHelper()
 	m_pHelper = NULL;
 }
 
-void CFastMoneyCollect::OnAddListener() 
+void CCollectorCollect::OnAddListener() 
 {
 
 	CComObject<CPSDBListener>::CreateInstance(&m_pDBListener);
@@ -1213,7 +1213,7 @@ void CFastMoneyCollect::OnAddListener()
 
 }
 
-void CFastMoneyCollect::OnRemoveListener() 
+void CCollectorCollect::OnRemoveListener() 
 {
 	if(m_pDBListener)	
 	{
@@ -1239,14 +1239,14 @@ void CFastMoneyCollect::OnRemoveListener()
 	
 }
 
-STDMETHODIMP CFastMoneyCollect::GetAllKeys(VARIANT *keys)
+STDMETHODIMP CCollectorCollect::GetAllKeys(VARIANT *keys)
 {
 	m_keys.m_ibRef = m_base.m_refnum;
 	m_keys.VariantOut(keys, false);
 	return S_OK;
 }
 
-STDMETHODIMP CFastMoneyCollect::SetImplemented(VARIANT keys, VARIANT flds)
+STDMETHODIMP CCollectorCollect::SetImplemented(VARIANT keys, VARIANT flds)
 {
 	updatekeys.ReleaseAll();
 	if (keys.vt != VT_EMPTY)
@@ -1256,7 +1256,7 @@ STDMETHODIMP CFastMoneyCollect::SetImplemented(VARIANT keys, VARIANT flds)
 	return S_OK;
 }
 
-STDMETHODIMP CFastMoneyCollect::SpecialImplement(specialImpType type, VARIANT info)
+STDMETHODIMP CCollectorCollect::SpecialImplement(specialImpType type, VARIANT info)
 {
 	CString folder;
 	switch (type)
@@ -1288,7 +1288,7 @@ STDMETHODIMP CFastMoneyCollect::SpecialImplement(specialImpType type, VARIANT in
 	return S_OK;
 }
 
-bool CFastMoneyCollect::DeleteFolder(CString& szFolder)
+bool CCollectorCollect::DeleteFolder(CString& szFolder)
 {
 	WIN32_FIND_DATA wfd;
 	ZeroMemory(&wfd, sizeof(WIN32_FIND_DATA));
@@ -1354,7 +1354,7 @@ bool CFastMoneyCollect::DeleteFolder(CString& szFolder)
 	return true;
 }
 
-LPCTSTR CFastMoneyCollect::GetErrorMessage(CString &err)
+LPCTSTR CCollectorCollect::GetErrorMessage(CString &err)
 {
 	DWORD dwError = GetLastError();
 	if (dwError)
@@ -1394,7 +1394,7 @@ LPCTSTR CFastMoneyCollect::GetErrorMessage(CString &err)
 	return err;
 }
 
-void CFastMoneyCollect::BuildSchema()
+void CCollectorCollect::BuildSchema()
 {
 	int cnt; 
 	string strTableName;
