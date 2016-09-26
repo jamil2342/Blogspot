@@ -936,6 +936,10 @@ namespace AemClient
                 if (!string.IsNullOrEmpty(m_fuagAuth))
                     m_authenticator.Disconnect();
             }
+            retList.Clear();
+            retList.Add("id", "Counter");
+            retList.Add("headline", "Text");
+            retList.Add("category", "Text");
             retList.Add("image", "Text");
             return retList;
         }
@@ -989,14 +993,14 @@ namespace AemClient
             DataTable dt = ToDataTable<Newslist>(r.newsList.ToList<Newslist>());
 
 
-            dt.Columns.Add("id", typeof(int)).SetOrdinal(0);
+            dt.Columns.Add("id", System.Type.GetType("System.String")).SetOrdinal(0);
             int i = 0;
             foreach (DataRow item in dt.Rows)
             {
                 item[0] = (i+1);
                 i++;
             }
-            dt=ResizeDataTable(dt, 2);
+            dt=ResizeDataTable(dt, 4);
             return dt;
         }
         public static  DataTable ToDataTable<T>( IList<T> data)
