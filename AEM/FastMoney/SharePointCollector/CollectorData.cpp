@@ -463,7 +463,7 @@ void CCollectorData::DoQuery(char * url)
 						SafeArrayGetElement(V_ARRAY(&vtItems), &tmpIdx, &vtData);
 						if ( fieldname == _T("id"))
 						{
-							//strNumber = vtData.bstrVal;
+							strNumber = vtData.bstrVal;
 							pTblKeys = m_pThreadMgr->pmgr->m_pOwner->m_keys.GetTable(tableid);
 							if (pTblKeys == NULL)
 							{
