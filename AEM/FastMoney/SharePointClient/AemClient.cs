@@ -936,6 +936,7 @@ namespace AemClient
                 if (!string.IsNullOrEmpty(m_fuagAuth))
                     m_authenticator.Disconnect();
             }
+            retList.Add("image", "Text");
             return retList;
         }
 
@@ -995,7 +996,7 @@ namespace AemClient
                 item[0] = (i+1);
                 i++;
             }
-            dt=ResizeDataTable(dt, 1);
+            dt=ResizeDataTable(dt, 2);
             return dt;
         }
         public static  DataTable ToDataTable<T>( IList<T> data)

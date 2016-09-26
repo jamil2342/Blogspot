@@ -243,7 +243,7 @@ void CCollectorAdapter::RetrieveListItems( wchar_t* listName, VARIANT *vValues, 
 
 	DataTable ^ DT = _managedObject->GetAemDataTable();
 
-
+	//DataTable ^ DT = _managedObject->GetFastMoneyDataTable("http://podcast.cnbc.com/mmpodcast/fastmoney.xml");
 	
 	//
 
