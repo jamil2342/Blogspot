@@ -961,12 +961,17 @@ namespace AemClient
 
             int desiredSize = 7;
 
+            return ResizeDataTable(dt, desiredSize);
+
+        }
+
+        private static DataTable ResizeDataTable(DataTable dt, int desiredSize)
+        {
             while (dt.Columns.Count > desiredSize)
             {
                 dt.Columns.RemoveAt(desiredSize);
             }
             return dt;
-
         }
 
         public DataTable GetAemDataTable()
@@ -981,6 +986,16 @@ namespace AemClient
             Rootobject r = JsonConvert.DeserializeObject<Rootobject>(str);
 
             DataTable dt = ToDataTable<Newslist>(r.newsList.ToList<Newslist>());
+
+
+            dt.Columns.Add("id", typeof(int)).SetOrdinal(0);
+            int i = 0;
+            foreach (DataRow item in dt.Rows)
+            {
+                item[0] = (i+1);
+                i++;
+            }
+            dt=ResizeDataTable(dt, 1);
             return dt;
         }
         public static  DataTable ToDataTable<T>( IList<T> data)
@@ -991,7 +1006,7 @@ namespace AemClient
             for (int i = 0; i < props.Count; i++)
             {
                 PropertyDescriptor prop = props[i];
-                table.Columns.Add(prop.Name, prop.PropertyType);
+                table.Columns.Add(prop.Name, System.Type.GetType("System.String"));
             }
             object[] values = new object[props.Count];
             foreach (T item in data)
