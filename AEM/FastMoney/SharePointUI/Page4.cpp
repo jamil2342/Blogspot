@@ -65,6 +65,12 @@ BOOL CPage4::OnInitDialog()
 
 void CPage4::OnCbnSelchangeViewtitle()
 {
+	return retrivefields();
+
+}
+
+void CPage4::retrivefields()
+{
 	CWaitCursor wait;
 	UpdateData();
 	OutputDebugString("CPage4::OnCbnSelchangeViewtitle()");
@@ -78,10 +84,10 @@ void CPage4::OnCbnSelchangeViewtitle()
 	VariantInit(&vtData);
 	CString listtitle = m_pInbound->m_base.m_szListTitle;
 	CString saveview = m_pInbound->m_base.m_szViewTitle;
-	strncpy_s(m_pInbound->m_base.m_szViewTitle, _countof(m_pInbound->m_base.m_szViewTitle), (LPCTSTR)m_viewname,STANDARD_STRING);
+	strncpy_s(m_pInbound->m_base.m_szViewTitle, _countof(m_pInbound->m_base.m_szViewTitle), (LPCTSTR)m_viewname, STANDARD_STRING);
 	m_pInbound->ConfigureSharePoint();
-	strncpy_s(m_pInbound->m_base.m_szViewTitle, _countof(m_pInbound->m_base.m_szViewTitle), (LPCTSTR)saveview,STANDARD_STRING);
-	HRESULT hRes = m_pInbound->PopulateFields(listtitle, vtFieldList); 
+	strncpy_s(m_pInbound->m_base.m_szViewTitle, _countof(m_pInbound->m_base.m_szViewTitle), (LPCTSTR)saveview, STANDARD_STRING);
+	HRESULT hRes = m_pInbound->PopulateFields(listtitle, vtFieldList);
 	m_pInbound->ShowLastError(hRes);
 	if (hRes != S_OK)
 	{
@@ -91,27 +97,27 @@ void CPage4::OnCbnSelchangeViewtitle()
 	CString csFieldName;
 	long			lLowerBound = 0;
 	long			lUpperBound = 0;
-	long			lCounter	= 0;
+	long			lCounter = 0;
 	long			idx = 0;
 
 	m_listfields.DeleteAllItems();
 	SafeArrayGetLBound(V_ARRAY(&vtFieldList), 1, &lLowerBound);
 	SafeArrayGetUBound(V_ARRAY(&vtFieldList), 1, &lUpperBound);
-	for (lCounter=lLowerBound; lCounter<=lUpperBound; lCounter++)
+	for (lCounter = lLowerBound; lCounter <= lUpperBound; lCounter++)
 	{
 		SafeArrayGetElement(V_ARRAY(&vtFieldList), &lCounter, &vtData);
-		if(vtData.vt == VT_BSTR && lCounter %2 == lLowerBound )
+		if (vtData.vt == VT_BSTR && lCounter % 2 == lLowerBound)
 		{
 			csFieldName = vtData.bstrVal;
 			csFieldName = csFieldName.MakeLower();
-			csFieldName.Replace("_","");
-			csFieldName.Replace("x0020","");
-			csFieldName.Replace("x002d","");
+			csFieldName.Replace("_", "");
+			csFieldName.Replace("x0020", "");
+			csFieldName.Replace("x002d", "");
 		}
 		else
 		{
-			int nIndex = m_listfields.InsertItem(0 ,csFieldName);
-			m_listfields.SetItemText(nIndex,1,(LPCSTR)_bstr_t(vtData.bstrVal));
+			int nIndex = m_listfields.InsertItem(0, csFieldName);
+			m_listfields.SetItemText(nIndex, 1, (LPCSTR)_bstr_t(vtData.bstrVal));
 		}
 		VariantClear(&vtData);
 	}
@@ -274,6 +280,6 @@ void CPage4::LoadTitles(CString listtitle, CString viewname)
 void CPage4::OnBnClickedButton1()
 {
 
-	AfxMessageBox("jamil");
+	retrivefields();
 	// TODO: Add your control notification handler code here
 }

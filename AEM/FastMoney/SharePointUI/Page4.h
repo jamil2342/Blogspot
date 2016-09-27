@@ -34,6 +34,9 @@ public:
 	CComboBox m_comboViewTitle;
 	CListCtrl m_listfields;
 	afx_msg void OnCbnSelchangeViewtitle();
+
+	afx_msg void retrivefields();
+
 	virtual BOOL OnApply();
 	virtual BOOL OnSetActive();
 	CString m_listtitle;
