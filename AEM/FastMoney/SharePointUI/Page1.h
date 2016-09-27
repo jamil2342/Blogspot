@@ -70,6 +70,10 @@ public:
 	CEdit m_edit_url1;
 	CEdit m_edit_url2;
 	CEdit m_edit_url3;
+	CString m_url4;
+	CString m_url5;
+	CString m_url6;
+	CString m_url7;
 };
 
 //{{AFX_INSERT_LOCATION}}

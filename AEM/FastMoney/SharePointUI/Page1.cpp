@@ -26,6 +26,10 @@ IMPLEMENT_DYNCREATE(CPage1, CPropertyPage)
 
 CPage1::CPage1(CSharePointInbound *pInbound) : CPropertyPage(CPage1::IDD)
 , m_timeout(0)
+, m_url4(_T(""))
+, m_url5(_T(""))
+, m_url6(_T(""))
+, m_url7(_T(""))
 {
 	m_pInbound = pInbound;
 	ASSERT(m_pInbound);
@@ -40,6 +44,10 @@ CPage1::CPage1(CSharePointInbound *pInbound) : CPropertyPage(CPage1::IDD)
 	m_url1 = m_pInbound->m_base.m_szServiceUrl1;
 	m_url2 = m_pInbound->m_base.m_szServiceUrl2;
 	m_url3 = m_pInbound->m_base.m_szServiceUrl3;
+	m_url4 = m_pInbound->m_base.m_szServiceUrl4;
+	m_url5 = m_pInbound->m_base.m_szServiceUrl5;
+	m_url6 = m_pInbound->m_base.m_szServiceUrl6;
+	m_url7 = m_pInbound->m_base.m_szServiceUrl7;
 	//}}AFX_DATA_INIT
 }
 
@@ -73,6 +81,14 @@ void CPage1::DoDataExchange(CDataExchange* pDX)
 
 	DDX_Text(pDX, IDC_EDIT_URL3, m_url3);
 	DDV_MaxChars(pDX, m_url3, 75);
+	DDX_Text(pDX, IDC_EDIT_URL4, m_url4);
+	DDV_MaxChars(pDX, m_url4, 80);
+	DDX_Text(pDX, IDC_EDIT_URL5, m_url5);
+	DDV_MaxChars(pDX, m_url5, 80);
+	DDX_Text(pDX, IDC_EDIT_URL6, m_url6);
+	DDV_MaxChars(pDX, m_url6, 80);
+	DDX_Text(pDX, IDC_EDIT_URL7, m_url7);
+	DDV_MaxChars(pDX, m_url7, 80);
 }
 
 
@@ -159,6 +175,10 @@ BOOL CPage1::SaveItOff()
 	strncpy(m_pInbound->m_base.m_szServiceUrl1, (LPCTSTR)m_url1, 75);
 	strncpy(m_pInbound->m_base.m_szServiceUrl2,(LPCTSTR)m_url2, 75);
 	strncpy(m_pInbound->m_base.m_szServiceUrl3, (LPCTSTR)m_url3, 75);
+	strncpy(m_pInbound->m_base.m_szServiceUrl4, (LPCTSTR)m_url4, 75);
+	strncpy(m_pInbound->m_base.m_szServiceUrl5, (LPCTSTR)m_url5, 75);
+	strncpy(m_pInbound->m_base.m_szServiceUrl6, (LPCTSTR)m_url6, 75);
+	strncpy(m_pInbound->m_base.m_szServiceUrl7, (LPCTSTR)m_url7, 75);
 	return true;
 }
 

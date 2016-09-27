@@ -156,6 +156,13 @@ public:
 	char    m_szServiceUrl1[MAX_URL_SIZE];
 	char    m_szServiceUrl2[MAX_URL_SIZE];
 	char    m_szServiceUrl3[MAX_URL_SIZE];
+
+	char    m_szServiceUrl4[MAX_URL_SIZE];
+	char    m_szServiceUrl5[MAX_URL_SIZE];
+	char    m_szServiceUrl6[MAX_URL_SIZE];
+
+	char    m_szServiceUrl7[MAX_URL_SIZE];
+
 	char	m_szProxy[MAX_URL_SIZE];
 	char	m_szCertPath[_MAX_PATH];
 	char	m_szContentFolder[_MAX_PATH];
