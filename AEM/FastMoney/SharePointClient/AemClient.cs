@@ -990,6 +990,7 @@ namespace AemClient
             HttpResponseMessage response = client.GetAsync(url).Result;
             string str = response.Content.ReadAsStringAsync().Result;
 
+            str= str.Replace(@"abstract",@"_abstract");
             List<Rootobject> n = new List<Rootobject>();
             Rootobject r = JsonConvert.DeserializeObject<Rootobject>(str);
 
