@@ -143,7 +143,7 @@ bool CPage4::SaveItOff()
 	if(!UpdateData())
 		return false;
 
-	if(m_viewname.Compare(m_pInbound->m_base.m_szViewTitle))
+	//if(m_viewname.Compare(m_pInbound->m_base.m_szViewTitle))
 	{
 		OutputDebugString("CPage4::viewname changed");
 		m_chg = true;
