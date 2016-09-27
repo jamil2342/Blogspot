@@ -401,6 +401,10 @@ void CCollectorData::DoQueryLocal()
 
 void CCollectorData::DoQuery(char * url)
 {
+	if (strlen(url)==0)
+	{
+		return;
+	}
 	int nres = 0;
 	TCHAR buf[1000];
 	CTableKeys *pTblKeys = NULL;
@@ -412,7 +416,9 @@ void CCollectorData::DoQuery(char * url)
 	GetSystemTime(&st);
 	vTimeStamp.vt = VT_DATE;
 	SystemTimeToVariantTime(&st, &vTimeStamp.date);
-
+	CUpdateBlob * m_pDatum = m_pThreadMgr->pmgr->m_pOwner->m_pDatum;
+	//m_pDatum->m_fieldnames.insert(pair<string, int>("category", 5));
+	//m_pDatum->m_fieldnames.insert(pair<string, int>("abstract", 7));
 	if ((m_pThreadMgr->pmgr->m_pOwner->m_base.m_tableCount > 0) && (m_pThreadMgr->pmgr->m_pOwner->m_base.m_fieldCount > 0))
 	{
 		int tableid = 1;
@@ -427,7 +433,7 @@ void CCollectorData::DoQuery(char * url)
 			//std::wstring name(L"http://podcast.cnbc.com/mmpodcast/fastmoney.xml");
 			//wchar_t* szName = name.c_str();
 			
-			m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szListTitle),&vtItems, nres);
+			m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(_bstr_t(url),&vtItems, nres);
 			bool bMoreData = m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->MoreData();
 			if ( vtItems.vt != VT_EMPTY && nres == 0 )
 			{
