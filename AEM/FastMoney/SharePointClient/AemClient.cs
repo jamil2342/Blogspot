@@ -982,9 +982,9 @@ namespace AemClient
             return dt;
         }
 
-        public DataTable GetAemDataTable(string url)
+        public DataTable GetAemDataTable(string imageBaseUrl,string url)
         {
-            //string url = "http://172.25.7.92:99/Api/JsonFile";
+
             string result = "";
             HttpClient client = new HttpClient();
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -994,11 +994,12 @@ namespace AemClient
             List<Rootobject> n = new List<Rootobject>();
             Rootobject r = JsonConvert.DeserializeObject<Rootobject>(str);
 
-            string source = "http://mobilemarketingwatch.com/wp-content/uploads/2015/12/Can-Amobee-Cross-Channel-Video-Ads-Boost-Reach-of-TV-Campaigns-Company-Commissions-Nielsen-to-Find-Out-480x320.jpg";
+            //string source = "http://mobilemarketingwatch.com/wp-content/uploads/2015/12/Can-Amobee-Cross-Channel-Video-Ads-Boost-Reach-of-TV-Campaigns-Company-Commissions-Nielsen-to-Find-Out-480x320.jpg";
             string destinationBase=@"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\";
           
             foreach (var item in r.newsList)
             {
+                string source = imageBaseUrl+"http://mobilemarketingwatch.com/wp-content/uploads/2015/12/Can-Amobee-Cross-Channel-Video-Ads-Boost-Reach-of-TV-Campaigns-Company-Commissions-Nielsen-to-Find-Out-480x320.jpg";
                 string dest = destinationBase + item.headline+".jpg";
                 item.image = dest;  
                 if (!System.IO.File.Exists(dest))

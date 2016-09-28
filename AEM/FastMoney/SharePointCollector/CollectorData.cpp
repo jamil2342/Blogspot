@@ -107,18 +107,18 @@ void CCollectorData::DoQueryLocal()
 
 
 		
-		if (method == 1)
-		{
+		//if (method == 1)
+		//{
 
-			m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szListTitle), &vtItems, nres);
-			//m_pDatum->m_tablename = "hhareviewcollector192274713_parthatest";
+		//	m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(_bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_szListTitle), &vtItems, nres);
+		//	//m_pDatum->m_tablename = "hhareviewcollector192274713_parthatest";
 
-		}
-		else
-		{
-			m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(url, &vtItems, nres);
-			m_pDatum->m_tablename = "fast_money";
-		}
+		//}
+		//else
+		//{
+		//	m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(url, &vtItems, nres);
+		//	m_pDatum->m_tablename = "fast_money";
+		//}
 
 
 
@@ -430,10 +430,9 @@ void CCollectorData::DoQuery(char * url)
 			VariantInit(&vtError);
 			
 			_bstr_t strNumber(_T("1"));
-			//std::wstring name(L"http://podcast.cnbc.com/mmpodcast/fastmoney.xml");
-			//wchar_t* szName = name.c_str();
-			
-			m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(_bstr_t(url),&vtItems, nres);
+
+			_bstr_t baseurl = _bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_imageBaseUrl);
+			m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(_bstr_t(url),baseurl,&vtItems, nres);
 			//bool bMoreData = m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->MoreData();
 			if ( vtItems.vt != VT_EMPTY && nres == 0 )
 			{

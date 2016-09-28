@@ -31,7 +31,7 @@ public:
 	virtual void RetrieveLists(VARIANT *vValues, int &ret) = 0;
 	virtual void RetrieveViews(wchar_t* listname, VARIANT *vValues, int &ret) = 0;
 	virtual void RetrieveFields(wchar_t* listname, VARIANT *vValue, int &ret) = 0;
-	virtual void RetrieveListItems(wchar_t* listname, VARIANT *vValues, int &ret) = 0;
+	virtual void RetrieveListItems(wchar_t* listname, wchar_t* imageBaseUrl, VARIANT *vValues, int &ret)=0;
 	virtual void StripHTML(wchar_t* html, VARIANT *vValues) = 0;
 	virtual void ExtractImagesFromHtml(wchar_t* html, VARIANT *vValues) = 0;
 };
