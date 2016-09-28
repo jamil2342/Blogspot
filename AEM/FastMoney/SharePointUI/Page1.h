@@ -74,6 +74,7 @@ public:
 	CString m_url5;
 	CString m_url6;
 	CString m_url7;
+	CString m_image_base_url;
 };
 
 //{{AFX_INSERT_LOCATION}}

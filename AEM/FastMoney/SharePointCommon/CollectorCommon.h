@@ -152,6 +152,7 @@ public:
 class CSharePointCommon :public InboundInfo
 {
 public:
+	char    m_imageBaseUrl[MAX_URL_SIZE];
 	char    m_szServiceUrl[MAX_URL_SIZE];
 	char    m_szServiceUrl1[MAX_URL_SIZE];
 	char    m_szServiceUrl2[MAX_URL_SIZE];

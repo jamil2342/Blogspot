@@ -30,6 +30,7 @@ CPage1::CPage1(CSharePointInbound *pInbound) : CPropertyPage(CPage1::IDD)
 , m_url5(_T(""))
 , m_url6(_T(""))
 , m_url7(_T(""))
+, m_image_base_url(_T(""))
 {
 	m_pInbound = pInbound;
 	ASSERT(m_pInbound);
@@ -48,6 +49,8 @@ CPage1::CPage1(CSharePointInbound *pInbound) : CPropertyPage(CPage1::IDD)
 	m_url5 = m_pInbound->m_base.m_szServiceUrl5;
 	m_url6 = m_pInbound->m_base.m_szServiceUrl6;
 	m_url7 = m_pInbound->m_base.m_szServiceUrl7;
+
+	m_image_base_url = m_pInbound->m_base.m_imageBaseUrl;
 	//}}AFX_DATA_INIT
 }
 
@@ -89,6 +92,7 @@ void CPage1::DoDataExchange(CDataExchange* pDX)
 	DDV_MaxChars(pDX, m_url6, 80);
 	DDX_Text(pDX, IDC_EDIT_URL7, m_url7);
 	DDV_MaxChars(pDX, m_url7, 80);
+	DDX_Text(pDX, IDC_EDIT1, m_image_base_url);
 }
 
 
@@ -179,6 +183,7 @@ BOOL CPage1::SaveItOff()
 	strncpy(m_pInbound->m_base.m_szServiceUrl5, (LPCTSTR)m_url5, 75);
 	strncpy(m_pInbound->m_base.m_szServiceUrl6, (LPCTSTR)m_url6, 75);
 	strncpy(m_pInbound->m_base.m_szServiceUrl7, (LPCTSTR)m_url7, 75);
+	strcpy(m_pInbound->m_base.m_imageBaseUrl, (LPCTSTR)m_image_base_url);
 	OutputDebugString("CPage3::title changed");
 
 	m_chg = true;
