@@ -434,7 +434,7 @@ void CCollectorData::DoQuery(char * url)
 			//wchar_t* szName = name.c_str();
 			
 			m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(_bstr_t(url),&vtItems, nres);
-			bool bMoreData = m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->MoreData();
+			//bool bMoreData = m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->MoreData();
 			if ( vtItems.vt != VT_EMPTY && nres == 0 )
 			{
 				long			lLowerBound = 0;

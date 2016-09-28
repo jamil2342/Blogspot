@@ -1000,11 +1000,13 @@ namespace AemClient
             foreach (var item in r.newsList)
             {
                 string dest = destinationBase + item.headline+".jpg";
+                item.image = dest;  
                 if (!System.IO.File.Exists(dest))
                 {
                     downloadFile(source, dest);
-                    item.image = dest;  
+                    
                 }
+                
             }
             
             DataTable dt = ToDataTable<Newslist>(r.newsList.ToList<Newslist>());
