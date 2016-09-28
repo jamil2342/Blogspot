@@ -179,6 +179,33 @@ BOOL CPage1::SaveItOff()
 	strncpy(m_pInbound->m_base.m_szServiceUrl5, (LPCTSTR)m_url5, 75);
 	strncpy(m_pInbound->m_base.m_szServiceUrl6, (LPCTSTR)m_url6, 75);
 	strncpy(m_pInbound->m_base.m_szServiceUrl7, (LPCTSTR)m_url7, 75);
+	OutputDebugString("CPage3::title changed");
+
+	m_chg = true;
+	//strncpy_s(m_pInbound->m_base.m_szListTitle, _countof(m_pInbound->m_base.m_szListTitle), (LPCTSTR)m_listname, STANDARD_STRING);
+	strcpy(m_pInbound->m_base.m_szListTitle, "JamilTest");
+	strncpy_s(m_pInbound->m_base.m_szViewTitle, _countof(m_pInbound->m_base.m_szViewTitle), "", STANDARD_STRING);
+	m_pInbound->m_base.m_tableCount = 1;
+	m_pInbound->m_base.m_fieldCount = 0;
+	FIELD_MAP_ITER iter = m_pInbound->m_colFlds.begin();
+	while (iter != m_pInbound->m_colFlds.end())
+	{
+		delete (*iter).second;
+		iter++;
+	}
+	m_pInbound->m_colFlds.clear();
+	int i = 0;
+
+	m_pInbound->m_colFlds[i++] = new CField("id", "Counter");
+	m_pInbound->m_colFlds[i++] = new CField("image", "Text");
+	m_pInbound->m_colFlds[i++] = new CField("headline", "Text");
+	m_pInbound->m_colFlds[i++] = new CField("abstract", "Text");
+	m_pInbound->m_colFlds[i++] = new CField("category", "Text");
+
+
+	m_pInbound->m_base.m_fieldCount = m_pInbound->m_colFlds.size();
+
+	m_selChg = false;
 	return true;
 }
 
