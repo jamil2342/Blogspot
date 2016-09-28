@@ -22,7 +22,7 @@ using System.Net.Http;
 using System.Xml;
 using Newtonsoft.Json;
 using System.ComponentModel;
-
+using System.Net;
 namespace AemClient
 {
 
@@ -994,6 +994,19 @@ namespace AemClient
             List<Rootobject> n = new List<Rootobject>();
             Rootobject r = JsonConvert.DeserializeObject<Rootobject>(str);
 
+            string source = "http://mobilemarketingwatch.com/wp-content/uploads/2015/12/Can-Amobee-Cross-Channel-Video-Ads-Boost-Reach-of-TV-Campaigns-Company-Commissions-Nielsen-to-Find-Out-480x320.jpg";
+            string destinationBase=@"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\";
+          
+            foreach (var item in r.newsList)
+            {
+                string dest = destinationBase + item.headline+".jpg";
+                if (!System.IO.File.Exists(dest))
+                {
+                    downloadFile(source, dest);
+                    item.image = dest;  
+                }
+            }
+            
             DataTable dt = ToDataTable<Newslist>(r.newsList.ToList<Newslist>());
 
 
@@ -1007,8 +1020,25 @@ namespace AemClient
             dt=ResizeDataTable(dt, 10);
             return dt;
         }
+        public void downloadFile(string remoteUri, string fileName)
+        {
+            try
+            {
+                WebClient Client = new WebClient();
+                Client.DownloadFile(remoteUri, fileName);
+            }
+            catch (Exception)
+            {
+                
+             
+            }
+
+        
+        }
+
         public static  DataTable ToDataTable<T>( IList<T> data)
         {
+           
             PropertyDescriptorCollection props =
             TypeDescriptor.GetProperties(typeof(T));
             DataTable table = new DataTable();
