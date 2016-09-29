@@ -1,0 +1,9 @@
+; FastMoneyCollector.def : Declares the module parameters.
+
+LIBRARY      "FastMoneyAdapter.DLL"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE

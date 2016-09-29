@@ -1,0 +1,38 @@
+// SharePointUI.idl : IDL source for SharePointUI
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SharePointUI.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "PubInboundUI.idl";
+
+[
+	object,
+	uuid(B2B6DD97-5A06-4584-9A8F-6B979D086A30),
+	dual,
+	nonextensible,
+	helpstring("ISharePointInbound Interface"),
+	pointer_default(unique)
+]
+interface ISharePointInbound : IDispatch{
+};
+[
+	uuid(1E93D86D-F46A-4B0A-9DB9-4FD18ED2AA04),
+	version(1.0),
+	helpstring("SharePointUI 1.0 Type Library")
+]
+library SharePointUILib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	[
+		uuid(CC6ED2D9-0877-495E-BF97-3A37F680F7F5),
+		helpstring("SharePointInbound Class")
+	]
+	coclass SharePointInbound
+	{
+		[default] interface ISharePointInbound;
+	};
+};
