@@ -203,6 +203,7 @@ BOOL CPage1::SaveItOff()
 
 	m_pInbound->m_colFlds[i++] = new CField("id", "Counter");
 	m_pInbound->m_colFlds[i++] = new CField("image", "Text");
+	m_pInbound->m_colFlds[i++] = new CField("imagelocalfolder", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("headline", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("abstract", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("category", "Text");

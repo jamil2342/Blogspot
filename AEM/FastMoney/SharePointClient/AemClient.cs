@@ -1001,8 +1001,8 @@ namespace AemClient
             {
                 string source = imageBaseUrl+"http://mobilemarketingwatch.com/wp-content/uploads/2015/12/Can-Amobee-Cross-Channel-Video-Ads-Boost-Reach-of-TV-Campaigns-Company-Commissions-Nielsen-to-Find-Out-480x320.jpg";
                 string dest = destinationBase + item.headline+".jpg";
-                item.image = dest;  
-                if (!System.IO.File.Exists(dest))
+                item.imagelocalfolder = dest;  
+                //if (!System.IO.File.Exists(dest))
                 {
                     downloadFile(source, dest);
                     

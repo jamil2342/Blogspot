@@ -16,6 +16,7 @@ namespace AemClient
     public class Newslist
     {
         public string image { get; set; }
+        public string imagelocalfolder { get; set; }
         public string headline { get; set; }
         public string _abstract { get; set; }
         public string category { get; set; }
