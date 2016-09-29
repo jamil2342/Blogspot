@@ -1020,7 +1020,7 @@ namespace AemClient
                 item[0] = (i+1);
                 i++;
             }
-            dt=ResizeDataTable(dt, 10);
+            dt=ResizeDataTable(dt, 13);
             return dt;
         }
         public void downloadFile(string remoteUri, string fileName)
