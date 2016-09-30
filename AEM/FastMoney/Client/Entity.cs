@@ -31,19 +31,23 @@ namespace AemClient
 
 
         public string[] cqtags { get; set; }
-        public string cqtagsStr
-        {
-            get
-            {
-                string str = "";
-                foreach (var item in cqtags)
-                {
-                    str += item;
-                }
-                return str;
-            }
+        //public string cqtagsStr
+        //{
+        //    get
+        //    {
+        //        if (cqtags==null)
+        //        {
+        //            return "";
+        //        }
+        //        string str = "";
+        //        foreach (var item in cqtags)
+        //        {
+        //            str += item;
+        //        }
+        //        return str;
+        //    }
 
-        }
+        //}
         public object offTime { get; set; }
 
     }
