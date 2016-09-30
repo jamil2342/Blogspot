@@ -991,6 +991,8 @@ namespace AemClient
             string str = response.Content.ReadAsStringAsync().Result;
 
             str = str.Replace(@"abstract", @"_abstract");
+
+            str = str.Replace(@"jcr:uuid", @"jcruuid");
             List<Rootobject> n = new List<Rootobject>();
             Rootobject r = JsonConvert.DeserializeObject<Rootobject>(str);
 
@@ -1021,7 +1023,7 @@ namespace AemClient
                 item[0] = (i + 1);
                 i++;
             }
-            dt = ResizeDataTable(dt, 13);
+            //dt = ResizeDataTable(dt, 13);
             return dt;
         }
         public void downloadFile(string remoteUri, string fileName)
