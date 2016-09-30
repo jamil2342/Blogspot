@@ -147,7 +147,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\SharePointClient\Entity.cs">
+    <Compile Include="..\Client\Entity.cs">
       <Link>Models\Entity.cs</Link>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />

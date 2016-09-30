@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AemCollector", "Collector\S
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AemUi", "UI\SharePointUI.vcxproj", "{E1B3CE2C-04A2-4DD8-9479-77275DD677EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AEMWebsite", "AEMWebsite\AEMWebsite.csproj", "{51A16F17-7601-4A4A-BED9-C5E62C440E9B}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -90,6 +92,21 @@ Global
 		{E1B3CE2C-04A2-4DD8-9479-77275DD677EC}.VeraCode|Mixed Platforms.Build.0 = VeraCode|Win32
 		{E1B3CE2C-04A2-4DD8-9479-77275DD677EC}.VeraCode|Win32.ActiveCfg = VeraCode|Win32
 		{E1B3CE2C-04A2-4DD8-9479-77275DD677EC}.VeraCode|Win32.Build.0 = VeraCode|Win32
+		{51A16F17-7601-4A4A-BED9-C5E62C440E9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51A16F17-7601-4A4A-BED9-C5E62C440E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51A16F17-7601-4A4A-BED9-C5E62C440E9B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{51A16F17-7601-4A4A-BED9-C5E62C440E9B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{51A16F17-7601-4A4A-BED9-C5E62C440E9B}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{51A16F17-7601-4A4A-BED9-C5E62C440E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51A16F17-7601-4A4A-BED9-C5E62C440E9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51A16F17-7601-4A4A-BED9-C5E62C440E9B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{51A16F17-7601-4A4A-BED9-C5E62C440E9B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{51A16F17-7601-4A4A-BED9-C5E62C440E9B}.Release|Win32.ActiveCfg = Release|Any CPU
+		{51A16F17-7601-4A4A-BED9-C5E62C440E9B}.VeraCode|Any CPU.ActiveCfg = Release|Any CPU
+		{51A16F17-7601-4A4A-BED9-C5E62C440E9B}.VeraCode|Any CPU.Build.0 = Release|Any CPU
+		{51A16F17-7601-4A4A-BED9-C5E62C440E9B}.VeraCode|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{51A16F17-7601-4A4A-BED9-C5E62C440E9B}.VeraCode|Mixed Platforms.Build.0 = Release|Any CPU
+		{51A16F17-7601-4A4A-BED9-C5E62C440E9B}.VeraCode|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

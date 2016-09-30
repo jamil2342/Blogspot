@@ -994,16 +994,16 @@ namespace AemClient
             List<Rootobject> n = new List<Rootobject>();
             Rootobject r = JsonConvert.DeserializeObject<Rootobject>(str);
 
-            //string source = "http://mobilemarketingwatch.com/wp-content/uploads/2015/12/Can-Amobee-Cross-Channel-Video-Ads-Boost-Reach-of-TV-Campaigns-Company-Commissions-Nielsen-to-Find-Out-480x320.jpg";
+            
             string destinationBase = @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\";
 
             foreach (var item in r.newsList)
             {
-                string source = imageBaseUrl + "http://mobilemarketingwatch.com/wp-content/uploads/2015/12/Can-Amobee-Cross-Channel-Video-Ads-Boost-Reach-of-TV-Campaigns-Company-Commissions-Nielsen-to-Find-Out-480x320.jpg";
+                string source = imageBaseUrl + item.image;
                 string dest = destinationBase + item.headline + ".jpg";
                 item.imagelocalfolder = dest;
                 downloadFile(source, dest);
-                source = "https://r11---sn-q4f7snes.googlevideo.com/videoplayback?id=o-AGIU6Gum6AcygppDHIReDQde2ji5UZpmeRN6s78pUFRc&dur=192.200&source=youtube&sparams=clen,dur,ei,gir,id,initcwndbps,ip,ipbits,itag,keepalive,lmt,mime,mm,mn,ms,mv,nh,pl,requiressl,source,upn,expire&keepalive=yes&ip=38.84.37.2&requiressl=yes&lmt=1428044362972013&itag=135&ms=au&ei=NzDuV8u2MdOBugX9pomADQ&pl=23&mv=m&mt=1475227137&clen=15962225&signature=C69942309AEA93791BF17292CB611D9C7F43DB56.34E34A88F26045F259B4FA7B6D8A3F01B35EA088&key=yt6&mn=sn-q4f7snes&mm=31&gir=yes&ipbits=0&initcwndbps=911250&expire=1475249303&upn=HXzS6CiXn2E&mime=video/mp4&nh=IgpwZjAyLmRmdzA2Kg4zOC4xNDAuMTA1LjE5Mw&ratebypass=yes";
+                source = item.video;
                 dest = destinationBase + item.headline + ".mp4";
                 item.video = source;
                 item.videolocalfolder = dest;
