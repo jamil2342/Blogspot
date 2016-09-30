@@ -73,13 +73,13 @@ namespace AemClient
             }
             if (bevtlog)
             {
-	            String ews = "SharePointClient";
-	            if (!EventLog.SourceExists("SharePointClient"))
-	            {
-		            EventLog.CreateEventSource(ews, "Application");
-	            }
-	            EventLog myLog = new EventLog();
-	            myLog.Source = ews;
+                String ews = "SharePointClient";
+                if (!EventLog.SourceExists("SharePointClient"))
+                {
+                    EventLog.CreateEventSource(ews, "Application");
+                }
+                EventLog myLog = new EventLog();
+                myLog.Source = ews;
                 myLog.WriteEntry(line, EventLogEntryType.Error);
             }
             System.Diagnostics.Trace.WriteLine(line);
@@ -172,7 +172,7 @@ namespace AemClient
             request.CookieContainer = new CookieContainer();
             request.UserAgent = this.UserAgent;
             //Do a GET on the SharePoint URL
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse()) 
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             {
                 Trace.WriteLine("Disconnect() " + response.ResponseUri.ToString());
             };
@@ -197,7 +197,7 @@ namespace AemClient
                     postData += "&" + query;
             }
 
-//user_name=blahuser&password=blahpassword&repository=Extranet+Partners&site_name=eteams&secure=1&resource_id=A6F90491E9E44F57BDF64DF92F40038A&login_type=2
+            //user_name=blahuser&password=blahpassword&repository=Extranet+Partners&site_name=eteams&secure=1&resource_id=A6F90491E9E44F57BDF64DF92F40038A&login_type=2
 
             byte[] data = encoding.GetBytes(postData);
             //Do a POST on the Login Page URL
@@ -399,7 +399,7 @@ namespace AemClient
         public string CertFile
         {
             get { return m_certfile; }
-            set 
+            set
             {
                 m_certfile = value;
                 if (!string.IsNullOrEmpty(m_certfile))
@@ -466,7 +466,7 @@ namespace AemClient
         public string ContentFolder
         {
             get { return m_contentfolder; }
-            set 
+            set
             {
                 if (value.EndsWith("\\"))
                     m_contentfolder = value;
@@ -559,7 +559,7 @@ namespace AemClient
                     Trace.WriteLine("ExecutingWebRequest() Error adding header 'X-FORMS_BASED_AUTH_ACCEPTED','f':" + ex.Message);
                 }
             }
-            if (this.cookies != null )
+            if (this.cookies != null)
             {
                 e.WebRequestExecutor.WebRequest.CookieContainer = new CookieContainer();
                 foreach (Cookie cookie in this.cookies)
@@ -568,7 +568,7 @@ namespace AemClient
                     e.WebRequestExecutor.WebRequest.CookieContainer.Add(cookie);
                 }
             }
-            else if (this.cookies == null && m_authtype.CompareTo("Claims-Based") == 0 )
+            else if (this.cookies == null && m_authtype.CompareTo("Claims-Based") == 0)
             {
                 string claimurl = m_serviceUrl + "/_windows/default.aspx?ReturnUrl=%2f_layouts%2fAuthenticate.aspx%3fSource%3d%252FDefault%252Easpx&Source=%2FDefault.aspx";
                 //Trace.WriteLine("ExecutingWebRequest() Claim-based authentication:" + claimurl);
@@ -582,7 +582,7 @@ namespace AemClient
                 request.CookieContainer = Cookies;
                 request.AllowAutoRedirect = false;
                 try
-                { 
+                {
                     HttpWebResponse response = request.GetResponse() as HttpWebResponse;
                     if (null != response)
                     {
@@ -708,7 +708,7 @@ namespace AemClient
                     if (string.IsNullOrEmpty(m_usr) || string.IsNullOrEmpty(m_pwd))
                     {
                         cc.Add(new Uri(m_serviceUrl), m_authtype, CredentialCache.DefaultNetworkCredentials);
-                        if ( Trace.bDebug )
+                        if (Trace.bDebug)
                             Trace.WriteLine("LoginToSharePoint() Adding " + m_authtype + " with DefaultNetworkCredentials");
                     }
                     else
@@ -718,7 +718,7 @@ namespace AemClient
                             Trace.WriteLine("LoginToSharePoint() Adding " + m_authtype + " with '" + m_domain + "\\" + m_usr + "'");
                     }
                     context.Credentials = cc;
-                  
+
                 }
                 if (!string.IsNullOrEmpty(m_fuagAuth) && !string.IsNullOrEmpty(m_usr))
                 {
@@ -747,7 +747,7 @@ namespace AemClient
             }
             return true;
         }
- 
+
         public List<string> RetrieveLists()
         {
             Trace.WriteLine("RetrieveLists()" + m_serviceUrl);
@@ -825,7 +825,7 @@ namespace AemClient
                     }
                     foreach (var v in views)
                     {
-                        if ( v.Title.Length > 0 )
+                        if (v.Title.Length > 0)
                             retViews.Add(v.Title);
                     }
                 }
@@ -943,7 +943,7 @@ namespace AemClient
 
             retList.Add("abstract", "Text");
             retList.Add("category", "Text");
-   
+
             return retList;
         }
 
@@ -982,7 +982,7 @@ namespace AemClient
             return dt;
         }
 
-        public DataTable GetAemDataTable(string imageBaseUrl,string url)
+        public DataTable GetAemDataTable(string imageBaseUrl, string url)
         {
 
             string result = "";
@@ -990,26 +990,27 @@ namespace AemClient
             HttpResponseMessage response = client.GetAsync(url).Result;
             string str = response.Content.ReadAsStringAsync().Result;
 
-            str= str.Replace(@"abstract",@"_abstract");
+            str = str.Replace(@"abstract", @"_abstract");
             List<Rootobject> n = new List<Rootobject>();
             Rootobject r = JsonConvert.DeserializeObject<Rootobject>(str);
 
             //string source = "http://mobilemarketingwatch.com/wp-content/uploads/2015/12/Can-Amobee-Cross-Channel-Video-Ads-Boost-Reach-of-TV-Campaigns-Company-Commissions-Nielsen-to-Find-Out-480x320.jpg";
-            string destinationBase=@"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\";
-          
+            string destinationBase = @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\";
+
             foreach (var item in r.newsList)
             {
-                string source = imageBaseUrl+"http://mobilemarketingwatch.com/wp-content/uploads/2015/12/Can-Amobee-Cross-Channel-Video-Ads-Boost-Reach-of-TV-Campaigns-Company-Commissions-Nielsen-to-Find-Out-480x320.jpg";
-                string dest = destinationBase + item.headline+".jpg";
-                item.imagelocalfolder = dest;  
-                //if (!System.IO.File.Exists(dest))
-                {
-                    downloadFile(source, dest);
-                    
-                }
-                
+                string source = imageBaseUrl + "http://mobilemarketingwatch.com/wp-content/uploads/2015/12/Can-Amobee-Cross-Channel-Video-Ads-Boost-Reach-of-TV-Campaigns-Company-Commissions-Nielsen-to-Find-Out-480x320.jpg";
+                string dest = destinationBase + item.headline + ".jpg";
+                item.imagelocalfolder = dest;
+                downloadFile(source, dest);
+                source = "https://r11---sn-q4f7snes.googlevideo.com/videoplayback?id=o-AGIU6Gum6AcygppDHIReDQde2ji5UZpmeRN6s78pUFRc&dur=192.200&source=youtube&sparams=clen,dur,ei,gir,id,initcwndbps,ip,ipbits,itag,keepalive,lmt,mime,mm,mn,ms,mv,nh,pl,requiressl,source,upn,expire&keepalive=yes&ip=38.84.37.2&requiressl=yes&lmt=1428044362972013&itag=135&ms=au&ei=NzDuV8u2MdOBugX9pomADQ&pl=23&mv=m&mt=1475227137&clen=15962225&signature=C69942309AEA93791BF17292CB611D9C7F43DB56.34E34A88F26045F259B4FA7B6D8A3F01B35EA088&key=yt6&mn=sn-q4f7snes&mm=31&gir=yes&ipbits=0&initcwndbps=911250&expire=1475249303&upn=HXzS6CiXn2E&mime=video/mp4&nh=IgpwZjAyLmRmdzA2Kg4zOC4xNDAuMTA1LjE5Mw&ratebypass=yes";
+                dest = destinationBase + item.headline + ".mp4";
+                item.video = source;
+                item.videolocalfolder = dest;
+                downloadFile(source, dest);
+
             }
-            
+
             DataTable dt = ToDataTable<Newslist>(r.newsList.ToList<Newslist>());
 
 
@@ -1017,10 +1018,10 @@ namespace AemClient
             int i = 0;
             foreach (DataRow item in dt.Rows)
             {
-                item[0] = (i+1);
+                item[0] = (i + 1);
                 i++;
             }
-            dt=ResizeDataTable(dt, 13);
+            dt = ResizeDataTable(dt, 13);
             return dt;
         }
         public void downloadFile(string remoteUri, string fileName)
@@ -1032,16 +1033,16 @@ namespace AemClient
             }
             catch (Exception)
             {
-                
-             
+
+
             }
 
-        
+
         }
 
-        public static  DataTable ToDataTable<T>( IList<T> data)
+        public static DataTable ToDataTable<T>(IList<T> data)
         {
-           
+
             PropertyDescriptorCollection props =
             TypeDescriptor.GetProperties(typeof(T));
             DataTable table = new DataTable();
@@ -1087,9 +1088,9 @@ namespace AemClient
             {
                 DataRow dr = dt.NewRow();
                 dr[0] = "" + (i + 1);
-                for (int j = 0; j < ColumnsCount-1; j++)
+                for (int j = 0; j < ColumnsCount - 1; j++)
                 {
-                    dr[j+1] = xmlTag.Item(i).ChildNodes[j].InnerText;
+                    dr[j + 1] = xmlTag.Item(i).ChildNodes[j].InnerText;
                 }
                 dt.Rows.Add(dr);
             }
@@ -1100,10 +1101,10 @@ namespace AemClient
             return new DataTable("jamil");
         }
         public DataTable RetrieveListItems(string listName)
-         {
+        {
 
             TimeSpan ts;
-            if (m_dt != null && !m_InProgress )
+            if (m_dt != null && !m_InProgress)
             {
                 Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - Data available.");
                 DataTable dt = m_dt;
@@ -1135,8 +1136,8 @@ namespace AemClient
                 Trace.WriteLine(DateTime.Now.ToString("T") + " RetrieveListItems() - timeout. Timeout = " + m_updatetimeout.ToString());
                 m_LastError = "Timeout retrieving data";
                 m_InProgress = false;
-                if ( m_context != null)
-                  m_context.Dispose();
+                if (m_context != null)
+                    m_context.Dispose();
                 m_context = null;
                 m_dt = null;
             }
@@ -1192,7 +1193,7 @@ namespace AemClient
         {
             UriBuilder uri = new UriBuilder(url);
             string filename = Path.GetFileName(uri.Path);
-            if ( IsImage(url) )
+            if (IsImage(url))
             {
                 if (!string.IsNullOrEmpty(m_fuagAuth) && m_authenticator != null)
                 {
@@ -1444,7 +1445,7 @@ namespace AemClient
                         m_context.ExecuteQuery();
                         //Trace.WriteLine("bindGrid() - ExecuteQuery succeeded");
                         m_itemPosition = items.ListItemCollectionPosition;
-                        if ( m_itemPosition != null )
+                        if (m_itemPosition != null)
                             Trace.WriteLine("bindGrid(" + m_context.Url + ") - all data not received. More data expected.");
                     }
                     catch (Exception ex)
@@ -1499,7 +1500,7 @@ namespace AemClient
                     Trace.WriteLine("bindGrid(" + m_context.Url + ") - bInitialLoad = " + bInitialLoad.ToString());
                     foreach (var item in items)
                     {
-                        
+
                         //Trace.WriteLine("ROW:" + item.Id.ToString());
                         if (ExitNow)
                             break;
@@ -1532,7 +1533,7 @@ namespace AemClient
                             }
                         }
                         //Trace.WriteLine("updated = "+ updated.ToString());
-                
+
                         DataRow Row = m_dt.NewRow();
                         string images = string.Empty;
                         foreach (DataColumn col in m_dt.Columns)
@@ -1639,7 +1640,7 @@ namespace AemClient
                                     {
                                         value = item[col.ToString()].ToString();
                                     }
-                                    if ( string.IsNullOrEmpty(value))
+                                    if (string.IsNullOrEmpty(value))
                                     {
                                         Row[col] = string.Empty;
                                         continue;
@@ -1685,11 +1686,11 @@ namespace AemClient
                                             }
                                         }
                                         //Trace.WriteLine("Stripping HTML on " + col.ToString());
-										//Trace.WriteLine("value:" + value);
-										string htmldecode = HttpUtility.HtmlDecode(value);
-										//Trace.WriteLine("HtmlDecode():" + htmldecode);
-										string stripped = StripHTML(htmldecode);
-										//Trace.WriteLine("StripHTML():" + stripped);
+                                        //Trace.WriteLine("value:" + value);
+                                        string htmldecode = HttpUtility.HtmlDecode(value);
+                                        //Trace.WriteLine("HtmlDecode():" + htmldecode);
+                                        string stripped = StripHTML(htmldecode);
+                                        //Trace.WriteLine("StripHTML():" + stripped);
                                         Row[col] = stripped;
                                     }
                                     else if (col.ToString().CompareTo("FieldLeafRef") == 0 || col.ToString().CompareTo("FileLeafRef") == 0)
@@ -1751,7 +1752,7 @@ namespace AemClient
                             //else
                             //    Trace.WriteLine("bindGrid(" + m_context.Url + ") - item for col " + col.ToString() + " is empty");
                         }
-                        Row["images"]= images;
+                        Row["images"] = images;
                         //Trace.WriteLine("Row['images'] = " + images);
                         m_dt.Rows.Add(Row);
                         m_lastupdate = DateTime.Now;
@@ -1986,10 +1987,10 @@ namespace AemClient
                 (source, "<img[^>]* src=\"([^\"]*)\"[^>]*>", System.Text.RegularExpressions.RegexOptions.IgnoreCase))
             {
                 pos = m.Value.IndexOf("src=");
-                pos1 = m.Value.IndexOf('"', pos+5);
-                image = m.Value.Substring(pos+5, pos1 - (pos + 5));
-                if ( !retImages.Contains(image) )                    
-                 retImages.Add(image);
+                pos1 = m.Value.IndexOf('"', pos + 5);
+                image = m.Value.Substring(pos + 5, pos1 - (pos + 5));
+                if (!retImages.Contains(image))
+                    retImages.Add(image);
             }
             return retImages;
         }
@@ -2005,10 +2006,10 @@ namespace AemClient
             spc.m_pwd = "Xsolive2010";
             spc.CertFile = @"E:\dev\Symon2010\sources\12.0\InternalTools\FirstClientApiApplication\test.cer";
             List<string> rlist = spc.RetrieveLists();
-            Dictionary<string,string> flist = spc.RetrieveFields(rlist[0]);
+            Dictionary<string, string> flist = spc.RetrieveFields(rlist[0]);
             //spc.RetrieveListItems(rlist[0]);
         }
-   
+
     }
 
 }
