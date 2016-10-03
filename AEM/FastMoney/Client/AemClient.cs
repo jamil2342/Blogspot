@@ -982,8 +982,38 @@ namespace AemClient
             return dt;
         }
 
+        public void createDir(string path)
+        {
+
+
+            try
+            {
+                // Determine whether the directory exists.
+                if (Directory.Exists(path))
+                {
+                    //Console.WriteLine("That path exists already.");
+                    return;
+                }
+
+                // Try to create the directory.
+                DirectoryInfo di = Directory.CreateDirectory(path);
+                //Console.WriteLine("The directory was created successfully at {0}.", Directory.GetCreationTime(path));
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("The process failed: {0}", e.ToString());
+            }
+            finally { }
+        }
+
+
+
+
         public DataTable GetAemDataTable(string imageBaseUrl, string url)
         {
+            string[] words = url.Split('/');
+            string lastword = words[words.Length - 1];
 
             string result = "";
             HttpClient client = new HttpClient();
@@ -996,17 +1026,19 @@ namespace AemClient
             List<Rootobject> n = new List<Rootobject>();
             Rootobject r = JsonConvert.DeserializeObject<Rootobject>(str);
 
-            
-            string destinationBase = @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\";
 
+            string destinationBaseImage = @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\" + lastword+@"\";
+            string destinationBaseVideo = @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMVideos\" + lastword + @"\"; 
+            createDir(destinationBaseImage);
+            createDir(destinationBaseVideo);
             foreach (var item in r.newsList)
             {
                 string source = imageBaseUrl + item.image;
-                string dest = destinationBase + item.headline + ".jpg";
+                string dest = destinationBaseImage + item.headline + ".jpg";
                 item.imagelocalfolder = dest;
                 downloadFile(source, dest);
                 source = item.video;
-                dest = destinationBase + item.headline + ".mp4";
+                dest = destinationBaseVideo + item.headline + ".mp4";
                 item.video = source;
                 item.videolocalfolder = dest;
                 downloadFile(source, dest);
