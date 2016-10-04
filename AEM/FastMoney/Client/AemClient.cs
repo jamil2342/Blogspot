@@ -839,110 +839,110 @@ namespace AemClient
         {
             m_LastError = String.Empty;
             Dictionary<string, string> retList = new Dictionary<string, string>();
-            //using (ClientContext context = new ClientContext(m_serviceUrl))
-            //{
-            //    if (!LoginToSharePoint(context))
-            //    {
-            //        context.Dispose();
-            //        return null;
-            //    }
+            using (ClientContext context = new ClientContext(m_serviceUrl))
+            {
+                if (!LoginToSharePoint(context))
+                {
+                    context.Dispose();
+                    return null;
+                }
 
-            //    var list = context.Web.Lists.GetByTitle(listName);
-            //    var views = list.Views;
-            //    if (list != null)
-            //    {
-            //        context.Load(list, l => l.Title,
-            //            l => l.ItemCount,
-            //            l => l.Fields.Include(
-            //                f => f.Title,
-            //                f => f.Description,
-            //                f => f.TypeAsString,
-            //                f => f.InternalName).Where(f => f.Hidden == false));
-            //        context.Load(views);
-            //        try
-            //        {
-            //            context.ExecuteQuery();
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            Trace.WriteLine("RetrieveFields():" + ex.Message + ":" + m_serviceUrl, true);
-            //            context.Dispose();
-            //            m_LastError = ex.Message;
-            //            return null;
-            //        }
-            //        FieldCollection collField = list.Fields;
+                var list = context.Web.Lists.GetByTitle(listName);
+                var views = list.Views;
+                if (list != null)
+                {
+                    context.Load(list, l => l.Title,
+                        l => l.ItemCount,
+                        l => l.Fields.Include(
+                            f => f.Title,
+                            f => f.Description,
+                            f => f.TypeAsString,
+                            f => f.InternalName).Where(f => f.Hidden == false));
+                    context.Load(views);
+                    try
+                    {
+                        context.ExecuteQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        Trace.WriteLine("RetrieveFields():" + ex.Message + ":" + m_serviceUrl, true);
+                        context.Dispose();
+                        m_LastError = ex.Message;
+                        return null;
+                    }
+                    FieldCollection collField = list.Fields;
 
-            //        CamlQuery query = new CamlQuery();
-            //        Trace.WriteLine("RetrieveFields() for view '" + m_viewtitle + "'");
-            //        if (!string.IsNullOrEmpty(m_viewtitle))
-            //        {
-            //            Trace.WriteLine("RetrieveFields() Views count " + views.Count.ToString());
-            //            if (views != null)
-            //            {
-            //                foreach (var v in views)
-            //                {
-            //                    if (v.Title == m_viewtitle)
-            //                    {
-            //                        XDocument viewXml = XDocument.Parse(v.HtmlSchemaXml);
-            //                        query.ViewXml = viewXml.Element("View").ToString();
-            //                        break;
-            //                    }
-            //                }
-            //            }
-            //        }
-            //        else
-            //            query.ViewXml = @"<View/>";
-            //        Trace.WriteLine("RetrieveFields() " + query.ViewXml);
-            //        ListItemCollection items = list.GetItems(query);
+                    CamlQuery query = new CamlQuery();
+                    Trace.WriteLine("RetrieveFields() for view '" + m_viewtitle + "'");
+                    if (!string.IsNullOrEmpty(m_viewtitle))
+                    {
+                        Trace.WriteLine("RetrieveFields() Views count " + views.Count.ToString());
+                        if (views != null)
+                        {
+                            foreach (var v in views)
+                            {
+                                if (v.Title == m_viewtitle)
+                                {
+                                    XDocument viewXml = XDocument.Parse(v.HtmlSchemaXml);
+                                    query.ViewXml = viewXml.Element("View").ToString();
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    else
+                        query.ViewXml = @"<View/>";
+                    Trace.WriteLine("RetrieveFields() " + query.ViewXml);
+                    ListItemCollection items = list.GetItems(query);
 
-            //        try
-            //        {
-            //            context.Load(items);
-            //            context.ExecuteQuery();
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            Trace.WriteLine("RetrieveFields() error " + ex.Message,  true);
-            //            context.Dispose();
-            //            m_LastError = ex.Message;
-            //            return null;
-            //        }
-            //        if (items.Count == 0)
-            //        {
-            //            foreach (var col in collField)
-            //            {
-            //                Trace.WriteLine("RetrieveFields() " + col.InternalName + "," + col.TypeAsString);
-            //                retList.Add(col.InternalName, col.TypeAsString);
-            //            }
-            //            retList.Add("images", "Text");
-            //        }
-            //        else
-            //        {
-            //            foreach (var col in collField)
-            //            {
-            //                foreach (var itemcol in items[0].FieldValues)
-            //                {
-            //                    if (itemcol.Key.ToString() == col.InternalName)
-            //                    {
-            //                        Trace.WriteLine("RetrieveFields() " +col.InternalName + "," + col.TypeAsString);
-            //                        retList.Add(col.InternalName, col.TypeAsString);
-            //                    }
-            //                }
-            //            }
-            //            retList.Add("images", "Text");
-            //        }
-            //    }
+                    try
+                    {
+                        context.Load(items);
+                        context.ExecuteQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        Trace.WriteLine("RetrieveFields() error " + ex.Message, true);
+                        context.Dispose();
+                        m_LastError = ex.Message;
+                        return null;
+                    }
+                    if (items.Count == 0)
+                    {
+                        foreach (var col in collField)
+                        {
+                            Trace.WriteLine("RetrieveFields() " + col.InternalName + "," + col.TypeAsString);
+                            retList.Add(col.InternalName, col.TypeAsString);
+                        }
+                        retList.Add("images", "Text");
+                    }
+                    else
+                    {
+                        foreach (var col in collField)
+                        {
+                            foreach (var itemcol in items[0].FieldValues)
+                            {
+                                if (itemcol.Key.ToString() == col.InternalName)
+                                {
+                                    Trace.WriteLine("RetrieveFields() " + col.InternalName + "," + col.TypeAsString);
+                                    retList.Add(col.InternalName, col.TypeAsString);
+                                }
+                            }
+                        }
+                        retList.Add("images", "Text");
+                    }
+                }
 
-            //    if (!string.IsNullOrEmpty(m_fuagAuth))
-            //        m_authenticator.Disconnect();
-            //}
-            retList.Clear();
-            retList.Add("id", "Counter");
-            retList.Add("image", "Text");
-            retList.Add("headline", "Text");
+                if (!string.IsNullOrEmpty(m_fuagAuth))
+                    m_authenticator.Disconnect();
+            }
+            //retList.Clear();
+            //retList.Add("id", "Counter");
+            //retList.Add("image", "Text");
+            //retList.Add("headline", "Text");
 
-            retList.Add("abstract", "Text");
-            retList.Add("category", "Text");
+            //retList.Add("abstract", "Text");
+            //retList.Add("category", "Text");
 
             return retList;
         }

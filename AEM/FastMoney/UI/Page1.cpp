@@ -188,7 +188,7 @@ BOOL CPage1::SaveItOff()
 
 	m_chg = true;
 	//strncpy_s(m_pInbound->m_base.m_szListTitle, _countof(m_pInbound->m_base.m_szListTitle), (LPCTSTR)m_listname, STANDARD_STRING);
-	strcpy(m_pInbound->m_base.m_szListTitle, "JamilTest");
+	strcpy(m_pInbound->m_base.m_szListTitle, "Aem");
 	strncpy_s(m_pInbound->m_base.m_szViewTitle, _countof(m_pInbound->m_base.m_szViewTitle), "", STANDARD_STRING);
 	m_pInbound->m_base.m_tableCount = 1;
 	m_pInbound->m_base.m_fieldCount = 0;
@@ -201,15 +201,16 @@ BOOL CPage1::SaveItOff()
 	m_pInbound->m_colFlds.clear();
 	int i = 0;
 
-	m_pInbound->m_colFlds[i++] = new CField("id", "Counter");
+	
 	m_pInbound->m_colFlds[i++] = new CField("image", "Text");
+	m_pInbound->m_colFlds[i++] = new CField("id", "Counter");
 	m_pInbound->m_colFlds[i++] = new CField("imagelocalfolder", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("video", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("videolocalfolder", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("headline", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("abstract", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("category", "Text");
-	m_pInbound->m_colFlds[i++] = new CField("jcrcreated", "Text");
+	m_pInbound->m_colFlds[i++] = new CField("jcrcreated", "DateTime");
 	m_pInbound->m_colFlds[i++] = new CField("cqlastmodified", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("newsappauthor", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("jcruuid", "Text");

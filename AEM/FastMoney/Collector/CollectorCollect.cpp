@@ -577,7 +577,7 @@ void CCollectorCollect::CreateCollector()
 	strncpy(m_base.m_collectorTypeName, (LPCTSTR)collectorTypeName.c_str(), STANDARD_STRING);
 //	End code to add the refnum to the collectorTypeName
 	string cleanname = m_base.m_collectorTypeName;
-	string displayname = "ShareView Collector - " + cleanname;
+	string displayname = "AEM Collector - " + cleanname;
 
 	schema.SetCollectorType(m_base.m_collectorType, m_base.m_collectorTypeName, displayname.c_str(), 1, ADHOC_DS);
 
@@ -1015,7 +1015,7 @@ void CCollectorCollect::PublishFields()
 	if ((m_base.m_tableCount > 0) && (m_base.m_fieldCount > 0) && strlen(m_base.m_szListTitle) > 0 )
 	{
 		string cleanname = m_base.m_collectorTypeName;
-		string displayname = _T("ShareView Collector - ") + cleanname;
+		string displayname = _T("AEM Collector - ") + cleanname;
 
 		m_impModFlds.m_ibRef  = m_base.m_refnum;
 		m_impModFlds.m_typeID = m_base.m_collectorType;
@@ -1406,7 +1406,7 @@ void CCollectorCollect::BuildSchema()
 		char buf[1000];
 		m_bTablesExist = true;
 		string cleanname = m_base.m_collectorTypeName;
-		string displayname = "ShareView Collector - " + cleanname;
+		string displayname = "AEM Collector - " + cleanname;
 
 		m_schema.m_tables.ClearRecs();
 		m_schema.SetCollectorType(m_base.m_collectorType, cleanname.c_str(), displayname.c_str(), 1, ADHOC_DS);
