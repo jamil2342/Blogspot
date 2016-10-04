@@ -210,7 +210,7 @@ BOOL CPage1::SaveItOff()
 	m_pInbound->m_colFlds[i++] = new CField("abstract", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("category", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("jcrcreated", "Text");
-	m_pInbound->m_colFlds[i++] = new CField("cqlastModified", "Text");
+	m_pInbound->m_colFlds[i++] = new CField("cqlastmodified", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("newsappauthor", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("jcruuid", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("onTime", "Text");

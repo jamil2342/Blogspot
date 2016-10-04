@@ -1021,9 +1021,10 @@ namespace AemClient
             string str = response.Content.ReadAsStringAsync().Result;
 
             str = str.Replace(@"abstract", @"_abstract");
-
             str = str.Replace(@"jcr:uuid", @"jcruuid");
-            List<Rootobject> n = new List<Rootobject>();
+            str = str.Replace(@"cq:lastModified", @"cqlastModified");
+
+                      List<Rootobject> n = new List<Rootobject>();
             Rootobject r = JsonConvert.DeserializeObject<Rootobject>(str);
 
 
