@@ -200,7 +200,7 @@ BOOL CPage1::SaveItOff()
 	}
 	m_pInbound->m_colFlds.clear();
 	int i = 0;
-
+	/// ###### Configurationchange 
 	m_pInbound->m_colFlds[i++] = new CField("id", "Counter");
 	m_pInbound->m_colFlds[i++] = new CField("url", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("image", "Text");	

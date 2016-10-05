@@ -541,8 +541,12 @@ void CCollectorData::DoQuery(char * url)
 						_variant_t vtTemp(vtData, false);
 						if ( vtData.vt != VT_NULL && vtData.vt != VT_EMPTY)
 						{
+							/// ###### Configurationchange 
 							switch (m_pThreadMgr->pmgr->m_pOwner->SPTYPETOPOLY[stype])
 							{
+							case POLY_DATETIME:
+								vtTemp.ChangeType(VT_BSTR);
+								break;
 							case POLY_STR:
 								vtTemp.ChangeType(VT_BSTR);
 								break;

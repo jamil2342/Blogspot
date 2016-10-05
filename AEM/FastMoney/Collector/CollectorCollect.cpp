@@ -778,12 +778,12 @@ CCollectorCollect::CCollectorCollect()
 	m_bFirst = true;
 	m_pFastMoney = NULL;
 	m_bTablesExist = false;
-
+	/// ###### Configurationchange 
 	SPTYPETOPOLY[""] = POLY_STR;
 	SPTYPETOPOLY["Integer"] = POLY_INT;
 	SPTYPETOPOLY["Text"] = POLY_STR;
 	SPTYPETOPOLY["Note"] = POLY_STR;
-	SPTYPETOPOLY["DateTime"] = POLY_STR;
+	SPTYPETOPOLY["DateTime"] = POLY_DATETIME;
 	SPTYPETOPOLY["Counter"] = POLY_INT;
 	SPTYPETOPOLY["Choice"] = POLY_STR;
 	SPTYPETOPOLY["Lookup"] = POLY_STR;
