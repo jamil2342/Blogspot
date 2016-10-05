@@ -31,7 +31,7 @@ namespace AemClient
         public DateTime offtime { get; set; }
 
 
-        public string[] cqtags { get; set; }
+        ////public string[] cqtags { get; set; }
         //public string cqtagsStr
         //{
         //    get

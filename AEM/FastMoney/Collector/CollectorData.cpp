@@ -568,6 +568,10 @@ void CCollectorData::DoQuery(char * url)
 							//m_pThreadMgr->pmgr->m_pOwner->ShowMsgFmt(false, _T("%s:%s:BSTR:%s\n"), (LPCTSTR)strNumber, fieldname,tmpStr.c_str());
 							m_pThreadMgr->pmgr->m_pOwner->m_pDatum->AppendRecVal((LPCWSTR)strNumber, fieldname, (LPCWSTR)_bstr_t(vtTemp.bstrVal), false);
 						}
+						//else if (vtTemp.vt==VT_DATE)
+						//{
+						//	m_pThreadMgr->pmgr->m_pOwner->m_pDatum->AppendRecVal((LPCWSTR)strNumber, fieldname, (LPCWSTR)_bstr_t(vtTemp.bstrVal), false);
+						//}
 						else if ( vtTemp.vt == VT_I4 )
 						{
 							lVal = vtTemp.lVal;

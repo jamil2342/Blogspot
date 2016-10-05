@@ -1087,6 +1087,8 @@ namespace AemClient
             for (int i = 0; i < props.Count; i++)
             {
                 PropertyDescriptor prop = props[i];
+                //table.Columns.Add(prop.Name, prop.PropertyType);
+
                 table.Columns.Add(prop.Name, System.Type.GetType("System.String"));
             }
             object[] values = new object[props.Count];
