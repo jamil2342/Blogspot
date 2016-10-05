@@ -26,8 +26,8 @@ namespace AemClient
         public DateTime cqlastmodified { get; set; }
         public string newsappauthor { get; set; }
         public string jcruuid { get; set; }
-        public DateTime onTime { get; set; }
-
+        public DateTime ontime { get; set; }
+        public DateTime offtime { get; set; }
 
 
         public string[] cqtags { get; set; }
@@ -48,7 +48,7 @@ namespace AemClient
         //    }
 
         //}
-        public object offTime { get; set; }
+        
 
     }
 

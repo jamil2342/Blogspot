@@ -201,9 +201,8 @@ BOOL CPage1::SaveItOff()
 	m_pInbound->m_colFlds.clear();
 	int i = 0;
 
-	
-	m_pInbound->m_colFlds[i++] = new CField("image", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("id", "Counter");
+	m_pInbound->m_colFlds[i++] = new CField("image", "Text");	
 	m_pInbound->m_colFlds[i++] = new CField("imagelocalfolder", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("video", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("videolocalfolder", "Text");
@@ -214,7 +213,8 @@ BOOL CPage1::SaveItOff()
 	m_pInbound->m_colFlds[i++] = new CField("cqlastmodified", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("newsappauthor", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("jcruuid", "Text");
-	m_pInbound->m_colFlds[i++] = new CField("onTime", "Text");
+	m_pInbound->m_colFlds[i++] = new CField("ontime", "Text");
+	m_pInbound->m_colFlds[i++] = new CField("offtime", "Text");
 
 
 

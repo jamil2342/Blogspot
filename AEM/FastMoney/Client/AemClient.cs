@@ -1023,6 +1023,8 @@ namespace AemClient
             str = str.Replace(@"abstract", @"_abstract");
             str = str.Replace(@"jcr:uuid", @"jcruuid");
             str = str.Replace(@"cq:lastModified", @"cqlastModified");
+            str = str.Replace(@"offTime", @"offtime");
+            str = str.Replace(@"onTime", @"ontime");
 
                       List<Rootobject> n = new List<Rootobject>();
             Rootobject r = JsonConvert.DeserializeObject<Rootobject>(str);
