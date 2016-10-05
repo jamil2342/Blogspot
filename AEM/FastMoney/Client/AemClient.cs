@@ -1030,7 +1030,7 @@ namespace AemClient
             Rootobject r = JsonConvert.DeserializeObject<Rootobject>(str);
 
 
-            string destinationBaseImage = @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\" + lastword + @"\";
+            string destinationBaseImage = Utility.GetRegValue(@"SOFTWARE\Wow6432Node\Symon Communications\Mercury\System", "ServerPath")+@"\AemImages";// @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\" + lastword + @"\";
             //string destinationBaseVideo = @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMVideos\" + lastword + @"\";
             createDir(destinationBaseImage);
             //createDir(destinationBaseVideo);
@@ -1077,7 +1077,23 @@ namespace AemClient
 
 
         }
+        public string getPath()
+        {
 
+            RegistryKey OurKey = Registry.LocalMachine;
+            OurKey = OurKey.OpenSubKey(@"SOFTWARE\Wow6432Node\Symon Communications\Mercury\System", true);
+            string str = OurKey.GetValue("ServerPath").ToString();
+            return str;
+            //foreach (string Keyname in OurKey.GetSubKeyNames())
+            //{
+            //    RegistryKey key = OurKey.OpenSubKey(Keyname);
+            //    string str = key.GetValue("ServerPath").ToString();
+            //    return str;
+            //    //MessageBox.Show(key.GetValue("KEY_NAME").ToString()); // Replace KEY_NAME with what you're looking for
+            //}
+            return "";
+           
+        }
         public static DataTable ToDataTable<T>(IList<T> data)
         {
 
