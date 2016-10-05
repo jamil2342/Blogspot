@@ -1026,25 +1026,26 @@ namespace AemClient
             str = str.Replace(@"offTime", @"offtime");
             str = str.Replace(@"onTime", @"ontime");
 
-                      List<Rootobject> n = new List<Rootobject>();
+            List<Rootobject> n = new List<Rootobject>();
             Rootobject r = JsonConvert.DeserializeObject<Rootobject>(str);
 
 
-            string destinationBaseImage = @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\" + lastword+@"\";
-            string destinationBaseVideo = @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMVideos\" + lastword + @"\"; 
+            string destinationBaseImage = @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\" + lastword + @"\";
+            string destinationBaseVideo = @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMVideos\" + lastword + @"\";
             createDir(destinationBaseImage);
             createDir(destinationBaseVideo);
             foreach (var item in r.newsList)
             {
+                item.url = url;
                 string source = imageBaseUrl + item.image;
                 string dest = destinationBaseImage + item.headline + ".jpg";
-                item.imagelocalfolder = dest;
+                item.imagelocalfolder = item.headline + ".jpg"; ;
                 downloadFile(source, dest);
-                source = item.video;
-                dest = destinationBaseVideo + item.headline + ".mp4";
-                item.video = source;
-                item.videolocalfolder = dest;
-                downloadFile(source, dest);
+                //source = item.video;
+                //dest = destinationBaseVideo + item.headline + ".mp4";
+                //item.video = source;
+                //item.videolocalfolder = dest;
+                //downloadFile(source, dest);
 
             }
 

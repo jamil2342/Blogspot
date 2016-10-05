@@ -202,6 +202,7 @@ BOOL CPage1::SaveItOff()
 	int i = 0;
 
 	m_pInbound->m_colFlds[i++] = new CField("id", "Counter");
+	m_pInbound->m_colFlds[i++] = new CField("url", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("image", "Text");	
 	m_pInbound->m_colFlds[i++] = new CField("imagelocalfolder", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("video", "Text");
