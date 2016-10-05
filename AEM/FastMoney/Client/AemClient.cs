@@ -1031,9 +1031,9 @@ namespace AemClient
 
 
             string destinationBaseImage = @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\" + lastword + @"\";
-            string destinationBaseVideo = @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMVideos\" + lastword + @"\";
+            //string destinationBaseVideo = @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMVideos\" + lastword + @"\";
             createDir(destinationBaseImage);
-            createDir(destinationBaseVideo);
+            //createDir(destinationBaseVideo);
             foreach (var item in r.newsList)
             {
                 item.url = url;

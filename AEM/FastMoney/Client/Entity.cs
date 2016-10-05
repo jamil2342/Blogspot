@@ -18,8 +18,8 @@ namespace AemClient
         public string url { get; set; }
         public string image { get; set; }
         public string imagelocalfolder { get; set; }
-        public string video { get; set; }
-        public string videolocalfolder { get; set; }
+        //public string video { get; set; }
+        //public string videolocalfolder { get; set; }
         public string headline { get; set; }
         public string _abstract { get; set; }
         public string category { get; set; }
