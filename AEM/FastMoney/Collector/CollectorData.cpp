@@ -539,7 +539,7 @@ void CCollectorData::DoQuery(char * url)
 						SafeArrayGetElement(V_ARRAY(&vtItems), &idx, &vtData);
 						
 						_variant_t vtTemp(vtData, false);
-						if ( vtData.vt != VT_NULL && vtData.vt != VT_EMPTY)
+						if (vtTemp.vt != VT_NULL && vtTemp.vt != VT_EMPTY)
 						{
 							/// ###### Configurationchange 
 							switch (m_pThreadMgr->pmgr->m_pOwner->SPTYPETOPOLY[stype])

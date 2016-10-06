@@ -23,7 +23,7 @@ namespace AemClient
         public string headline { get; set; }
         public string _abstract { get; set; }
         public string category { get; set; }
-        public DateTime jcrcreated { get; set; }
+        public string jcrcreated { get; set; }
         public DateTime cqlastmodified { get; set; }
         public string newsappauthor { get; set; }
         public string jcruuid { get; set; }
