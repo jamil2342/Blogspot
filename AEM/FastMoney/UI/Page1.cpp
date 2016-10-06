@@ -31,6 +31,14 @@ CPage1::CPage1(CSharePointInbound *pInbound) : CPropertyPage(CPage1::IDD)
 , m_url6(_T(""))
 , m_url7(_T(""))
 , m_image_base_url(_T(""))
+, m_url8(_T(""))
+, m_url9(_T(""))
+, m_url10(_T(""))
+, m_url11(_T(""))
+, m_url12(_T(""))
+, m_url13(_T(""))
+, m_url14(_T(""))
+, m_url15(_T(""))
 {
 	m_pInbound = pInbound;
 	ASSERT(m_pInbound);
@@ -93,6 +101,14 @@ void CPage1::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT_URL7, m_url7);
 	DDV_MaxChars(pDX, m_url7, 80);
 	DDX_Text(pDX, IDC_EDIT1, m_image_base_url);
+	DDX_Text(pDX, IDC_EDIT_URL8, m_url8);
+	DDX_Text(pDX, IDC_EDIT_URL9, m_url9);
+	DDX_Text(pDX, IDC_EDIT_URL10, m_url10);
+	DDX_Text(pDX, IDC_EDIT_URL11, m_url11);
+	DDX_Text(pDX, IDC_EDIT_URL12, m_url12);
+	DDX_Text(pDX, IDC_EDIT_URL13, m_url13);
+	DDX_Text(pDX, IDC_EDIT_URL14, m_url14);
+	DDX_Text(pDX, IDC_EDIT_URL15, m_url15);
 }
 
 
@@ -183,6 +199,14 @@ BOOL CPage1::SaveItOff()
 	strncpy(m_pInbound->m_base.m_szServiceUrl5, (LPCTSTR)m_url5, 75);
 	strncpy(m_pInbound->m_base.m_szServiceUrl6, (LPCTSTR)m_url6, 75);
 	strncpy(m_pInbound->m_base.m_szServiceUrl7, (LPCTSTR)m_url7, 75);
+	strncpy(m_pInbound->m_base.m_szServiceUrl8, (LPCTSTR)m_url8, 75);
+	strncpy(m_pInbound->m_base.m_szServiceUrl9, (LPCTSTR)m_url9, 75);
+	strncpy(m_pInbound->m_base.m_szServiceUrl10, (LPCTSTR)m_url10, 75);
+	strncpy(m_pInbound->m_base.m_szServiceUrl11, (LPCTSTR)m_url11, 75);
+	strncpy(m_pInbound->m_base.m_szServiceUrl12, (LPCTSTR)m_url12, 75);
+	strncpy(m_pInbound->m_base.m_szServiceUrl13, (LPCTSTR)m_url13, 75);
+	strncpy(m_pInbound->m_base.m_szServiceUrl14, (LPCTSTR)m_url14, 75);
+	strncpy(m_pInbound->m_base.m_szServiceUrl15, (LPCTSTR)m_url15, 75);
 	strcpy(m_pInbound->m_base.m_imageBaseUrl, (LPCTSTR)m_image_base_url);
 	OutputDebugString("CPage3::title changed");
 
@@ -219,10 +243,7 @@ BOOL CPage1::SaveItOff()
 
 
 
-	//m_pInbound->m_colFlds[i++] = new CField("offTime", "Text");
 
-	//m_pInbound->m_colFlds[i++] = new CField("cqtags", "Text");
-	//
 
 
 

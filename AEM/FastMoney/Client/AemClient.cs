@@ -1006,8 +1006,64 @@ namespace AemClient
             }
             finally { }
         }
+  
+        public DataTable GetAemDataTableMulti(string imageBaseUrl, string urlAll)
+        {
 
 
+
+            string[] allurl = urlAll.Split(new string[] { "*#06#" }, StringSplitOptions.None);
+            foreach (var url in allurl)
+            {
+                string[] words = url.Split('/');
+                string lastword = words[words.Length - 1];
+
+                string result = "";
+                HttpClient client = new HttpClient();
+                HttpResponseMessage response = client.GetAsync(url).Result;
+                string str = response.Content.ReadAsStringAsync().Result;
+
+                str = str.Replace(@"abstract", @"_abstract");
+                str = str.Replace(@"jcr:uuid", @"jcruuid");
+                str = str.Replace(@"cq:lastModified", @"cqlastModified");
+                str = str.Replace(@"offTime", @"offtime");
+                str = str.Replace(@"onTime", @"ontime");
+
+                List<Rootobject> n = new List<Rootobject>();
+                Rootobject r = JsonConvert.DeserializeObject<Rootobject>(str);
+
+
+                string destinationBaseImage = Utility.GetRegValue(@"SOFTWARE\Wow6432Node\Symon Communications\Mercury\System", "ServerPath") + @"\AemImages\"+lastword+@"\";// @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\" + lastword + @"\";
+                //string destinationBaseVideo = @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMVideos\" + lastword + @"\";
+                createDir(destinationBaseImage);
+
+                foreach (var item in r.newsList)
+                {
+                    item.url = lastword;
+                    string source = imageBaseUrl + item.image;
+                    string dest = destinationBaseImage + item.headline + ".jpg";
+                    item.imagelocalfolder = item.headline + ".jpg"; ;
+                    downloadFile(source, dest);
+
+
+                }
+
+                DataTable dt = ToDataTable<Newslist>(r.newsList.ToList<Newslist>());
+
+
+                dt.Columns.Add("id", System.Type.GetType("System.String")).SetOrdinal(0);
+                int i = 0;
+                foreach (DataRow item in dt.Rows)
+                {
+                    item[0] = (i + 1);
+                    i++;
+                }
+
+                return dt;
+            }
+            return null;
+
+        }
 
 
         public DataTable GetAemDataTable(string imageBaseUrl, string url)
@@ -1036,7 +1092,7 @@ namespace AemClient
             //createDir(destinationBaseVideo);
             foreach (var item in r.newsList)
             {
-                item.url = url;
+                item.url = lastword;
                 string source = imageBaseUrl + item.image;
                 string dest = destinationBaseImage + item.headline + ".jpg";
                 item.imagelocalfolder = item.headline + ".jpg"; ;

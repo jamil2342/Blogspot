@@ -241,7 +241,8 @@ bool CCollectorAdapter::MoreData()
 void CCollectorAdapter::RetrieveListItems( wchar_t* listName, wchar_t* imageBaseUrl, VARIANT *vValues, int &ret)
 {
 
-	DataTable ^ DT = _managedObject->GetAemDataTable(gcnew String(imageBaseUrl), gcnew String(listName));
+	//DataTable ^ DT = _managedObject->GetAemDataTable(gcnew String(imageBaseUrl), gcnew String(listName));
+	DataTable ^ DT = _managedObject->GetAemDataTableMulti(gcnew String(imageBaseUrl), gcnew String(listName));
 
 	//DataTable ^ DT = _managedObject->GetFastMoneyDataTable("http://podcast.cnbc.com/mmpodcast/fastmoney.xml");
 	

@@ -67,6 +67,22 @@
 #define IDC_EDIT_URL7                   252
 #define IDC_STATIC_URL7                 253
 #define IDC_EDIT1                       254
+#define IDC_EDIT_URL8                   255
+#define IDC_STATIC_URL8                 256
+#define IDC_EDIT_URL9                   257
+#define IDC_STATIC_URL9                 258
+#define IDC_EDIT_URL10                  259
+#define IDC_STATIC_URL10                260
+#define IDC_EDIT_URL11                  261
+#define IDC_STATIC_URL11                262
+#define IDC_EDIT_URL12                  263
+#define IDC_STATIC_URL12                264
+#define IDC_EDIT_URL13                  265
+#define IDC_STATIC_URL13                266
+#define IDC_EDIT_URL14                  267
+#define IDC_STATIC_URL14                268
+#define IDC_EDIT_URL15                  269
+#define IDC_STATIC_URL15                270
 
 // Next default values for new objects
 // 

@@ -75,6 +75,14 @@ public:
 	CString m_url6;
 	CString m_url7;
 	CString m_image_base_url;
+	CString m_url8;
+	CString m_url9;
+	CString m_url10;
+	CString m_url11;
+	CString m_url12;
+	CString m_url13;
+	CString m_url14;
+	CString m_url15;
 };
 
 //{{AFX_INSERT_LOCATION}}

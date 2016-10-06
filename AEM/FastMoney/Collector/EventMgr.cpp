@@ -132,13 +132,33 @@ void CEventThread::DoWork()
 	{
 		if (WaitForSingleObject(pmgr->m_pOwner->m_hStartupDone, 0) == WAIT_OBJECT_0)
 		{
-			m_collectorData.DoQuery(pmgr->m_pOwner->m_base.m_szServiceUrl1);
-			m_collectorData.DoQuery(pmgr->m_pOwner->m_base.m_szServiceUrl2);
-			m_collectorData.DoQuery(pmgr->m_pOwner->m_base.m_szServiceUrl3);
-			m_collectorData.DoQuery(pmgr->m_pOwner->m_base.m_szServiceUrl4);
-			m_collectorData.DoQuery(pmgr->m_pOwner->m_base.m_szServiceUrl5);
-			m_collectorData.DoQuery(pmgr->m_pOwner->m_base.m_szServiceUrl6);
-			m_collectorData.DoQuery(pmgr->m_pOwner->m_base.m_szServiceUrl7);
+			char str[20000];
+			char delim[10];
+			strcpy(delim, "*#06#");
+			sprintf(str, "%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s", pmgr->m_pOwner->m_base.m_szServiceUrl1, delim, 
+				pmgr->m_pOwner->m_base.m_szServiceUrl1, delim, 
+				pmgr->m_pOwner->m_base.m_szServiceUrl2, delim,
+				pmgr->m_pOwner->m_base.m_szServiceUrl3, delim,
+				pmgr->m_pOwner->m_base.m_szServiceUrl4, delim,
+				pmgr->m_pOwner->m_base.m_szServiceUrl5, delim,
+				pmgr->m_pOwner->m_base.m_szServiceUrl6, delim, 
+				pmgr->m_pOwner->m_base.m_szServiceUrl7, delim,
+				pmgr->m_pOwner->m_base.m_szServiceUrl8, delim,
+				pmgr->m_pOwner->m_base.m_szServiceUrl9, delim, 
+				pmgr->m_pOwner->m_base.m_szServiceUrl10, delim,
+				pmgr->m_pOwner->m_base.m_szServiceUrl11, delim, 
+				pmgr->m_pOwner->m_base.m_szServiceUrl12, delim, 
+				pmgr->m_pOwner->m_base.m_szServiceUrl13, delim, 
+				pmgr->m_pOwner->m_base.m_szServiceUrl14, delim,
+				pmgr->m_pOwner->m_base.m_szServiceUrl15, delim
+				);
+			m_collectorData.DoQuery(str);
+			//m_collectorData.DoQuery(pmgr->m_pOwner->m_base.m_szServiceUrl2);
+			//m_collectorData.DoQuery(pmgr->m_pOwner->m_base.m_szServiceUrl3);
+			//m_collectorData.DoQuery(pmgr->m_pOwner->m_base.m_szServiceUrl4);
+			//m_collectorData.DoQuery(pmgr->m_pOwner->m_base.m_szServiceUrl5);
+			//m_collectorData.DoQuery(pmgr->m_pOwner->m_base.m_szServiceUrl6);
+			//m_collectorData.DoQuery(pmgr->m_pOwner->m_base.m_szServiceUrl7);
 			//m_fastmoney.DoQueryLocal();
 		}
 
