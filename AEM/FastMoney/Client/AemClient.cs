@@ -1011,17 +1011,30 @@ namespace AemClient
         {
 
 
-
+            List<Newslist> l = new List<Newslist>();
             string[] allurl = urlAll.Split(new string[] { "*#06#" }, StringSplitOptions.None);
+            //allurl[0] = "";
             foreach (var url in allurl)
             {
+                if (url.Length==0)
+                {
+                    continue; 
+                }
                 string[] words = url.Split('/');
                 string lastword = words[words.Length - 1];
 
                 string result = "";
                 HttpClient client = new HttpClient();
-                HttpResponseMessage response = client.GetAsync(url).Result;
-                string str = response.Content.ReadAsStringAsync().Result;
+                string str = "";
+                try
+                {
+	                HttpResponseMessage response = client.GetAsync(url).Result;
+	                 str = response.Content.ReadAsStringAsync().Result;
+                }
+                catch (System.Exception ex)
+                {
+                    continue;
+                }
 
                 str = str.Replace(@"abstract", @"_abstract");
                 str = str.Replace(@"jcr:uuid", @"jcruuid");
@@ -1049,20 +1062,22 @@ namespace AemClient
 
                 }
 
-                DataTable dt = ToDataTable<Newslist>(r.newsList.ToList<Newslist>());
+                l.AddRange(r.newsList);
 
-
-                dt.Columns.Add("id", System.Type.GetType("System.String")).SetOrdinal(0);
-                int i = 0;
-                foreach (DataRow item in dt.Rows)
-                {
-                    item[0] = (i + 1);
-                    i++;
-                }
-
-                return dt;
             }
-            return null;
+            DataTable dt = ToDataTable<Newslist>(l);
+
+
+            dt.Columns.Add("id", System.Type.GetType("System.String")).SetOrdinal(0);
+            int i = 0;
+            foreach (DataRow item in dt.Rows)
+            {
+                item[0] = (i + 1);
+                i++;
+            }
+
+            return dt;
+            
 
         }
 

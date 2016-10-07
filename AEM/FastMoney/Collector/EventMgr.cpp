@@ -135,7 +135,8 @@ void CEventThread::DoWork()
 			char str[20000];
 			char delim[10];
 			strcpy(delim, "*#06#");
-			sprintf(str, "%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s", pmgr->m_pOwner->m_base.m_szServiceUrl1, delim, 
+			/// ###### Configurationchange 
+			sprintf(str, "%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s", 
 				pmgr->m_pOwner->m_base.m_szServiceUrl1, delim, 
 				pmgr->m_pOwner->m_base.m_szServiceUrl2, delim,
 				pmgr->m_pOwner->m_base.m_szServiceUrl3, delim,
