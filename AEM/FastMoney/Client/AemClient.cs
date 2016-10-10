@@ -1042,19 +1042,22 @@ namespace AemClient
                 str = str.Replace(@"cq:lastModified", @"cqlastModified");
                 str = str.Replace(@"offTime", @"offtime");
                 str = str.Replace(@"onTime", @"ontime");
+                str = str.Replace(@"cq:tags", @"cqtags");
+                str = str.Replace(@"fallBackFileReference", @"fallbackfilereference");
+                
 
                 List<Rootobject> n = new List<Rootobject>();
                 Rootobject r = JsonConvert.DeserializeObject<Rootobject>(str);
 
 
                 string destinationBaseImage = Utility.GetRegValue(@"SOFTWARE\Wow6432Node\Symon Communications\Mercury\System", "ServerPath") + @"\AemImages\"+lastword+@"\";// @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\" + lastword + @"\";
-                //string destinationBaseVideo = @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMVideos\" + lastword + @"\";
+                
                 createDir(destinationBaseImage);
 
                 foreach (var item in r.newsList)
                 {
                     item.url = lastword;
-                    string source = imageBaseUrl + item.image;
+                    string source =  item.image;
                     string dest = destinationBaseImage + item.headline + ".jpg";
                     item.imagelocalfolder = item.headline + ".jpg"; ;
                     downloadFile(source, dest);

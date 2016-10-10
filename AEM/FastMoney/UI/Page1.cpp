@@ -249,13 +249,14 @@ BOOL CPage1::SaveItOff()
 	m_pInbound->m_colFlds[i++] = new CField("url", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("image", "Text");	
 	m_pInbound->m_colFlds[i++] = new CField("imagelocalfolder", "Text");
-	//m_pInbound->m_colFlds[i++] = new CField("video", "Text");
-	//m_pInbound->m_colFlds[i++] = new CField("videolocalfolder", "Text");
+	m_pInbound->m_colFlds[i++] = new CField("fallbackfilereference", "Text");
+	m_pInbound->m_colFlds[i++] = new CField("fallbackfilereferencelocalfolder", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("headline", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("abstract", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("category", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("jcrcreated", "DateTime");
 	m_pInbound->m_colFlds[i++] = new CField("cqlastmodified", "DateTime");
+	m_pInbound->m_colFlds[i++] = new CField("cqtags", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("newsappauthor", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("jcruuid", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("ontime", "DateTime");
