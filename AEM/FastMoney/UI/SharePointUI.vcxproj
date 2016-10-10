@@ -152,7 +152,7 @@
     <ClCompile>
       <Optimization>MinSpace</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\SharePointCommon;..\..\..\PublisherCommon;..\..\..\..\Include;..\..\..\..\Include\Interfaces;..\..\..\..\Common Classes\Symon;..\SharePointCollector;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Common;..\..\..\PublisherCommon;..\..\..\..\Include;..\..\..\..\Include\Interfaces;..\..\..\..\Common Classes\Symon;..\Collector;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>

@@ -1049,9 +1049,9 @@ namespace AemClient
                 List<Rootobject> n = new List<Rootobject>();
                 Rootobject r = JsonConvert.DeserializeObject<Rootobject>(str);
 
-
+                //HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Symon Communications\Mercury\System Server
                 string destinationBaseImage = Utility.GetRegValue(@"SOFTWARE\Wow6432Node\Symon Communications\Mercury\System", "ServerPath") + @"\AemImages\" + lastword + @"\";// @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\" + lastword + @"\";
-
+                destinationBaseImage = destinationBaseImage.Replace(@"bin", @"Symon");
                 createDir(destinationBaseImage);
 
                 foreach (var item in r.newsList)
@@ -1059,8 +1059,8 @@ namespace AemClient
                     item.url = lastword;
 
                     string source = item.image;
-                    string dest = destinationBaseImage + item.image.GetHashCode() + ".jpg";
-                    item.imagelocalfolder = item.image.GetHashCode() + ".jpg"; ;
+                    string dest = destinationBaseImage + Utility.getFileName(source) + ".jpg";
+                    item.imagelocalfolder = item.image.GetHashCode() + ".jpg"; 
                     downloadFile(source, dest);
 
 

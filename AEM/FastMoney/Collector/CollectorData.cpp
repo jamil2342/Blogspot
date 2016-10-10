@@ -417,8 +417,7 @@ void CCollectorData::DoQuery(char * url)
 	vTimeStamp.vt = VT_DATE;
 	SystemTimeToVariantTime(&st, &vTimeStamp.date);
 	//CUpdateBlob * m_pDatum = m_pThreadMgr->pmgr->m_pOwner->m_pDatum;
-	//m_pDatum->m_fieldnames.insert(pair<string, int>("category", 5));
-	//m_pDatum->m_fieldnames.insert(pair<string, int>("abstract", 7));
+
 	if ((m_pThreadMgr->pmgr->m_pOwner->m_base.m_tableCount > 0) && (m_pThreadMgr->pmgr->m_pOwner->m_base.m_fieldCount > 0))
 	{
 		int tableid = 1;
