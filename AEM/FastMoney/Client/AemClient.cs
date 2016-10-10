@@ -1059,16 +1059,16 @@ namespace AemClient
                     item.url = lastword;
 
                     string source = item.image;
-                    string dest = destinationBaseImage + Utility.getFileName(source) + ".jpg";
-                    item.imagelocalfolder = item.image.GetHashCode() + ".jpg"; 
+                    string dest = destinationBaseImage + Utility.getFileName(source);
+                    item.imagelocalfolder = Utility.getFileName(source);
                     downloadFile(source, dest);
 
 
                     source = item.fallbackfilereference;
-                    dest = destinationBaseImage + item.fallbackfilereference.GetHashCode() + ".jpg";
-                    item.fallbackfilereferencelocalfolder = item.fallbackfilereference.GetHashCode() + ".jpg"; ;
+                    dest = destinationBaseImage + Utility.getFileName(source);
+                    item.fallbackfilereferencelocalfolder = Utility.getFileName(source);
                     downloadFile(source, dest);
-
+                
                 }
 
                 l.AddRange(r.newsList);

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -10,6 +11,7 @@ namespace AemClient
     {
         public static string getFileName(string hreflink)
         {
+            return Path.GetFileName(Uri.UnescapeDataString(hreflink).Replace("/", "\\"));
             Uri uri = new Uri(hreflink);
             string filename="";
             if (uri.IsFile)

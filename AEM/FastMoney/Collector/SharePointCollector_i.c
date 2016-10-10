@@ -6,7 +6,7 @@
 
 
  /* File created by MIDL compiler version 8.00.0603 */
-/* at Mon Oct 10 10:21:21 2016
+/* at Mon Oct 10 10:53:42 2016
  */
 /* Compiler settings for FastMoneyCollector.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0603 
