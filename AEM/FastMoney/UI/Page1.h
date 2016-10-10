@@ -83,6 +83,19 @@ public:
 	CString m_url13;
 	CString m_url14;
 	CString m_url15;
+	CEdit m_edit_url4;
+	CEdit m_edit_url5;
+	CEdit m_edit_url6;
+	CEdit m_edit_url7;
+	CEdit m_edit_url8;
+	CEdit m_edit_url9;
+	CEdit m_edit_url10;
+	CEdit m_edit_url11;
+	CEdit m_edit_url12;
+	CEdit m_edit_url13;
+	CEdit m_edit_url14;
+	CEdit m_edit_url15;
+	CEdit m_edit_image_base_url;
 };
 
 //{{AFX_INSERT_LOCATION}}

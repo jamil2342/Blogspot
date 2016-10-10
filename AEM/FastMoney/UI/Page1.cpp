@@ -57,7 +57,14 @@ CPage1::CPage1(CSharePointInbound *pInbound) : CPropertyPage(CPage1::IDD)
 	m_url5 = m_pInbound->m_base.m_szServiceUrl5;
 	m_url6 = m_pInbound->m_base.m_szServiceUrl6;
 	m_url7 = m_pInbound->m_base.m_szServiceUrl7;
-
+	m_url8 = m_pInbound->m_base.m_szServiceUrl8;
+	m_url9 = m_pInbound->m_base.m_szServiceUrl9;
+	m_url10 = m_pInbound->m_base.m_szServiceUrl10;
+	m_url11 = m_pInbound->m_base.m_szServiceUrl11;
+	m_url12 = m_pInbound->m_base.m_szServiceUrl12;
+	m_url13 = m_pInbound->m_base.m_szServiceUrl13;
+	m_url14 = m_pInbound->m_base.m_szServiceUrl14;
+	m_url15 = m_pInbound->m_base.m_szServiceUrl15;
 	m_image_base_url = m_pInbound->m_base.m_imageBaseUrl;
 	//}}AFX_DATA_INIT
 }
@@ -109,6 +116,19 @@ void CPage1::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT_URL13, m_url13);
 	DDX_Text(pDX, IDC_EDIT_URL14, m_url14);
 	DDX_Text(pDX, IDC_EDIT_URL15, m_url15);
+	DDX_Control(pDX, IDC_EDIT_URL4, m_edit_url4);
+	DDX_Control(pDX, IDC_EDIT_URL5, m_edit_url5);
+	DDX_Control(pDX, IDC_EDIT_URL6, m_edit_url6);
+	DDX_Control(pDX, IDC_EDIT_URL7, m_edit_url7);
+	DDX_Control(pDX, IDC_EDIT_URL8, m_edit_url8);
+	DDX_Control(pDX, IDC_EDIT_URL9, m_edit_url9);
+	DDX_Control(pDX, IDC_EDIT_URL10, m_edit_url10);
+	DDX_Control(pDX, IDC_EDIT_URL11, m_edit_url11);
+	DDX_Control(pDX, IDC_EDIT_URL12, m_edit_url12);
+	DDX_Control(pDX, IDC_EDIT_URL13, m_edit_url13);
+	DDX_Control(pDX, IDC_EDIT_URL14, m_edit_url14);
+	DDX_Control(pDX, IDC_EDIT_URL15, m_edit_url15);
+	DDX_Control(pDX, IDC_EDIT1, m_edit_image_base_url);
 }
 
 
@@ -264,9 +284,24 @@ BOOL CPage1::OnInitDialog()
 		m_editName.EnableWindow(FALSE);
 		m_editFreq.EnableWindow(FALSE);
 		m_editTimeout.EnableWindow(FALSE);
-		m_edit_url1.EnableWindow(FALSE);
+		m_edit_image_base_url.EnableWindow(FALSE);
+		
 		m_edit_url1.EnableWindow(FALSE);
 		m_edit_url2.EnableWindow(FALSE);
+		m_edit_url3.EnableWindow(FALSE);
+		m_edit_url4.EnableWindow(FALSE);
+		m_edit_url5.EnableWindow(FALSE);
+		m_edit_url6.EnableWindow(FALSE);
+		m_edit_url7.EnableWindow(FALSE);
+		m_edit_url8.EnableWindow(FALSE);
+		m_edit_url9.EnableWindow(FALSE);
+		m_edit_url10.EnableWindow(FALSE);
+		m_edit_url11.EnableWindow(FALSE);
+		m_edit_url12.EnableWindow(FALSE);
+		m_edit_url13.EnableWindow(FALSE);		
+		m_edit_url14.EnableWindow(FALSE);
+		m_edit_url15.EnableWindow(FALSE);
+
 	}
 
 	
