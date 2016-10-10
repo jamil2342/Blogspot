@@ -431,8 +431,8 @@ void CCollectorData::DoQuery(char * url)
 			
 			_bstr_t strNumber(_T("1"));
 
-			_bstr_t baseurl = _bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_imageBaseUrl);
-			m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(_bstr_t(url),baseurl,&vtItems, nres);
+			//_bstr_t baseurl = _bstr_t(m_pThreadMgr->pmgr->m_pOwner->m_base.m_imageBaseUrl);
+			m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->RetrieveListItems(_bstr_t(url),&vtItems, nres);
 			//bool bMoreData = m_pThreadMgr->pmgr->m_pOwner->m_pFastMoney->MoreData();
 			if ( vtItems.vt != VT_EMPTY && nres == 0 )
 			{

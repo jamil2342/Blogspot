@@ -1006,8 +1006,8 @@ namespace AemClient
             }
             finally { }
         }
-  
-        public DataTable GetAemDataTableMulti(string imageBaseUrl, string urlAll)
+
+        public DataTable GetAemDataTableMulti( string urlAll)
         {
 
 
@@ -1016,9 +1016,9 @@ namespace AemClient
             //allurl[0] = "";
             foreach (var url in allurl)
             {
-                if (url.Length==0)
+                if (url.Length == 0)
                 {
-                    continue; 
+                    continue;
                 }
                 string[] words = url.Split('/');
                 string lastword = words[words.Length - 1];
@@ -1028,8 +1028,8 @@ namespace AemClient
                 string str = "";
                 try
                 {
-	                HttpResponseMessage response = client.GetAsync(url).Result;
-	                 str = response.Content.ReadAsStringAsync().Result;
+                    HttpResponseMessage response = client.GetAsync(url).Result;
+                    str = response.Content.ReadAsStringAsync().Result;
                 }
                 catch (System.Exception ex)
                 {
@@ -1044,24 +1044,30 @@ namespace AemClient
                 str = str.Replace(@"onTime", @"ontime");
                 str = str.Replace(@"cq:tags", @"cqtags");
                 str = str.Replace(@"fallBackFileReference", @"fallbackfilereference");
-                
+
 
                 List<Rootobject> n = new List<Rootobject>();
                 Rootobject r = JsonConvert.DeserializeObject<Rootobject>(str);
 
 
-                string destinationBaseImage = Utility.GetRegValue(@"SOFTWARE\Wow6432Node\Symon Communications\Mercury\System", "ServerPath") + @"\AemImages\"+lastword+@"\";// @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\" + lastword + @"\";
-                
+                string destinationBaseImage = Utility.GetRegValue(@"SOFTWARE\Wow6432Node\Symon Communications\Mercury\System", "ServerPath") + @"\AemImages\" + lastword + @"\";// @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\" + lastword + @"\";
+
                 createDir(destinationBaseImage);
 
                 foreach (var item in r.newsList)
                 {
                     item.url = lastword;
-                    string source =  item.image;
-                    string dest = destinationBaseImage + item.headline + ".jpg";
-                    item.imagelocalfolder = item.headline + ".jpg"; ;
+
+                    string source = item.image;
+                    string dest = destinationBaseImage + item.image.GetHashCode() + ".jpg";
+                    item.imagelocalfolder = item.image.GetHashCode() + ".jpg"; ;
                     downloadFile(source, dest);
 
+
+                    source = item.fallbackfilereference;
+                    dest = destinationBaseImage + item.fallbackfilereference.GetHashCode() + ".jpg";
+                    item.fallbackfilereferencelocalfolder = item.fallbackfilereference.GetHashCode() + ".jpg"; ;
+                    downloadFile(source, dest);
 
                 }
 
@@ -1080,7 +1086,7 @@ namespace AemClient
             }
 
             return dt;
-            
+
 
         }
 
@@ -1105,7 +1111,7 @@ namespace AemClient
             Rootobject r = JsonConvert.DeserializeObject<Rootobject>(str);
 
 
-            string destinationBaseImage = Utility.GetRegValue(@"SOFTWARE\Wow6432Node\Symon Communications\Mercury\System", "ServerPath")+@"\AemImages";// @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\" + lastword + @"\";
+            string destinationBaseImage = Utility.GetRegValue(@"SOFTWARE\Wow6432Node\Symon Communications\Mercury\System", "ServerPath") + @"\AemImages";// @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMImages\" + lastword + @"\";
             //string destinationBaseVideo = @"C:\Program Files (x86)\RMG Networks\IVS ES\Symon\AEMVideos\" + lastword + @"\";
             createDir(destinationBaseImage);
             //createDir(destinationBaseVideo);
@@ -1167,7 +1173,7 @@ namespace AemClient
             //    //MessageBox.Show(key.GetValue("KEY_NAME").ToString()); // Replace KEY_NAME with what you're looking for
             //}
             return "";
-           
+
         }
         public static DataTable ToDataTable<T>(IList<T> data)
         {
