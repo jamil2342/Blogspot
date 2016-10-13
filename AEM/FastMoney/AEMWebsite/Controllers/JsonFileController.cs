@@ -29,7 +29,7 @@ namespace AEMWebsite.Controllers
     {
         public HttpResponseMessage Get()
         {
-            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem2.json"));
+            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem1.json"));
 
             return new HttpResponseMessage()
             {
@@ -43,7 +43,7 @@ namespace AEMWebsite.Controllers
     {
         public HttpResponseMessage Get()
         {
-            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem2.json"));
+            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem1.json"));
 
             return new HttpResponseMessage()
             {
@@ -57,7 +57,7 @@ namespace AEMWebsite.Controllers
     {
         public HttpResponseMessage Get()
         {
-            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem2.json"));
+            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem1.json"));
 
             return new HttpResponseMessage()
             {
@@ -71,7 +71,7 @@ namespace AEMWebsite.Controllers
     {
         public HttpResponseMessage Get()
         {
-            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem2.json"));
+            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem1.json"));
 
             return new HttpResponseMessage()
             {
@@ -85,7 +85,7 @@ namespace AEMWebsite.Controllers
     {
         public HttpResponseMessage Get()
         {
-            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem2.json"));
+            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem1.json"));
 
             return new HttpResponseMessage()
             {
@@ -99,7 +99,7 @@ namespace AEMWebsite.Controllers
     {
         public HttpResponseMessage Get()
         {
-            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem2.json"));
+            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem1.json"));
 
             return new HttpResponseMessage()
             {
@@ -113,7 +113,7 @@ namespace AEMWebsite.Controllers
     {
         public HttpResponseMessage Get()
         {
-            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem2.json"));
+            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem1.json"));
 
             return new HttpResponseMessage()
             {
@@ -127,7 +127,7 @@ namespace AEMWebsite.Controllers
     {
         public HttpResponseMessage Get()
         {
-            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem2.json"));
+            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem1.json"));
 
             return new HttpResponseMessage()
             {
@@ -141,7 +141,7 @@ namespace AEMWebsite.Controllers
     {
         public HttpResponseMessage Get()
         {
-            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem2.json"));
+            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem1.json"));
 
             return new HttpResponseMessage()
             {
@@ -155,7 +155,7 @@ namespace AEMWebsite.Controllers
     {
         public HttpResponseMessage Get()
         {
-            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem2.json"));
+            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem1.json"));
 
             return new HttpResponseMessage()
             {
@@ -169,7 +169,7 @@ namespace AEMWebsite.Controllers
     {
         public HttpResponseMessage Get()
         {
-            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem2.json"));
+            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem1.json"));
 
             return new HttpResponseMessage()
             {
@@ -183,7 +183,7 @@ namespace AEMWebsite.Controllers
     {
         public HttpResponseMessage Get()
         {
-            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem2.json"));
+            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem1.json"));
 
             return new HttpResponseMessage()
             {
@@ -197,7 +197,7 @@ namespace AEMWebsite.Controllers
     {
         public HttpResponseMessage Get()
         {
-            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem2.json"));
+            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem1.json"));
 
             return new HttpResponseMessage()
             {
@@ -211,7 +211,7 @@ namespace AEMWebsite.Controllers
     {
         public HttpResponseMessage Get()
         {
-            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem2.json"));
+            var json = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/newitem1.json"));
 
             return new HttpResponseMessage()
             {

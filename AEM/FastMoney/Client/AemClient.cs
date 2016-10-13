@@ -1060,13 +1060,13 @@ namespace AemClient
 
                     string source = item.image;
                     string dest = destinationBaseImage + Utility.getFileName(source);
-                    item.imagelocalfolder = Utility.getFileName(source);
+                    item.imagedownloaded = Utility.getFileName(source);
                     downloadFile(source, dest);
 
 
                     source = item.fallbackfilereference;
                     dest = destinationBaseImage + Utility.getFileName(source);
-                    item.fallbackfilereferencelocalfolder = Utility.getFileName(source);
+                    item.fallbackfilereferencedownloaded = Utility.getFileName(source);
                     downloadFile(source, dest);
                 
                 }
@@ -1120,7 +1120,7 @@ namespace AemClient
                 item.url = lastword;
                 string source = imageBaseUrl + item.image;
                 string dest = destinationBaseImage + item.headline + ".jpg";
-                item.imagelocalfolder = item.headline + ".jpg"; ;
+                item.imagedownloaded = item.headline + ".jpg"; ;
                 downloadFile(source, dest);
                 //source = item.video;
                 //dest = destinationBaseVideo + item.headline + ".mp4";

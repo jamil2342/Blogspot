@@ -248,9 +248,9 @@ BOOL CPage1::SaveItOff()
 	m_pInbound->m_colFlds[i++] = new CField("id", "Counter");
 	m_pInbound->m_colFlds[i++] = new CField("url", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("image", "Text");	
-	m_pInbound->m_colFlds[i++] = new CField("imagelocalfolder", "Text");
+	m_pInbound->m_colFlds[i++] = new CField("imagedownloaded", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("fallbackfilereference", "Text");
-	m_pInbound->m_colFlds[i++] = new CField("fallbackfilereferencelocalfolder", "Text");
+	m_pInbound->m_colFlds[i++] = new CField("fallbackfilereferencedownloaded", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("headline", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("abstract", "Text");
 	m_pInbound->m_colFlds[i++] = new CField("category", "Text");
