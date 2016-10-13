@@ -11,14 +11,9 @@ namespace AemClient
     {
         public static string getFileName(string hreflink)
         {
+
             return Path.GetFileName(Uri.UnescapeDataString(hreflink).Replace("/", "\\"));
-            Uri uri = new Uri(hreflink);
-            string filename="";
-            if (uri.IsFile)
-            {
-                 filename = System.IO.Path.GetFileName(uri.LocalPath);
-            }
-            return filename;
+
         }
 
 
