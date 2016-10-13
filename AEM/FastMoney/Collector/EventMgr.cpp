@@ -167,8 +167,10 @@ void CEventThread::DoWork()
 			OutputDebugString("DoWork() - not ready.");
 
 	}
+	//#####do correct
 	if (m_collectorData.m_ConnectionOpen == ERR_RECOVERY)
 	{
+		
 		int cycletime = this->m_nCycleTime / 1000;
 		cycletime = cycletime < 1 ? 1 : cycletime;
 		char szBuf[256];
